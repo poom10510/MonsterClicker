@@ -10,33 +10,47 @@
     tools:context="kitipoom.clickinggame.MainActivity">
 
     <TextView
-        android:id="@+id/tv"
+        android:id="@+id/moneytab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Hello World!"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/heal"
+        android:layout_alignEnd="@+id/heal" />
     <Button
-        android:id="@+id/share"
+        android:id="@+id/attk"
         android:text="Click!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="82dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <Button
+        android:id="@+id/heal"
+        android:text="Heal!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/attk"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
     <Button
         android:id="@+id/auto"
         android:text="Auto"
-        android:layout_below="@+id/tv"
+        android:layout_below="@+id/moneytab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
+        android:text="Hp !"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
         android:id="@+id/enermyhp"
-        android:layout_above="@+id/share"
-        android:layout_toRightOf="@+id/tv"
-        android:layout_toEndOf="@+id/tv" />
+        android:layout_alignBaseline="@+id/heal"
+        android:layout_alignBottom="@+id/heal"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

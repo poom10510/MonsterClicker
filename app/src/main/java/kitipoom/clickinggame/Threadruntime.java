@@ -22,7 +22,7 @@ public class Threadruntime extends Thread{
         while(true) {
             try {
                 //sleep((long)1000); //หยุดการทำงาน 1 วินาที
-                sleep((long)200);
+                sleep((long)1000);
             }
             catch(InterruptedException e) {
                 Log.e("log_thread", "++++++++++++++++++++++++++++Error Thread : " + e.toString());

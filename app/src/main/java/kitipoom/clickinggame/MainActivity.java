@@ -8,9 +8,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView tv;
-    private Button sharebtn,autobtn;
+    private TextView moneybar, enhp;
+    private Button attackbtn,autobtn;
     Threadruntime aa;
+    Game game;
     boolean o=false;
     int i = 0;
     @Override
@@ -20,15 +21,20 @@ public class MainActivity extends AppCompatActivity {
         init();
     }
     public void init(){
-        tv = (TextView)findViewById(R.id.tv);
-        tv.setText(i+"");
-        sharebtn = (Button)findViewById(R.id.share);
-        sharebtn.setOnClickListener(new View.OnClickListener() {
+        game = new Game();
+        game.newGame();
+        moneybar = (TextView)findViewById(R.id.moneytab);
+        moneybar.setText("M: "+game.getPlayer().getMoney()+ "");
+        enhp = (TextView)findViewById(R.id.enermyhp);
+       // enhp.setText(game.getEnermy().getCurrentHp());
+        attackbtn = (Button)findViewById(R.id.attk);
+        attackbtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                i++;
-                tv.setText(i + "");
+                game.setEnermydamage();
+                moneybar.setText("M: "+game.getPlayer().getMoney() + "");
+                enhp.setText(game.getEnermy().getCurrentHp()+"");
             }
         });
         autobtn=(Button)findViewById(R.id.auto);
@@ -43,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
         aa.start();
     }
     public void updatetime(){
-        i+=2;
-        tv.setText(i + "");
+        game.setEnermydamagebybot();
+        moneybar.setText("M: "+game.getPlayer().getMoney()+ "");
+        enhp.setText(game.getEnermy().getCurrentHp()+"");
     }
 }

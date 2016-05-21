@@ -3,38 +3,21 @@ package kitipoom.clickinggame;
 /**
  * Created by kitipoom on 11/5/2559.
  */
-public class Player {
-    private int level;
-    private int maxHp;
-    private int currentHp;
-    private int atkpower;
+public class Player extends Keyplay{
     private int money;
     public Player(int level){
-        this.level=level;
-    }
-    public void levelUp(){
-
-    }
-    public void calculate(){
-
-    }
-    public void setCurrentHp(int currentHp) {
-        this.currentHp = currentHp;
+       this.level=level;
+        this.cal = new Playercalculator();
+        calculate();
+        currentHp=getMaxHp();
+        money=0;
     }
 
-    public int getAtkpower() {
-        return atkpower;
+    public int getMoney() {
+        return money;
     }
 
-    public int getCurrentHp() {
-        return currentHp;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public int getMaxHp() {
-        return maxHp;
+    public void setMoney(int money) {
+        this.money += money;
     }
 }
