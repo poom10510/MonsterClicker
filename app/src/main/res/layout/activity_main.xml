@@ -53,4 +53,23 @@
         android:layout_alignBottom="@+id/heal"
         android:layout_centerHorizontal="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Hp!"
+        android:id="@+id/playerhp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Enermyimage"
+        android:src="@drawable/enermypic"
+
+        android:layout_below="@+id/auto"/>
+
+
 </RelativeLayout>

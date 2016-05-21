@@ -41,4 +41,8 @@ public class Threadruntime extends Thread{
 
         }
     }
+
+    public Boolean getStop() {
+        return stop;
+    }
 }

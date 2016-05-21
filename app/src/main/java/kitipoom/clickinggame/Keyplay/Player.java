@@ -1,4 +1,6 @@
-package kitipoom.clickinggame;
+package kitipoom.clickinggame.Keyplay;
+
+import kitipoom.clickinggame.Calculator.Playercalculator;
 
 /**
  * Created by kitipoom on 11/5/2559.
@@ -19,5 +21,10 @@ public class Player extends Keyplay{
 
     public void setMoney(int money) {
         this.money += money;
+    }
+
+    @Override
+    public void Action() {
+
     }
 }

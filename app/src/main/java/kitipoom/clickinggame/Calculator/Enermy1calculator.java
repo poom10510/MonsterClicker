@@ -1,4 +1,4 @@
-package kitipoom.clickinggame;
+package kitipoom.clickinggame.Calculator;
 
 /**
  * Created by kitipoom on 19/5/2559.
@@ -6,7 +6,7 @@ package kitipoom.clickinggame;
 public class Enermy1calculator extends Calculator {
     @Override
     public int getHp(int level) {
-        return level*1000;
+        return level*100;
     }
 
     @Override

@@ -1,14 +1,30 @@
 package kitipoom.clickinggame;
 
+import android.app.Activity;
+
+import kitipoom.clickinggame.Keyplay.Enermy;
+import kitipoom.clickinggame.Keyplay.Player;
+
 /**
  * Created by kitipoom on 11/5/2559.
  */
 public class Game {
     private Player player;
     private Enermy enermy;
-
+    private Activity main;
+    private int floor;
+    public Game(Activity main){
+        this.main=main;
+    }
     public void newGame(){
-        startGame(1,1);
+        floor = 1;
+        startGame(floor,floor);
+    }
+    public void checkEnermydead(){
+        if(enermy.getCurrentHp()==0){
+            floor++;
+            enermy = new Enermy(floor);
+        }
     }
     public void startGame(int levelp,int levele)
     {
@@ -18,10 +34,18 @@ public class Game {
     public void setEnermydamage(){
         enermy.attacked(player.getAtkpower());
         player.setMoney(player.getAtkpower());
+        checkEnermydead();
     }
-    public void setEnermydamagebybot(){
+    public void playerheal(){
+        player.Healyourself(player.getHealpower());
+    }
+    public void Allyturn(){
         enermy.attacked(1);
         player.setMoney(1);
+        checkEnermydead();
+    }
+    public void Enermyturn(){
+        player.attacked(enermy.getAtkpower());
     }
     public void setPlayerdamage(){
         player.attacked(enermy.getAtkpower());

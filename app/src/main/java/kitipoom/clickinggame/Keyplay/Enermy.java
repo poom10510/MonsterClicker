@@ -1,4 +1,6 @@
-package kitipoom.clickinggame;
+package kitipoom.clickinggame.Keyplay;
+
+import kitipoom.clickinggame.Calculator.Enermy1calculator;
 
 /**
  * Created by kitipoom on 11/5/2559.
@@ -13,4 +15,9 @@ public class Enermy extends Keyplay{
         this.currentHp=getMaxHp();
     }
 
+
+    @Override
+    public void Action() {
+
+    }
 }

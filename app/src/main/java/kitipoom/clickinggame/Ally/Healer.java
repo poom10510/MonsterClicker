@@ -1,10 +1,17 @@
-package kitipoom.clickinggame;
+package kitipoom.clickinggame.Ally;
+
+import kitipoom.clickinggame.Keyplay.Enermy;
+import kitipoom.clickinggame.Keyplay.Player;
 
 /**
  * Created by kitipoom on 11/5/2559.
  */
-public class Saber implements Ally {
-
+public class Healer implements Ally {
+    private int level;
+    private int healpower;
+    public Healer(int level){
+        this.level=level;
+    }
     @Override
     public void Action(Player player, Enermy enermy) {
 

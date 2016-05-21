@@ -1,4 +1,4 @@
-package kitipoom.clickinggame;
+package kitipoom.clickinggame.Calculator;
 
 /**
  * Created by kitipoom on 19/5/2559.

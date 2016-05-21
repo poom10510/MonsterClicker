@@ -1,4 +1,6 @@
-package kitipoom.clickinggame;
+package kitipoom.clickinggame.Keyplay;
+
+import kitipoom.clickinggame.Calculator.Calculator;
 
 /**
  * Created by kitipoom on 19/5/2559.
@@ -29,7 +31,12 @@ public abstract class Keyplay {
 
 
     }
-
+    public void Healyourself(int heal){
+        currentHp+=heal;
+        if(currentHp>maxHp){
+            currentHp=maxHp;
+        }
+    }
     public void setCurrentHp(int currentHp) {
         this.currentHp = currentHp;
     }
@@ -61,4 +68,5 @@ public abstract class Keyplay {
             currentHp=0;
         }
     }
+    public abstract void Action();
 }
