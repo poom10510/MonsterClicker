@@ -11,6 +11,7 @@ public abstract class Keyplay {
     protected int currentHp;
     private int atkpower;
     private int healpower;
+
     protected Calculator cal;
     public void levelUp(){
         level++;
