@@ -7,4 +7,5 @@ public abstract class Calculator {
     public abstract int getHp(int level);
     public abstract int getAtk(int level);
     public abstract int getHeal(int level);
+    public abstract int getCostlevel(int level);
 }

@@ -13,8 +13,10 @@ public class Game {
     private Enermy enermy;
     private Activity main;
     private int floor;
+    private Levelup lvu;
     public Game(Activity main){
         this.main=main;
+        lvu=new Levelup();
     }
     public void newGame(){
         floor = 1;
@@ -23,7 +25,13 @@ public class Game {
     public void checkEnermydead(){
         if(enermy.getCurrentHp()==0){
             floor++;
+            player.setMoney(500);
             enermy = new Enermy(floor);
+        }
+    }public void  levelPUp(){
+        if(player.getMoney()>=500){
+            player.setMoney(-500);
+            lvu.levelup(player);
         }
     }
     public void startGame(int levelp,int levele)
@@ -31,9 +39,9 @@ public class Game {
         player = new Player(levelp);
         enermy= new Enermy(levele);
     }
-    public void setEnermydamage(){
+    public void setEnermydamage() {
         enermy.attacked(player.getAtkpower());
-        player.setMoney(player.getAtkpower());
+        //player.setMoney(player.getAtkpower());
         checkEnermydead();
     }
     public void playerheal(){
@@ -41,7 +49,7 @@ public class Game {
     }
     public void Allyturn(){
         enermy.attacked(1);
-        player.setMoney(1);
+        //player.setMoney(1);
         checkEnermydead();
     }
     public void Enermyturn(){

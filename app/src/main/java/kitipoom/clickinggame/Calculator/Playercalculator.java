@@ -18,4 +18,10 @@ public class Playercalculator extends Calculator {
     public int getHeal(int level) {
         return level*10;
     }
+
+    @Override
+    public int getCostlevel(int level) {
+        return level*100;
+    }
+
 }
