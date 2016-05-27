@@ -3,17 +3,19 @@ package kitipoom.clickinggame;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView moneybar, enhp,plhp;
-    private Button attackbtn,autobtn,healbtn,lvupbtn;
+    private RelativeLayout healLayout,attackLayout;
     protected ImageView enpic;
     private Threadruntime aa;
     Game game;
@@ -41,46 +43,22 @@ public class MainActivity extends AppCompatActivity {
         enhp.setText("Lv. "+game.getEnermy().getLevel()+" HP: " + game.getEnermy().getCurrentHp() + "");
         plhp = (TextView)findViewById(R.id.playerhp);
         plhp.setText("Lv. "+game.getPlayer().getLevel()+" HP: "+game.getPlayer().getCurrentHp()+"");
-        attackbtn = (Button)findViewById(R.id.attk);
-        attackbtn.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                game.setEnermydamage();
-                moneybar.setText("M: " + game.getPlayer().getMoney() + "");
-                enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "");
-            }
-        });
-        autobtn=(Button)findViewById(R.id.auto);
-        autobtn.setText("Auto: ON");
-        autobtn.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                aa.requestStop();
-                if(!aa.getStop()){
-                    autobtn.setText("Auto: ON");
-                }
-                else {
-                    autobtn.setText("Auto: OFF");
-                }
-            }
-        });
-        healbtn = (Button)findViewById(R.id.heal);
-        healbtn.setOnClickListener(new View.OnClickListener(){
-
+        healLayout = (RelativeLayout) findViewById(R.id.HealLayout);
+        healLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 game.playerheal();
                 plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "");
             }
         });
-        lvupbtn = (Button) findViewById(R.id.levelupP);
-        lvupbtn.setOnClickListener(new View.OnClickListener(){
-
+        attackLayout = (RelativeLayout) findViewById(R.id.AttackLayout);
+        attackLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.levelPUp();
+                game.setEnermydamage();
+                moneybar.setText("M: " + game.getPlayer().getMoney() + "");
+                enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "");
             }
         });
 

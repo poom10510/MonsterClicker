@@ -8,7 +8,7 @@ import kitipoom.clickinggame.Keyplay.Keyplay;
  */
 public class Levelup {
     public void levelup(Ally unit){
-        unit.levelup();
+
     }
     public void levelup(Keyplay unit){
         unit.levelUp();
