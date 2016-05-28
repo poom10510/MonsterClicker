@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@drawable/battlebg"
     tools:context="kitipoom.clickinggame.MainActivity">
 
     <!--
@@ -121,7 +121,6 @@
             android:id="@+id/Hero3image"
             android:src="@drawable/archer1"
             android:adjustViewBounds="true"
-            android:background="@color/colorAccent"
             android:maxWidth="82dp"
             android:maxHeight="112dp"
             android:scaleType="fitCenter"
