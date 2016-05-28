@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dungeon"
+    android:background="@drawable/greenbg"
     tools:context="kitipoom.clickinggame.MainActivity">
 
     <!--
@@ -217,7 +217,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/upgradeTab"
             />
-        
+
         <android.support.v4.view.ViewPager
             android:id="@+id/upgradePager"
             android:layout_width="match_parent"

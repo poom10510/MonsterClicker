@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout)findViewById(R.id.upgradeTab);
         tabLayout.addTab(tabLayout.newTab().setText("Hero"));
         tabLayout.addTab(tabLayout.newTab().setText("Warrior"));
+        tabLayout.addTab(tabLayout.newTab().setText("Caster"));
+        tabLayout.addTab(tabLayout.newTab().setText("Archer"));
 
         final ViewPager viewPager = (ViewPager)findViewById(R.id.upgradePager);
         final PagerAdapter pagerAdapter = new kitipoom.clickinggame.Adapter.PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());

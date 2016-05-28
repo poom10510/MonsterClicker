@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import kitipoom.clickinggame.UpgradeFragment.ArcherUpgrade;
+import kitipoom.clickinggame.UpgradeFragment.CasterUpgrade;
 import kitipoom.clickinggame.UpgradeFragment.HeroUpgrade;
 import kitipoom.clickinggame.UpgradeFragment.WarriorUpgrade;
 
@@ -27,6 +29,12 @@ public class PagerAdapter extends FragmentStatePagerAdapter{
             case 1:
                 WarriorUpgrade tabwarrior_upgrade = new WarriorUpgrade();
                 return tabwarrior_upgrade;
+            case 2:
+                CasterUpgrade tabcaster_upgrade = new CasterUpgrade();
+                return tabcaster_upgrade;
+            case 3:
+                ArcherUpgrade tabarcher_upgrade = new ArcherUpgrade();
+                return tabarcher_upgrade;
             default:return null;
         }
     }
