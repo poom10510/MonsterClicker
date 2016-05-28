@@ -38,4 +38,9 @@ public class Enermy1calculator extends Calculator {
     public int getStun(int level) {
         return 0;
     }
+
+    @Override
+    public int getCtritcal(int level) {
+        return 0;
+    }
 }

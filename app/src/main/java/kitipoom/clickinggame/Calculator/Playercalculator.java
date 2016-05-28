@@ -39,4 +39,9 @@ public class Playercalculator extends Calculator {
         return level*1;
     }
 
+    @Override
+    public int getCtritcal(int level) {
+        return 0;
+    }
+
 }

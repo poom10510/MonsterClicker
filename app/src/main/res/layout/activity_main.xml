@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<AbsoluteLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorAccent"
     tools:context="kitipoom.clickinggame.MainActivity">
 
     <!--
@@ -42,7 +39,7 @@
         android:layout_below="@+id/moneytab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
+ 
     <TextView
         android:text="Hp !"
         android:layout_width="wrap_content"
@@ -52,7 +49,7 @@
         android:layout_alignTop="@+id/levelupP"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
+ 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,14 +59,14 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
+ 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Enermyimage"
         android:src="@drawable/enermypic"
      />
-
+ 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
@@ -79,30 +76,20 @@
         android:layout_below="@+id/auto"
         android:layout_alignLeft="@+id/attk"
         android:layout_alignStart="@+id/attk" />
-
+ 
     -->
 
     <!-- ALLIES -->
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="294dp"
+        android:layout_height="195dp"
         android:id="@+id/HealLayout"
         android:layout_below="@+id/relativeLayout4"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/AttackLayout"
-        android:layout_toStartOf="@+id/AttackLayout">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Heal"
-            android:id="@+id/textView"
-            android:layout_marginTop="20dp"
-            android:textSize="20dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="150dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_x="10dp"
+        android:layout_y="35dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -110,119 +97,101 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Money"
             android:id="@+id/moneytab"
+            android:textSize="20dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textSize="20dp" />
-
-    </RelativeLayout>
-
-    <!-- ENEMIES -->
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/AttackLayout"
-        android:layout_alignTop="@+id/HealLayout"
-        android:layout_alignRight="@+id/relativeLayout3"
-        android:layout_alignEnd="@+id/relativeLayout3"
-        android:layout_alignBottom="@+id/HealLayout">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Attack"
-            android:id="@+id/textView2"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="100dp"
-            android:textSize="20dp"
-            android:layout_marginBottom="150dp" />
+            android:layout_alignParentStart="true" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/Enermyimage"
-            android:src="@drawable/enermypic"
+            android:id="@+id/Hero1image"
+            android:src="@drawable/warrior1"
             android:adjustViewBounds="true"
             android:maxWidth="82dp"
-            android:maxHeight="102dp"
+            android:maxHeight="112dp"
             android:scaleType="fitCenter"
             android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/Hero2image"
+            android:layout_toEndOf="@+id/Hero2image" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Hero3image"
+            android:src="@drawable/archer1"
+            android:adjustViewBounds="true"
+            android:background="@color/colorAccent"
+            android:maxWidth="82dp"
+            android:maxHeight="112dp"
+            android:scaleType="fitCenter"
+            android:layout_alignTop="@+id/Hero2image"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Hero2image"
+            android:src="@drawable/caster1"
+            android:adjustViewBounds="true"
+            android:maxWidth="82dp"
+            android:maxHeight="112dp"
+            android:scaleType="fitCenter"
+            android:layout_alignTop="@+id/Hero1image"
+            android:layout_toRightOf="@+id/Hero3image"
+            android:layout_toEndOf="@+id/Hero3image" />
+
+    </RelativeLayout>
+
+    <!-- ENEMIES -->
+    <AbsoluteLayout
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/AttackLayout"
+        android:layout_alignTop="@+id/HealLayout"
+        android:layout_alignRight="@+id/UpgradeLayout"
+        android:layout_alignEnd="@+id/UpgradeLayout"
+        android:layout_x="296dp"
+        android:layout_y="27dp">
+
+        <ImageView
+            android:layout_width = "189dp"
+            android:layout_height= "189dp"
+            android:id="@+id/Enermyimage"
+            android:src="@drawable/dragon1"
+            android:adjustViewBounds="true"
+            android:maxWidth="82dp"
+            android:maxHeight="112dp"
+            android:scaleType="fitCenter"
+            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="34dp" />
+            android:layout_x="3dp"
+            android:layout_y="17dp" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="39dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="HP"
             android:id="@+id/enermyhp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_below="@+id/Enermyimage"
+            android:layout_alignLeft="@+id/Enermyimage"
+            android:layout_alignStart="@+id/Enermyimage"
+            android:layout_marginTop="38dp"
+            android:layout_x="75dp"
+            android:layout_y="11dp" />
 
-    </RelativeLayout>
+    </AbsoluteLayout>
 
 
     <!-- UPGRADE -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/HealLayout"
-        android:id="@+id/relativeLayout3"
-        android:layout_alignParentBottom="true">
-
-        <TabHost
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/tabHost">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TabWidget
-                    android:id="@android:id/tabs"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></TabWidget>
-
-                <FrameLayout
-                    android:id="@android:id/tabcontent"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="57dp"
-                        android:orientation="vertical">
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"></LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"></LinearLayout>
-                </FrameLayout>
-            </LinearLayout>
-        </TabHost>
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
         android:id="@+id/relativeLayout4">
 
         <TextView
@@ -236,4 +205,19 @@
             android:textSize="20dp" />
 
     </RelativeLayout>
-</RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/UpgradeLayout"
+        android:layout_above="@+id/enermyhp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="46dp"
+        android:layout_below="@+id/HealLayout"
+        android:background="@color/colorPrimary"
+        android:layout_x="0dp"
+        android:layout_y="231dp">
+
+    </RelativeLayout>
+</AbsoluteLayout>

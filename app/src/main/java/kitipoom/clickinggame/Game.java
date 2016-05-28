@@ -2,6 +2,9 @@ package kitipoom.clickinggame;
 
 import android.app.Activity;
 
+import kitipoom.clickinggame.Ally.Archer;
+import kitipoom.clickinggame.Ally.Mage;
+import kitipoom.clickinggame.Ally.Warrior;
 import kitipoom.clickinggame.Keyplay.Enermy;
 import kitipoom.clickinggame.Keyplay.Player;
 
@@ -9,10 +12,17 @@ import kitipoom.clickinggame.Keyplay.Player;
  * Created by kitipoom on 11/5/2559.
  */
 public class Game {
+
     private Player player;
     private Enermy enermy;
+
+    private Warrior warrior;
+    private Mage mage;
+    private Archer archer;
     private Activity main;
+
     private int floor;
+
     private Levelup lvu;
     public Game(Activity main){
         this.main=main;

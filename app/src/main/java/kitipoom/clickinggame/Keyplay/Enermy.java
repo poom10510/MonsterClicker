@@ -9,9 +9,10 @@ public class Enermy extends Keyplay{
 
 
     public Enermy(int level){
-        this.level=level;
         cal = new Enermy1calculator();
-        calculate();
+        setLevel(level);
+
+        //calculate();
         this.currentHp=getMaxHp();
     }
 

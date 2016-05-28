@@ -11,5 +11,6 @@ public abstract class Calculator {
     public abstract int getSpeed(int level);
     public abstract int getDefend(int level);
     public abstract int getStun(int level);
+    public abstract int getCtritcal(int level);
 
 }

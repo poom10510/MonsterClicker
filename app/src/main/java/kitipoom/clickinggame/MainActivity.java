@@ -7,6 +7,7 @@ import android.text.Layout;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AbsoluteLayout;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -15,8 +16,9 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private TextView moneybar, enhp,plhp;
-    private RelativeLayout healLayout,attackLayout;
-    protected ImageView enpic;
+    private AbsoluteLayout attackLayout;
+    private RelativeLayout healLayout;
+    protected ImageView enpic,hero1pic,hero2pic,hero3pic;
     private Threadruntime aa;
     Game game;
     boolean o=false;
@@ -36,13 +38,19 @@ public class MainActivity extends AppCompatActivity {
         game = new Game(this);
         game.newGame();
         enpic =(ImageView)findViewById(R.id.Enermyimage);
-        enpic.setImageResource(R.drawable.enermypic);
+        enpic.setImageResource(R.drawable.dragon1);
+        hero1pic =(ImageView)findViewById(R.id.Hero1image);
+        hero1pic.setImageResource(R.drawable.warrior1);
+        hero2pic =(ImageView)findViewById(R.id.Hero2image);
+        hero2pic.setImageResource(R.drawable.caster1);
+        hero3pic =(ImageView)findViewById(R.id.Hero3image);
+        hero3pic.setImageResource(R.drawable.archer1);
         moneybar = (TextView)findViewById(R.id.moneytab);
         moneybar.setText("M: " + game.getPlayer().getMoney() + "");
         enhp = (TextView)findViewById(R.id.enermyhp);
-        enhp.setText("Lv. "+game.getEnermy().getLevel()+" HP: " + game.getEnermy().getCurrentHp() + "");
+        enhp.setText("Lv. "+game.getEnermy().getLevel()+" HP: " + game.getEnermy().getCurrentHp() + "/"+game.getEnermy().getMaxHp() );
         plhp = (TextView)findViewById(R.id.playerhp);
-        plhp.setText("Lv. "+game.getPlayer().getLevel()+" HP: "+game.getPlayer().getCurrentHp()+"");
+        plhp.setText("Lv. "+game.getPlayer().getLevel()+" HP: "+game.getPlayer().getCurrentHp()+"/"+game.getPlayer().getMaxHp());
 
         healLayout = (RelativeLayout) findViewById(R.id.HealLayout);
         healLayout.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "");
             }
         });
-        attackLayout = (RelativeLayout) findViewById(R.id.AttackLayout);
+        attackLayout = (AbsoluteLayout) findViewById(R.id.AttackLayout);
         attackLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
     public void updatetime(){
         game.Allyturn();
         moneybar.setText("M: " + game.getPlayer().getMoney() + "");
-        enhp.setText("Lv. "+game.getEnermy().getLevel()+" HP: " + game.getEnermy().getCurrentHp() + "");
+        enhp.setText("Lv. "+game.getEnermy().getLevel()+" HP: " + game.getEnermy().getCurrentHp() + "/"+game.getEnermy().getMaxHp() );
         game.Enermyturn();
-        plhp.setText("Lv. "+game.getPlayer().getLevel()+" HP: "+game.getPlayer().getCurrentHp()+"");
+        plhp.setText("Lv. "+game.getPlayer().getLevel()+" HP: "+game.getPlayer().getCurrentHp()+"/"+game.getPlayer().getMaxHp());
     }
 }

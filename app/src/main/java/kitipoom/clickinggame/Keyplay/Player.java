@@ -9,9 +9,10 @@ public class Player extends Keyplay{
     private int money;
     private int cost;
     public Player(int level){
-       this.level=level;
         this.cal = new Playercalculator();
-        calculate();
+        setLevel(level);
+
+        //calculate();
         currentHp=getMaxHp();
         cost = cal.getCostlevel(this.level);
         money=0;
