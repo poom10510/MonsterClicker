@@ -210,8 +210,24 @@
         android:layout_height="147dp"
         android:layout_x="0dp"
         android:layout_y="233dp"
+        android:id="@+id/UpgradeLayout">
 
-        android:id="@+id/UpgradeLayout"></RelativeLayout>
+        <android.support.design.widget.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/upgradeTab"
+            />
+        
+        <android.support.v4.view.ViewPager
+            android:id="@+id/upgradePager"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/upgradeTab"
+            />
+
+
+
+    </RelativeLayout>
 
     <!--<RelativeLayout-->
         <!--android:layout_width="match_parent"-->

@@ -2,6 +2,9 @@ package kitipoom.clickinggame;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
@@ -65,6 +68,32 @@ public class MainActivity extends AppCompatActivity {
                 game.setEnermydamage();
                 moneybar.setText("M: " + game.getPlayer().getMoney() + "");
                 enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "");
+            }
+        });
+
+        //Upgrade Tab
+        TabLayout tabLayout = (TabLayout)findViewById(R.id.upgradeTab);
+        tabLayout.addTab(tabLayout.newTab().setText("Hero"));
+        tabLayout.addTab(tabLayout.newTab().setText("Warrior"));
+
+        final ViewPager viewPager = (ViewPager)findViewById(R.id.upgradePager);
+        final PagerAdapter pagerAdapter = new kitipoom.clickinggame.Adapter.PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
 
