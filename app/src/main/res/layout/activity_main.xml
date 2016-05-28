@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/battlebg"
+    android:background="@drawable/eiei"
     tools:context="kitipoom.clickinggame.MainActivity">
 
     <!--
@@ -205,18 +205,18 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/UpgradeLayout"
-        android:layout_above="@+id/enermyhp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="46dp"
-        android:layout_below="@+id/HealLayout"
-        android:background="@color/colorPrimary"
-        android:layout_x="0dp"
-        android:layout_y="231dp">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:id="@+id/UpgradeLayout"-->
+        <!--android:layout_above="@+id/enermyhp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_marginBottom="46dp"-->
+        <!--android:layout_below="@+id/HealLayout"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--android:layout_x="0dp"-->
+        <!--android:layout_y="231dp">-->
 
-    </RelativeLayout>
+    <!--</RelativeLayout>-->
 </AbsoluteLayout>
