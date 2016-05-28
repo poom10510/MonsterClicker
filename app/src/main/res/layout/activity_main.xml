@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/eiei"
+    android:background="@drawable/dungeon"
     tools:context="kitipoom.clickinggame.MainActivity">
 
     <!--
@@ -82,7 +82,7 @@
     <!-- ALLIES -->
     <RelativeLayout
         android:layout_width="294dp"
-        android:layout_height="195dp"
+        android:layout_height="212dp"
         android:id="@+id/HealLayout"
         android:layout_below="@+id/relativeLayout4"
         android:layout_alignParentLeft="true"
@@ -146,7 +146,7 @@
     <!-- ENEMIES -->
     <AbsoluteLayout
         android:layout_width="275dp"
-        android:layout_height="wrap_content"
+        android:layout_height="218dp"
         android:id="@+id/AttackLayout"
         android:layout_alignTop="@+id/HealLayout"
         android:layout_alignRight="@+id/UpgradeLayout"
@@ -165,8 +165,8 @@
             android:scaleType="fitCenter"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:layout_x="3dp"
-            android:layout_y="17dp" />
+            android:layout_x="19dp"
+            android:layout_y="33dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -204,6 +204,14 @@
             android:textSize="20dp" />
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="147dp"
+        android:layout_x="0dp"
+        android:layout_y="233dp"
+
+        android:id="@+id/UpgradeLayout"></RelativeLayout>
 
     <!--<RelativeLayout-->
         <!--android:layout_width="match_parent"-->
