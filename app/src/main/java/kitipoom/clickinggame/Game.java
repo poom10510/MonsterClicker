@@ -35,12 +35,12 @@ public class Game {
     }
     public void checkEnermydead(){
         if(EnisDead()){
-            if(count==7) {
+            player.setMoney(enermy.getLevel() * 5);
+            enermy.setLevel(floor);
+            if(count==6) {
                 floor++;
                 count=0;
             }
-            player.setMoney(enermy.getLevel()*5);
-            enermy.setLevel(floor);
             count++;
         }
     }

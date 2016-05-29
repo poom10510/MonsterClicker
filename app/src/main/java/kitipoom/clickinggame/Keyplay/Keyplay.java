@@ -135,8 +135,10 @@ public abstract class Keyplay {
         this.level = level;
         setCriticalpowerlv(this.level);
         setMaxHplv(this.level);
+        currentHp = getMaxHp();
         setAtkpowerlv(this.level);
         setHealpowerlv(this.level);
+
     }
 
     public void setMaxHp(int maxHp) {

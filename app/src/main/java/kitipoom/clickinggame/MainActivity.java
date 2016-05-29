@@ -124,13 +124,25 @@ public class MainActivity extends AppCompatActivity {
             plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
         }
         else if(name=="archer"){
+            enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+            plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
             game.archerAttack();
+            enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+            plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
         }
         else if(name=="caster"){
+            enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+            plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
             game.mageAttack();
+            enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+            plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
         }
         else if(name=="warrior"){
+            enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+            plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
             game.warriorAttack();
+            enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+            plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
         }
         if(game.EnisDead()){
             int index = game.getCount();
