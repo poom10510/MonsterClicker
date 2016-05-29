@@ -22,8 +22,8 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView moneybar, enhp,plhp;
-    private AbsoluteLayout attackLayout;
+    private TextView moneybar, enhp,plhp,enermyLv;
+    private RelativeLayout attackLayout;
     private RelativeLayout healLayout;
     protected ImageView enpic,hero1pic,hero2pic,hero3pic;
     private Threadruntime threadmonster,threadarcher,threadcaster,threadwarrior;
@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         enhp.setText(game.getEnermy().getCurrentHp() + "/"+game.getEnermy().getMaxHp() );
         plhp = (TextView)findViewById(R.id.playerhp);
         plhp.setText(game.getPlayer().getCurrentHp()+"/"+game.getPlayer().getMaxHp());
+        enermyLv = (TextView)findViewById(R.id.enermylevel);
+        enermyLv.setText("LV "+game.getEnermy().getLevel());
 
         healLayout = (RelativeLayout) findViewById(R.id.HealLayout);
         healLayout.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 setHPBar();
             }
         });
-        attackLayout = (AbsoluteLayout) findViewById(R.id.AttackLayout);
+        attackLayout = (RelativeLayout) findViewById(R.id.AttackLayout);
         attackLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,8 +121,9 @@ public class MainActivity extends AppCompatActivity {
         playerHPbar.setProgressBackgroundColor(Color.parseColor("#33000000"));
         //Enemy_HP
         enemyHPbar = (RoundCornerProgressBar)findViewById(R.id.enemyHP_bar);
-        enemyHPbar.setProgressColor(Color.parseColor("#FF0000"));
         enemyHPbar.setProgressBackgroundColor(Color.parseColor("#33000000"));
+        enemyHPbar.setProgressColor(Color.parseColor("#FF0000"));
+
 
         /* THREAD */
         threadmonster = new Threadruntime(this,1000,"monster");
@@ -174,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
                 default: break;
             }
         }
+        enermyLv.setText("LV "+game.getEnermy().getLevel());
         game.checkEnermydead();
         this.setHPBar();
     }

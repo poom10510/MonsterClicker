@@ -74,7 +74,7 @@
     </RelativeLayout>
 
     <!-- ENEMIES -->
-    <AbsoluteLayout
+    <RelativeLayout
         android:layout_width="309dp"
         android:layout_height="wrap_content"
         android:id="@+id/AttackLayout"
@@ -103,11 +103,12 @@
             android:layout_height="20dp"
             android:paddingTop="5dp"
             android:id="@+id/enemyHP_bar"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
             android:minWidth="200dp"
             android:layout_x="66dp"
-            android:layout_y="1dp" />
+            android:layout_y="1dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         <TextView
             android:layout_width="57dp"
@@ -125,7 +126,16 @@
             android:layout_x="131dp"
             android:layout_y="1dp" />
 
-    </AbsoluteLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Lv"
+            android:id="@+id/enermylevel"
+            android:layout_toStartOf="@+id/enemyHP_bar"
+            android:layout_toLeftOf="@+id/enemyHP_bar" />
+
+    </RelativeLayout>
 
 
     <!-- UPGRADE -->
