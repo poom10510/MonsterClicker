@@ -1,6 +1,7 @@
 package kitipoom.clickinggame;
 
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
@@ -10,8 +11,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AbsoluteLayout;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 
 import java.util.Random;
 
@@ -23,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private RelativeLayout healLayout;
     protected ImageView enpic,hero1pic,hero2pic,hero3pic;
     private Threadruntime threadmonster,threadarcher,threadcaster,threadwarrior;
+    private RoundCornerProgressBar playerHPbar,enemyHPbar;
     Game game;
     Random random ;
     boolean checkenermydead=false;
@@ -43,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         game = new Game(this);
         game.newGame();
         enpic =(ImageView)findViewById(R.id.Enermyimage);
-        enpic.setImageResource(R.drawable.dragon1);
+        //enpic.setImageResource(R.drawable.dragon1);
         hero1pic =(ImageView)findViewById(R.id.Hero1image);
         hero1pic.setImageResource(R.drawable.warrior1);
         hero2pic =(ImageView)findViewById(R.id.Hero2image);
@@ -53,16 +58,17 @@ public class MainActivity extends AppCompatActivity {
         moneybar = (TextView)findViewById(R.id.moneytab);
         moneybar.setText("M: " + game.getPlayer().getMoney() + "");
         enhp = (TextView)findViewById(R.id.enermyhp);
-        enhp.setText("Lv. "+game.getEnermy().getLevel()+" HP: " + game.getEnermy().getCurrentHp() + "/"+game.getEnermy().getMaxHp() );
+        enhp.setText(game.getEnermy().getCurrentHp() + "/"+game.getEnermy().getMaxHp() );
         plhp = (TextView)findViewById(R.id.playerhp);
-        plhp.setText("Lv. "+game.getPlayer().getLevel()+" HP: "+game.getPlayer().getCurrentHp()+"/"+game.getPlayer().getMaxHp());
+        plhp.setText(game.getPlayer().getCurrentHp()+"/"+game.getPlayer().getMaxHp());
 
         healLayout = (RelativeLayout) findViewById(R.id.HealLayout);
         healLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 game.playerheal();
-                plhp.setText("Lv. "+game.getPlayer().getLevel()+" HP: "+game.getPlayer().getCurrentHp()+"/"+game.getPlayer().getMaxHp());
+                plhp.setText(game.getPlayer().getCurrentHp()+"/"+game.getPlayer().getMaxHp());
+                setHPBar();
             }
         });
         attackLayout = (AbsoluteLayout) findViewById(R.id.AttackLayout);
@@ -72,7 +78,8 @@ public class MainActivity extends AppCompatActivity {
                 if(!checkenermydead) {
                     game.setEnermydamage();
                     moneybar.setText("M: " + game.getPlayer().getMoney() + "");
-                    enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+                    enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+                    setHPBar();
                 }
             }
         });
@@ -105,6 +112,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /* HP_Bar*/
+        //Player_HP
+        playerHPbar = (RoundCornerProgressBar)findViewById(R.id.playerHP_bar);
+        playerHPbar.setProgressColor(Color.parseColor("#FF0000"));
+        playerHPbar.setProgressBackgroundColor(Color.parseColor("#33000000"));
+        //Enemy_HP
+        enemyHPbar = (RoundCornerProgressBar)findViewById(R.id.enemyHP_bar);
+        enemyHPbar.setProgressColor(Color.parseColor("#FF0000"));
+        enemyHPbar.setProgressBackgroundColor(Color.parseColor("#33000000"));
+
+        /* THREAD */
         threadmonster = new Threadruntime(this,1000,"monster");
         threadarcher = new Threadruntime(this,1000,"archer");
         threadcaster = new Threadruntime(this,1000,"caster");
@@ -119,30 +137,30 @@ public class MainActivity extends AppCompatActivity {
         if(name=="monster") {
             game.Allyturn();
             moneybar.setText("M: " + game.getPlayer().getMoney() + "");
-            enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+            enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
             game.Enermyturn();
-            plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
+            plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
         }
         else if(name=="archer"){
-            enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
-            plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
+            enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+            plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
             game.archerAttack();
-            enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
-            plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
+            enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+            plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
         }
         else if(name=="caster"){
-            enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
-            plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
+            enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+            plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
             game.mageAttack();
-            enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
-            plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
+            enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+            plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
         }
         else if(name=="warrior"){
-            enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
-            plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
+            enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+            plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
             game.warriorAttack();
-            enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
-            plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
+            enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+            plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
         }
         if(game.EnisDead()){
             int index = game.getCount();
@@ -157,6 +175,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         game.checkEnermydead();
+        this.setHPBar();
+    }
 
+    public  void setHPBar(){
+        playerHPbar.setMax(game.getPlayer().getMaxHp());
+        playerHPbar.setProgress(game.getPlayer().getCurrentHp());
+        enemyHPbar.setMax(game.getEnermy().getMaxHp());
+        enemyHPbar.setProgress(game.getEnermy().getCurrentHp());
     }
 }

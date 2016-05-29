@@ -4,87 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="kitipoom.clickinggame.MainActivity">
 
-    <!--
-    <TextView
-        android:id="@+id/moneytab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/heal"
-        android:layout_alignEnd="@+id/heal" />
-    <Button
-        android:id="@+id/attk"
-        android:text="Click!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-    <Button
-        android:id="@+id/heal"
-        android:text="Heal!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/attk"
-        android:layout_alignLeft="@+id/attk"
-        android:layout_alignStart="@+id/attk" />
-    <Button
-        android:id="@+id/auto"
-        android:text="Auto"
-        android:layout_below="@+id/moneytab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
- 
-    <TextView
-        android:text="Hp !"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/enermyhp"
-        android:layout_alignTop="@+id/levelupP"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
- 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Hp!"
-        android:id="@+id/playerhp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
- 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Enermyimage"
-        android:src="@drawable/enermypic"
-     />
- 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Up level"
-        android:id="@+id/levelupP"
-        android:layout_below="@+id/auto"
-        android:layout_alignLeft="@+id/attk"
-        android:layout_alignStart="@+id/attk" />
- 
-    -->
 
     <!-- ALLIES -->
     <RelativeLayout
         android:layout_width="294dp"
         android:layout_height="212dp"
         android:id="@+id/HealLayout"
-        android:layout_below="@+id/relativeLayout4"
+        android:layout_below="@+id/playerHpLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
@@ -146,8 +75,8 @@
 
     <!-- ENEMIES -->
     <AbsoluteLayout
-        android:layout_width="275dp"
-        android:layout_height="218dp"
+        android:layout_width="309dp"
+        android:layout_height="wrap_content"
         android:id="@+id/AttackLayout"
         android:layout_alignTop="@+id/HealLayout"
         android:layout_alignRight="@+id/UpgradeLayout"
@@ -169,18 +98,32 @@
             android:layout_x="49dp"
             android:layout_y="-6dp" />
 
-        <TextView
+        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
             android:layout_width="wrap_content"
-            android:layout_height="39dp"
+            android:layout_height="20dp"
+            android:paddingTop="5dp"
+            android:id="@+id/enemyHP_bar"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:minWidth="200dp"
+            android:layout_x="66dp"
+            android:layout_y="1dp" />
+
+        <TextView
+            android:layout_width="57dp"
+            android:layout_height="38dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="HP"
             android:id="@+id/enermyhp"
-            android:layout_below="@+id/Enermyimage"
-            android:layout_alignLeft="@+id/Enermyimage"
-            android:layout_alignStart="@+id/Enermyimage"
-            android:layout_marginTop="38dp"
-            android:layout_x="75dp"
-            android:layout_y="11dp" />
+            android:textSize="15dp"
+            android:layout_alignLeft="@id/enemyHP_bar"
+            android:layout_alignTop="@id/enemyHP_bar"
+            android:layout_alignRight="@id/enemyHP_bar"
+            android:layout_alignBottom="@id/enemyHP_bar"
+            android:background="@android:color/transparent"
+            android:textAlignment="center"
+            android:layout_x="131dp"
+            android:layout_y="1dp" />
 
     </AbsoluteLayout>
 
@@ -189,10 +132,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:layout_alignParentTop="true"
         android:background="@color/colorPrimary"
-        android:id="@+id/relativeLayout4">
+        android:id="@+id/playerHpLayout"
+        >
+
+        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:paddingTop="5dp"
+            android:id="@+id/playerHP_bar"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:minWidth="350dp"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -200,9 +154,18 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="HP"
             android:id="@+id/playerhp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:textSize="20dp" />
+            android:textSize="15dp"
+            android:layout_alignLeft="@id/playerHP_bar"
+            android:layout_alignTop="@id/playerHP_bar"
+            android:layout_alignRight="@id/playerHP_bar"
+            android:layout_alignBottom="@id/playerHP_bar"
+            android:background="@android:color/transparent"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentRight="false"
+            android:textAlignment="center" />
 
     </RelativeLayout>
 
