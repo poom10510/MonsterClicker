@@ -13,9 +13,12 @@ public class Warrior extends Ally {
         enermy.attacked(power);
     }
 
-
-
-
+    public Warrior(){
+        powerLv = 1 ;
+        speedLv = 1 ;
+        defendLv = 1 ;
+        calculate();
+    }
 
     @Override
     public void calculate() {

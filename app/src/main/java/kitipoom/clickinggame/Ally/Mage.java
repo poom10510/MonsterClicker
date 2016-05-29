@@ -8,16 +8,21 @@ import kitipoom.clickinggame.Keyplay.Player;
  * Created by kitipoom on 11/5/2559.
  */
 public class Mage extends Ally {
-    @Override
+    public Mage(){
+        powerLv = 1 ;
+        speedLv = 1 ;
+        defendLv = 1 ;
+        calculate();
+    }
     public void Action(Player player, Enermy enermy) {
-        power = calculator.getAtk(powerLv);
-        speed = calculator.getSpeed(speedLv);
-        heal = calculator.getHeal(healLv);
+        enermy.attacked(power);
     }
 
     @Override
     public void calculate() {
-
+        power = calculator.getAtk(powerLv);
+        speed = calculator.getSpeed(speedLv);
+        heal = calculator.getHeal(healLv);
     }
 
 

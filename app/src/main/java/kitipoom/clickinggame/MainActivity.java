@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private AbsoluteLayout attackLayout;
     private RelativeLayout healLayout;
     protected ImageView enpic,hero1pic,hero2pic,hero3pic;
-    private Threadruntime aa,threadarcher,threadcaster,threadwarrior;
+    private Threadruntime threadmonster,threadarcher,threadcaster,threadwarrior;
     Game game;
     boolean o=false;
     int i = 0;
@@ -99,18 +99,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        aa= new Threadruntime(this,1000,"aa");
+        threadmonster = new Threadruntime(this,1000,"monster");
         threadarcher = new Threadruntime(this,1000,"archer");
         threadcaster = new Threadruntime(this,1000,"caster");
         threadwarrior = new Threadruntime(this,1000,"warrior");
-        aa.start();
+        threadmonster.start();
         threadwarrior.start();
         threadcaster.start();
         threadarcher.start();
 
     }
     public void updatetime(String name){
-        if(name=="aa") {
+        if(name=="monster") {
             game.Allyturn();
             moneybar.setText("M: " + game.getPlayer().getMoney() + "");
             enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
@@ -118,13 +118,13 @@ public class MainActivity extends AppCompatActivity {
             plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
         }
         else if(name=="archer"){
-
+            game.archerAttack();
         }
         else if(name=="caster"){
-
+            game.mageAttack();
         }
         else if(name=="warrior"){
-
+            game.warriorAttack();
         }
 
     }

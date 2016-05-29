@@ -35,7 +35,7 @@ public class Game {
     public void checkEnermydead(){
         if(enermy.getCurrentHp()==0){
             floor++;
-            player.setMoney(500);
+            player.setMoney(enermy.getLevel()*5);
             enermy = new Enermy(floor);
         }
     }public void  levelPUp(){
@@ -62,6 +62,23 @@ public class Game {
         //player.setMoney(1);
         checkEnermydead();
     }
+    public void archerAttack(){
+        archer.Action(player,enermy);
+        //player.setMoney(1);
+        checkEnermydead();
+    }
+    public void mageAttack(){
+        mage.Action(player,enermy);
+        //player.setMoney(1);
+        checkEnermydead();
+    }
+    public void warriorAttack(){
+        warrior.Action(player,enermy);
+        //player.setMoney(1);
+        checkEnermydead();
+    }
+
+
     public void Enermyturn(){
         player.attacked(enermy.getAtkpower());
     }
