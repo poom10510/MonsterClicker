@@ -2,8 +2,8 @@ package kitipoom.clickinggame;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,8 +13,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import kitipoom.clickinggame.Adapter.PagerAdapter;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private AbsoluteLayout attackLayout;
     private RelativeLayout healLayout;
     protected ImageView enpic,hero1pic,hero2pic,hero3pic;
-    private Threadruntime aa;
+    private Threadruntime aa,threadarcher,threadcaster,threadwarrior;
     Game game;
     boolean o=false;
     int i = 0;
@@ -101,15 +99,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        aa= new Threadruntime(this);
+        aa= new Threadruntime(this,1000,"aa");
+        threadarcher = new Threadruntime(this,1000,"archer");
+        threadcaster = new Threadruntime(this,1000,"caster");
+        threadwarrior = new Threadruntime(this,1000,"warrior");
         aa.start();
+        threadwarrior.start();
+        threadcaster.start();
+        threadarcher.start();
 
     }
-    public void updatetime(){
-        game.Allyturn();
-        moneybar.setText("M: " + game.getPlayer().getMoney() + "");
-        enhp.setText("Lv. "+game.getEnermy().getLevel()+" HP: " + game.getEnermy().getCurrentHp() + "/"+game.getEnermy().getMaxHp() );
-        game.Enermyturn();
-        plhp.setText("Lv. "+game.getPlayer().getLevel()+" HP: "+game.getPlayer().getCurrentHp()+"/"+game.getPlayer().getMaxHp());
+    public void updatetime(String name){
+        if(name=="aa") {
+            game.Allyturn();
+            moneybar.setText("M: " + game.getPlayer().getMoney() + "");
+            enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+            game.Enermyturn();
+            plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
+        }
+        else if(name=="archer"){
+
+        }
+        else if(name=="caster"){
+
+        }
+        else if(name=="warrior"){
+
+        }
+
     }
 }

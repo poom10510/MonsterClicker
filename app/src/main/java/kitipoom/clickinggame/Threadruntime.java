@@ -8,13 +8,21 @@ import android.util.Log;
 public class Threadruntime extends Thread{
 
     private MainActivity main;
+    private int speed;
+    private String name;
     private Boolean stop=false;
 
-    public Threadruntime(MainActivity main){
+    public Threadruntime(MainActivity main,int speed,String name){
         this.main=main;
+        this.speed=speed;
+        this.name=name;
     }
     public void requestStop() {
         this.stop = !this.stop;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
     @Override
@@ -22,7 +30,7 @@ public class Threadruntime extends Thread{
         while(true) {
             try {
                 //sleep((long)1000); //หยุดการทำงาน 1 วินาที
-                sleep((long)1000);
+                sleep(speed);
             }
             catch(InterruptedException e) {
                 Log.e("log_thread", "++++++++++++++++++++++++++++Error Thread : " + e.toString());
@@ -34,7 +42,7 @@ public class Threadruntime extends Thread{
                 this.main.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        main.updatetime();
+                        main.updatetime(name);
                     }
                 });
             }
