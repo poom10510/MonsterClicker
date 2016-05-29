@@ -2,8 +2,8 @@ package kitipoom.clickinggame;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +12,8 @@ import android.widget.AbsoluteLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import kitipoom.clickinggame.Adapter.PagerAdapter;
 
 
 public class MainActivity extends AppCompatActivity {
