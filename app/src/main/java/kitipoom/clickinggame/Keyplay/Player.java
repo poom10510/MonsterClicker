@@ -7,14 +7,15 @@ import kitipoom.clickinggame.Calculator.Playercalculator;
  */
 public class Player extends Keyplay{
     private int money;
-    private int cost;
     public Player(int level){
         this.cal = new Playercalculator();
-        setLevel(level);
+        //setLevel(level);
+        setMaxHplv(1);
+        setAtkpowerlv(1);
+        setHealpowerlv(1);
 
         //calculate();
         currentHp=getMaxHp();
-        cost = cal.getCostlevel(this.level);
         money=0;
     }
 

@@ -9,15 +9,27 @@ import kitipoom.clickinggame.Keyplay.Player;
  * Created by kitipoom on 11/5/2559.
  */
 public class Caster extends Ally {
+    boolean isheal=false;
+    State state;
     public Caster(){
         powerLv = 1 ;
         speedLv = 1 ;
-        defendLv = 1 ;
+        healLv = 1 ;
+        state = new StateAttack(this);
         calculator = new Allycalculator();
         calculate();
     }
     public void Action(Player player, Enermy enermy) {
-        enermy.attacked(power);
+            state.Action(player,enermy);
+
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    public State getState() {
+        return state;
     }
 
     @Override
@@ -26,6 +38,7 @@ public class Caster extends Ally {
         speed = calculator.getSpeed(speedLv);
         heal = calculator.getHeal(healLv);
     }
+
 
 
 }
