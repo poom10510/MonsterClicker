@@ -131,6 +131,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Lv"
+            android:paddingRight="15dp"
             android:id="@+id/enermylevel"
             android:layout_toStartOf="@+id/enemyHP_bar"
             android:layout_toLeftOf="@+id/enemyHP_bar" />
