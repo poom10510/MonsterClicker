@@ -166,8 +166,8 @@
             android:scaleType="fitCenter"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:layout_x="62dp"
-            android:layout_y="5dp" />
+            android:layout_x="49dp"
+            android:layout_y="-6dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -208,9 +208,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="147dp"
+        android:layout_height="181dp"
         android:layout_x="0dp"
-        android:layout_y="233dp"
+        android:layout_y="209dp"
         android:id="@+id/UpgradeLayout">
 
         <android.support.design.widget.TabLayout
@@ -226,7 +226,8 @@
             android:layout_height="fill_parent"
             android:layout_below="@+id/upgradeTab"
             android:background="@color/colorAccent"
-            />
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
 
 
