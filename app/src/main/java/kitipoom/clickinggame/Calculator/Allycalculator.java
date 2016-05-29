@@ -31,7 +31,7 @@ public class Allycalculator extends Calculator {
 
     @Override
     public int getDefend(int level) {
-        return 0;
+        return level*1;
     }
 
     @Override

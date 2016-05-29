@@ -2,6 +2,8 @@ package kitipoom.clickinggame;
 
 import android.app.Activity;
 
+import java.util.Random;
+
 import kitipoom.clickinggame.Ally.Archer;
 import kitipoom.clickinggame.Ally.Caster;
 import kitipoom.clickinggame.Ally.Warrior;
@@ -20,32 +22,47 @@ public class Game {
     private Caster caster;
     private Archer archer;
     private MainActivity main;
-
-    private int floor,count;
+    private Random random = new Random();
+private boolean stun = false;
+    private int floor, count, index;
 
     private Levelup lvu;
-    public Game(MainActivity main){
-        this.main=main;
-        lvu=new Levelup();
+
+    public Game(MainActivity main) {
+        this.main = main;
+        lvu = new Levelup();
     }
-    public void newGame(){
+
+    public void newGame() {
         floor = 1;
-        count=2;
-        startGame(floor,floor);
+        count = 2;
+        startGame(floor, floor);
     }
-    public void checkEnermydead(){
-        if(EnisDead()){
+
+    public void checkEnermydead() {
+        if (EnisDead()) {
             player.setMoney(enermy.getLevel() * 5);
             enermy.setLevel(floor);
-            if(count==6) {
+            if (count == 6) {
                 floor++;
-                count=0;
+                count = 0;
             }
             count++;
         }
     }
-    public boolean EnisDead(){
-        return enermy.getCurrentHp()<=0;
+    public void setEnermyDecrease(){
+        enermy.setLevel(floor-1);
+        enermy.setCurrentHp(enermy.getCurrentHp());
+
+        count = 1 ;
+    }
+
+    public boolean EnisDead() {
+        return enermy.getCurrentHp() <= 0;
+
+    }
+    public boolean playerIsDead() {
+        return player.getCurrentHp() <= 0;
 
     }
 
@@ -53,54 +70,68 @@ public class Game {
         return count;
     }
 
-    public void  levelPUp(){
-        if(player.getMoney()>=500){
+    public void levelPUp() {
+        if (player.getMoney() >= 500) {
             player.setMoney(-500);
             lvu.levelup(player);
         }
     }
-    public void startGame(int levelp,int levele)
-    {
+
+    public void startGame(int levelp, int levele) {
         player = new Player(levelp);
-        enermy= new Enermy(levele);
+        enermy = new Enermy(levele);
         warrior = new Warrior();
         caster = new Caster();
         archer = new Archer();
     }
+
     public void setEnermydamage() {
         enermy.attacked(player.getAtkpower());
         //player.setMoney(player.getAtkpower());
         //checkEnermydead();
     }
-    public void playerheal(){
+
+    public void playerheal() {
         player.Healyourself(player.getHealpower());
     }
-    public void Allyturn(){
-        enermy.attacked(1);
-        //player.setMoney(1);
-        //checkEnermydead();
+
+    public void setStun(boolean stun) {
+        this.stun = stun;
     }
-    public void archerAttack(){
-        archer.Action(player,enermy);
-        //player.setMoney(1);
-        //checkEnermydead();
+
+    public boolean getStun() {
+        return stun;
     }
-    public void mageAttack(){
-        caster.Action(player,enermy);
-        //player.setMoney(1);
-        //checkEnermydead();
-    }
-    public void warriorAttack(){
-        warrior.Action(player,enermy);
+
+    public void archerAttack() {
+        archer.Action(player, enermy);
+        stun = checkStun();
+
         //player.setMoney(1);
         //checkEnermydead();
     }
 
-
-    public void Enermyturn(){
-        player.attacked(enermy.getAtkpower());
+    public void mageAttack() {
+        caster.Action(player, enermy);
+        //player.setMoney(1);
+        //checkEnermydead();
     }
-    public void setPlayerdamage(){
+
+    public void warriorAttack() {
+        warrior.Action(player, enermy);
+        //player.setMoney(1);
+        //checkEnermydead();
+    }
+
+    public void Enermyturn() {
+        player.attacked(enermy.getAtkpower() - (int) (enermy.getAtkpower() * (warrior.getDefend() / 100.0)));
+    }
+    public boolean checkStun(){
+        index = random.nextInt(100)+1;
+        return  index <= archer.getStun() ;
+    }
+
+    public void setPlayerdamage() {
         player.attacked(enermy.getAtkpower());
     }
 

@@ -36,7 +36,12 @@ public class Threadruntime extends Thread{
                 Log.e("log_thread", "++++++++++++++++++++++++++++Error Thread : " + e.toString());
             }
             if(this.stop) {
-
+                try {
+                    sleep(1000);
+                    this.stop = false;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
             else {
                 this.main.runOnUiThread(new Runnable() {

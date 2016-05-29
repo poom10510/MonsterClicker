@@ -135,35 +135,21 @@ public class MainActivity extends AppCompatActivity {
         threadcaster.start();
         threadarcher.start();
 
+
     }
     public void updatetime(String name){
+
         if(name=="monster") {
-            game.Allyturn();
-            moneybar.setText("M: " + game.getPlayer().getMoney() + "");
-            enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
             game.Enermyturn();
-            plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
         }
         else if(name=="archer"){
-            enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
-            plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
             game.archerAttack();
-            enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
-            plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
         }
         else if(name=="caster"){
-            enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
-            plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
             game.mageAttack();
-            enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
-            plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
         }
-        else if(name=="warrior"){
-            enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
-            plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
+        else if(name=="warrior") {
             game.warriorAttack();
-            enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
-            plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
         }
         if(game.EnisDead()){
             int index = game.getCount();
@@ -177,9 +163,24 @@ public class MainActivity extends AppCompatActivity {
                 default: break;
             }
         }
+        if (game.getStun()) {
+            threadmonster.requestStop();
+            game.setStun(false);
+        }
+        if(game.playerIsDead()){
+            threadmonster.requestStop();
+            threadarcher.requestStop();
+            threadcaster.requestStop();
+            threadwarrior.requestStop();
+            game.setEnermyDecrease();
+            enpic.setImageResource(R.drawable.dragon1);
+        }
         enermyLv.setText("LV "+game.getEnermy().getLevel());
         game.checkEnermydead();
         this.setHPBar();
+        moneybar.setText("M: " + game.getPlayer().getMoney() + "");
+        enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+        plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
     }
 
     public  void setHPBar(){
