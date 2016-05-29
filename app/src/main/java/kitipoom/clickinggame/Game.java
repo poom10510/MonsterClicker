@@ -30,7 +30,7 @@ public class Game {
     }
     public void newGame(){
         floor = 1;
-        count=1;
+        count=2;
         startGame(floor,floor);
     }
     public void checkEnermydead(){
