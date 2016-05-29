@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.Random;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
     protected ImageView enpic,hero1pic,hero2pic,hero3pic;
     private Threadruntime threadmonster,threadarcher,threadcaster,threadwarrior;
     Game game;
-    boolean o=false;
+    Random random ;
+    boolean checkenermydead=false;
     int i = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         init();
     }
     public void init(){
+        random = new Random();
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         game = new Game(this);
         game.newGame();
@@ -58,16 +62,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 game.playerheal();
-                plhp.setText("Lv. " + game.getPlayer().getLevel() + " HP: " + game.getPlayer().getCurrentHp() + "");
+                plhp.setText("Lv. "+game.getPlayer().getLevel()+" HP: "+game.getPlayer().getCurrentHp()+"/"+game.getPlayer().getMaxHp());
             }
         });
         attackLayout = (AbsoluteLayout) findViewById(R.id.AttackLayout);
         attackLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.setEnermydamage();
-                moneybar.setText("M: " + game.getPlayer().getMoney() + "");
-                enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "");
+                if(!checkenermydead) {
+                    game.setEnermydamage();
+                    moneybar.setText("M: " + game.getPlayer().getMoney() + "");
+                    enhp.setText("Lv. " + game.getEnermy().getLevel() + " HP: " + game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+                }
             }
         });
 
@@ -126,6 +132,19 @@ public class MainActivity extends AppCompatActivity {
         else if(name=="warrior"){
             game.warriorAttack();
         }
+        if(game.EnisDead()){
+            int index = game.getCount();
+            switch (index){
+                case 1 : enpic.setImageResource(R.drawable.dragon1); break;
+                case 2 : enpic.setImageResource(R.drawable.ball1); break;
+                case 3 : enpic.setImageResource(R.drawable.electri1); break;
+                case 4 : enpic.setImageResource(R.drawable.rabbit1); break;
+                case 5 : enpic.setImageResource(R.drawable.fish1); break;
+                case 6 : enpic.setImageResource(R.drawable.ice1); break;
+                default: break;
+            }
+        }
+        game.checkEnermydead();
 
     }
 }

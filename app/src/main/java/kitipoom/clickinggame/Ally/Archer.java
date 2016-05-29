@@ -1,5 +1,6 @@
 package kitipoom.clickinggame.Ally;
 
+import kitipoom.clickinggame.Calculator.Allycalculator;
 import kitipoom.clickinggame.Calculator.Calculator;
 import kitipoom.clickinggame.Keyplay.Enermy;
 import kitipoom.clickinggame.Keyplay.Player;
@@ -15,6 +16,7 @@ public class Archer extends Ally {
         powerLv = 1 ;
         speedLv = 1 ;
         defendLv = 1 ;
+        calculator = new Allycalculator();
         calculate();
     }
     @Override

@@ -19,26 +19,41 @@ public class Game {
     private Warrior warrior;
     private Caster caster;
     private Archer archer;
-    private Activity main;
+    private MainActivity main;
 
-    private int floor;
+    private int floor,count;
 
     private Levelup lvu;
-    public Game(Activity main){
+    public Game(MainActivity main){
         this.main=main;
         lvu=new Levelup();
     }
     public void newGame(){
         floor = 1;
+        count=1;
         startGame(floor,floor);
     }
     public void checkEnermydead(){
-        if(enermy.getCurrentHp()==0){
-            floor++;
+        if(EnisDead()){
+            if(count==7) {
+                floor++;
+                count=0;
+            }
             player.setMoney(enermy.getLevel()*5);
-            enermy = new Enermy(floor);
+            enermy.setLevel(floor);
+            count++;
         }
-    }public void  levelPUp(){
+    }
+    public boolean EnisDead(){
+        return enermy.getCurrentHp()<=0;
+
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void  levelPUp(){
         if(player.getMoney()>=500){
             player.setMoney(-500);
             lvu.levelup(player);
@@ -55,7 +70,7 @@ public class Game {
     public void setEnermydamage() {
         enermy.attacked(player.getAtkpower());
         //player.setMoney(player.getAtkpower());
-        checkEnermydead();
+        //checkEnermydead();
     }
     public void playerheal(){
         player.Healyourself(player.getHealpower());
@@ -63,22 +78,22 @@ public class Game {
     public void Allyturn(){
         enermy.attacked(1);
         //player.setMoney(1);
-        checkEnermydead();
+        //checkEnermydead();
     }
     public void archerAttack(){
         archer.Action(player,enermy);
         //player.setMoney(1);
-        checkEnermydead();
+        //checkEnermydead();
     }
     public void mageAttack(){
         caster.Action(player,enermy);
         //player.setMoney(1);
-        checkEnermydead();
+        //checkEnermydead();
     }
     public void warriorAttack(){
         warrior.Action(player,enermy);
         //player.setMoney(1);
-        checkEnermydead();
+        //checkEnermydead();
     }
 
 
