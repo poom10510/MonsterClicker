@@ -7,8 +7,8 @@ import kitipoom.clickinggame.Keyplay.Player;
 /**
  * Created by kitipoom on 11/5/2559.
  */
-public class Mage extends Ally {
-    public Mage(){
+public class Caster extends Ally {
+    public Caster(){
         powerLv = 1 ;
         speedLv = 1 ;
         defendLv = 1 ;

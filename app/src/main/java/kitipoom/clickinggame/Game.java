@@ -3,7 +3,7 @@ package kitipoom.clickinggame;
 import android.app.Activity;
 
 import kitipoom.clickinggame.Ally.Archer;
-import kitipoom.clickinggame.Ally.Mage;
+import kitipoom.clickinggame.Ally.Caster;
 import kitipoom.clickinggame.Ally.Warrior;
 import kitipoom.clickinggame.Keyplay.Enermy;
 import kitipoom.clickinggame.Keyplay.Player;
@@ -17,7 +17,7 @@ public class Game {
     private Enermy enermy;
 
     private Warrior warrior;
-    private Mage mage;
+    private Caster caster;
     private Archer archer;
     private Activity main;
 
@@ -48,6 +48,9 @@ public class Game {
     {
         player = new Player(levelp);
         enermy= new Enermy(levele);
+        warrior = new Warrior();
+        caster = new Caster();
+        archer = new Archer();
     }
     public void setEnermydamage() {
         enermy.attacked(player.getAtkpower());
@@ -68,7 +71,7 @@ public class Game {
         checkEnermydead();
     }
     public void mageAttack(){
-        mage.Action(player,enermy);
+        caster.Action(player,enermy);
         //player.setMoney(1);
         checkEnermydead();
     }
