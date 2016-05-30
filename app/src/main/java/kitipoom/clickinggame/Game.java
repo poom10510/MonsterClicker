@@ -29,12 +29,12 @@ private boolean stun = false;
 
     private Levelup lvu;
 
-    public Game() {
+    private Game() {
         lvu = new Levelup();
     }
 
     public static Game getInstance(){
-        if(instance==null)return new Game();
+        if(instance==null)instance = new Game();
         return instance;
     }
 
@@ -140,5 +140,21 @@ private boolean stun = false;
 
     public Player getPlayer() {
         return player;
+    }
+
+    public Levelup getLvu() {
+        return lvu;
+    }
+
+    public Warrior getWarrior() {
+        return warrior;
+    }
+
+    public Archer getArcher() {
+        return archer;
+    }
+
+    public Caster getCaster() {
+        return caster;
     }
 }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import kitipoom.clickinggame.Game;
 import kitipoom.clickinggame.R;
 
 
@@ -20,6 +21,7 @@ public class ArcherUpgrade extends Fragment {
     private TextView powerLv,speedLv,stunLv;
     private TextView powerCost,speedCost,stunCost;
     private int level =1;
+    private Game game;
 
     public ArcherUpgrade() {
         // Required empty public constructor
@@ -40,6 +42,9 @@ public class ArcherUpgrade extends Fragment {
     }
 
     public void initComponents() {
+
+        game = Game.getInstance();
+
         powerCard = (CardView) view.findViewById(R.id.archerpower_card);
         speedCard = (CardView) view.findViewById(R.id.archerspeed_card);
         stunCard = (CardView) view.findViewById(R.id.archerstun_card);
@@ -55,21 +60,24 @@ public class ArcherUpgrade extends Fragment {
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                powerLv.setText("Level " + (++level));
+                game.getLvu().powerUp(game.getArcher());
+                powerLv.setText("Level " + (game.getArcher().getPowerLv()));
             }
         });
 
         speedCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                speedLv.setText("Level " + (++level));
+                game.getLvu().speedUp(game.getArcher());
+                speedLv.setText("Level " + (game.getArcher().getSpeedLv()));
             }
         });
 
         stunCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stunLv.setText("Level " + (++level));
+                game.getLvu().stunUp(game.getArcher());
+                stunLv.setText("Level " + (game.getArcher().getStunLv()));
             }
         });
     }

@@ -9,6 +9,7 @@ public class Enermy extends Keyplay{
 
 
     public Enermy(int level){
+        super();
         cal = new Enermy1calculator();
         setLevel(level);
 

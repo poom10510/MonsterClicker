@@ -8,6 +8,7 @@ import kitipoom.clickinggame.Calculator.Playercalculator;
 public class Player extends Keyplay{
     private int money;
     public Player(int level){
+        super();
         this.cal = new Playercalculator();
         //setLevel(level);
         setMaxHplv(1);
@@ -18,6 +19,7 @@ public class Player extends Keyplay{
         currentHp=getMaxHp();
         money=0;
     }
+
 
     public int getMoney() {
         return money;

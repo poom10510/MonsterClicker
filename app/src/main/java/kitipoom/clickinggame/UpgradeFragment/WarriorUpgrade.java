@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import kitipoom.clickinggame.Game;
 import kitipoom.clickinggame.R;
 
 public class WarriorUpgrade extends Fragment {
@@ -20,6 +21,7 @@ public class WarriorUpgrade extends Fragment {
     private TextView powerLv,speedLv,defendLv;
     private TextView powerCost,speedCost,defendCost;
     private int level =1;
+    private Game game;
 
     public WarriorUpgrade() {
         // Required empty public constructor
@@ -41,6 +43,9 @@ public class WarriorUpgrade extends Fragment {
     }
 
     public void initComponents() {
+
+        game = Game.getInstance();
+
         powerCard = (CardView) view.findViewById(R.id.warriorpower_card);
         speedCard = (CardView) view.findViewById(R.id.warriorspeed_card);
         defendCard = (CardView) view.findViewById(R.id.warriordefend_card);
@@ -56,21 +61,24 @@ public class WarriorUpgrade extends Fragment {
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                powerLv.setText("Level " + (++level));
+                game.getLvu().powerUp(game.getWarrior());
+                powerLv.setText("Level " + (game.getWarrior().getPowerLv()));
             }
         });
 
         speedCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                speedLv.setText("Level " + (++level));
+                game.getLvu().speedUp(game.getWarrior());
+                speedLv.setText("Level " + (game.getWarrior().getSpeedLv()));
             }
         });
 
         defendCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                defendLv.setText("Level " + (++level));
+                game.getLvu().defendUp(game.getWarrior());
+                defendLv.setText("Level " + (game.getWarrior().getDefendLv()));
             }
         });
     }

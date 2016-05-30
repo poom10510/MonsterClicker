@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,22 +64,25 @@ public class HeroUpgrade extends Fragment {
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.getPlayer().levelUp();
-                powerLv.setText("Level "+(++level));
+               // game.getPlayer().levelUp();
+                game.getLvu().powerUp(game.getPlayer());
+                powerLv.setText("Level " + (game.getPlayer().getAtkpowerlv()));
             }
         });
 
         healCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                healLv.setText("Level "+(++level));
+                game.getLvu().healUp(game.getPlayer());
+                healLv.setText("Level "+(game.getPlayer().getHealpowerlv()));
             }
         });
 
         hpCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hpLv.setText("Level "+(++level));
+                game.getLvu().hpUp(game.getPlayer());
+                hpLv.setText("Level "+(game.getPlayer().getMaxHplv()));
             }
         });
 

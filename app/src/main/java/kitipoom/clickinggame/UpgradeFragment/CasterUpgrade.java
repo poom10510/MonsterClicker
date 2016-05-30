@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import kitipoom.clickinggame.Game;
 import kitipoom.clickinggame.R;
 
 
@@ -20,6 +21,7 @@ public class CasterUpgrade extends Fragment {
     private TextView powerLv,speedLv,healLv;
     private TextView powerCost,speedCost,healCost;
     private int level =1;
+    private Game game;
 
     public CasterUpgrade() {
         // Required empty public constructor
@@ -40,6 +42,9 @@ public class CasterUpgrade extends Fragment {
     }
 
     public void initComponents() {
+
+        game = Game.getInstance();
+
         powerCard = (CardView) view.findViewById(R.id.casterpower_card);
         speedCard = (CardView) view.findViewById(R.id.casterspeed_card);
         healCard = (CardView) view.findViewById(R.id.casterheal_card);
@@ -55,21 +60,24 @@ public class CasterUpgrade extends Fragment {
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                powerLv.setText("Level " + (++level));
+                game.getLvu().powerUp(game.getCaster());
+                powerLv.setText("Level " + (game.getCaster().getPowerLv()));
             }
         });
 
         speedCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                speedLv.setText("Level " + (++level));
+                game.getLvu().speedUp(game.getCaster());
+                speedLv.setText("Level " + (game.getCaster().getSpeedLv()));
             }
         });
 
         healCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                healLv.setText("Level " + (++level));
+                game.getLvu().healUp(game.getCaster());
+                healLv.setText("Level " + (game.getCaster().getHealLv()));
             }
         });
     }

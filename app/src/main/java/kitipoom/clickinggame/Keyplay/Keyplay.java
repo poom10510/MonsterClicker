@@ -9,12 +9,15 @@ public abstract class Keyplay {
     protected int level;
     private int maxHp,maxHplv;
     protected int currentHp;
-    private int atkpower,atkpowerlv;
+    private int atkpower,atkpowerlv=0;
     private int healpower,healpowerlv;
     private int criticalpower,criticalpowerlv;
 
     protected Calculator cal;
 
+    public Keyplay(){
+
+    }
     public void levelUp(){
         level++;
         setCriticalpowerlv(level);
