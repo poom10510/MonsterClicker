@@ -75,7 +75,7 @@ public class HeroUpgrade extends Fragment {
             public void onClick(View v) {
                 // game.getPlayer().levelUp();
                 if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv() + 1)) {
-                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv() + 1)));
+                    game.getMoney().setCash(-(game.getMoney( ).getoutcome(game.getPlayer().getAtkpowerlv() + 1)));
                     game.getLvu().powerUp(game.getPlayer());
                     powerLv.setText("Level " + (game.getPlayer().getAtkpowerlv()));
                     powerCost.setText(game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv() + 1) + " $");
@@ -98,11 +98,11 @@ public class HeroUpgrade extends Fragment {
             hpCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv() + 1)) {
-                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv() + 1)));
+                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getPlayer().getMaxHplv() + 1)) {
+                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getPlayer().getMaxHplv() + 1)));
                     game.getLvu().hpUp(game.getPlayer());
                     hpLv.setText("Level " + (game.getPlayer().getMaxHplv()));
-                    powerCost.setText(game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv() + 1) + " $");
+                    hpCost.setText(game.getMoney().getoutcome(game.getPlayer().getMaxHplv() + 1) + " $");
                 }
             }
         });
