@@ -57,27 +57,47 @@ public class ArcherUpgrade extends Fragment {
         speedCost = (TextView) view.findViewById(R.id.archerspeed_cost);
         stunCost = (TextView) view.findViewById(R.id.archerstun_cost);
 
+        powerLv.setText("Level " + (game.getArcher().getPowerLv()));
+        speedLv.setText("Level " + (game.getArcher().getSpeedLv()));
+        stunLv.setText("Level " + (game.getArcher().getStunLv()));
+
+        powerCost.setText(game.getMoney().getoutcome(game.getArcher().getPowerLv()+1)+" $");
+        speedCost.setText(game.getMoney().getoutcome(game.getArcher().getSpeedLv()+1)+" $");
+        stunCost.setText(game.getMoney().getoutcome(game.getArcher().getStunLv()+1)+" $");
+
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.getLvu().powerUp(game.getArcher());
-                powerLv.setText("Level " + (game.getArcher().getPowerLv()));
+                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getArcher().getPowerLv() + 1)) {
+                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getArcher().getPowerLv() + 1)));
+                    game.getLvu().powerUp(game.getArcher());
+                    powerLv.setText("Level " + (game.getArcher().getPowerLv()));
+                    powerCost.setText(game.getMoney().getoutcome(game.getArcher().getPowerLv() + 1) + " $");
+                }
             }
         });
 
         speedCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.getLvu().speedUp(game.getArcher());
-                speedLv.setText("Level " + (game.getArcher().getSpeedLv()));
+                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getArcher().getSpeedLv() + 1)) {
+                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getArcher().getSpeedLv() + 1)));
+                    game.getLvu().speedUp(game.getArcher());
+                    speedLv.setText("Level " + (game.getArcher().getSpeedLv()));
+                    speedCost.setText(game.getMoney().getoutcome(game.getArcher().getSpeedLv() + 1) + " $");
+                }
             }
         });
 
         stunCard.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                game.getLvu().stunUp(game.getArcher());
-                stunLv.setText("Level " + (game.getArcher().getStunLv()));
+            public void onClick (View v){
+                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getArcher().getStunLv() + 1)) {
+                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getArcher().getStunLv() + 1)));
+                    game.getLvu().stunUp(game.getArcher());
+                    stunLv.setText("Level " + (game.getArcher().getStunLv()));
+                    stunCost.setText(game.getMoney().getoutcome(game.getArcher().getStunLv() + 1) + " $");
+                }
             }
         });
     }

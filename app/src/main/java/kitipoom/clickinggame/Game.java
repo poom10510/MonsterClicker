@@ -23,6 +23,7 @@ public class Game {
     private Archer archer;
     private Random random = new Random();
     private static Game instance;
+    private Money money;
 
 private boolean stun = false;
     private int floor, count, index;
@@ -31,6 +32,7 @@ private boolean stun = false;
 
     private Game() {
         lvu = new Levelup();
+        money=Money.getInstance();
     }
 
     public static Game getInstance(){
@@ -46,7 +48,7 @@ private boolean stun = false;
 
     public void checkEnermydead() {
         if (EnisDead()) {
-            player.setMoney(enermy.getLevel() * 5);
+            money.setCash(enermy.getLevel() * 5);
             enermy.setLevel(floor);
             if (count == 6) {
                 floor++;
@@ -56,7 +58,10 @@ private boolean stun = false;
         }
     }
     public void setEnermyDecrease(){
-        floor--;
+        if(floor>1) {
+            floor--;
+        }
+        player.setCurrentHp(player.getMaxHp());
         enermy.setLevel(floor);
         enermy.setCurrentHp(enermy.getCurrentHp());
 
@@ -156,5 +161,11 @@ private boolean stun = false;
 
     public Caster getCaster() {
         return caster;
+    }
+
+    public Money getMoney() {
+        return money;
+    }
+    public void updatemoney(){
     }
 }

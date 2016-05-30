@@ -57,27 +57,49 @@ public class CasterUpgrade extends Fragment {
         speedCost = (TextView) view.findViewById(R.id.casterspeed_cost);
         healCost = (TextView) view.findViewById(R.id.casterheal_cost);
 
+        powerLv.setText("Level " + (game.getCaster().getPowerLv()));
+        speedLv.setText("Level " + (game.getCaster().getSpeedLv()));
+        healLv.setText("Level " + (game.getCaster().getHealLv()));
+
+        powerCost.setText(game.getMoney().getoutcome(game.getCaster().getPowerLv()+1)+" $");
+        speedCost.setText(game.getMoney().getoutcome(game.getCaster().getSpeedLv()+1)+" $");
+        healCost.setText(game.getMoney().getoutcome(game.getCaster().getHealLv()+1)+" $");
+
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.getLvu().powerUp(game.getCaster());
-                powerLv.setText("Level " + (game.getCaster().getPowerLv()));
+                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getCaster().getPowerLv() + 1))
+                {
+                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getCaster().getPowerLv() + 1)));
+                    game.getLvu().powerUp(game.getCaster());
+                    powerLv.setText("Level " + (game.getCaster().getPowerLv()));
+                    powerCost.setText(game.getMoney().getoutcome(game.getCaster().getPowerLv() + 1) + " $");
+                }
             }
         });
 
         speedCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.getLvu().speedUp(game.getCaster());
-                speedLv.setText("Level " + (game.getCaster().getSpeedLv()));
+                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getCaster().getSpeedLv() + 1))
+                {
+                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getCaster().getSpeedLv() + 1)));
+                    game.getLvu().speedUp(game.getCaster());
+                    speedLv.setText("Level " + (game.getCaster().getSpeedLv()));
+                    speedCost.setText(game.getMoney().getoutcome(game.getCaster().getSpeedLv() + 1) + " $");
+                }
             }
         });
 
         healCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.getLvu().healUp(game.getCaster());
-                healLv.setText("Level " + (game.getCaster().getHealLv()));
+                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getCaster().getHealLv() + 1)) {
+                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getCaster().getHealLv() + 1)));
+                    game.getLvu().healUp(game.getCaster());
+                    healLv.setText("Level " + (game.getCaster().getHealLv()));
+                    healCost.setText(game.getMoney().getoutcome(game.getCaster().getHealLv() + 1) + " $");
+                }
             }
         });
     }

@@ -61,28 +61,49 @@ public class HeroUpgrade extends Fragment {
         healCost = (TextView)view.findViewById(R.id.heroheal_cost);
         hpCost = (TextView)view.findViewById(R.id.herohp_cost);
 
+        powerLv.setText("Level " + (game.getPlayer().getAtkpowerlv()));
+        healLv.setText("Level "+(game.getPlayer().getHealpowerlv()));
+        hpLv.setText("Level "+(game.getPlayer().getMaxHplv()));
+
+        powerCost.setText(game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv()+1)+" $");
+        healCost.setText(game.getMoney().getoutcome(game.getPlayer().getHealpowerlv()+1)+" $");
+        hpCost.setText(game.getMoney().getoutcome(game.getPlayer().getMaxHplv() + 1) + " $");
+
+
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // game.getPlayer().levelUp();
-                game.getLvu().powerUp(game.getPlayer());
-                powerLv.setText("Level " + (game.getPlayer().getAtkpowerlv()));
+                // game.getPlayer().levelUp();
+                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv() + 1)) {
+                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv() + 1)));
+                    game.getLvu().powerUp(game.getPlayer());
+                    powerLv.setText("Level " + (game.getPlayer().getAtkpowerlv()));
+                    powerCost.setText(game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv() + 1) + " $");
+                }
             }
         });
 
         healCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.getLvu().healUp(game.getPlayer());
-                healLv.setText("Level "+(game.getPlayer().getHealpowerlv()));
+                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getPlayer().getHealpowerlv() + 1)) {
+                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getPlayer().getHealpowerlv() + 1)));
+                    game.getLvu().healUp(game.getPlayer());
+                    healLv.setText("Level " + (game.getPlayer().getHealpowerlv()));
+                    healCost.setText(game.getMoney().getoutcome(game.getPlayer().getHealpowerlv() + 1) + " $");
+                }
             }
         });
 
-        hpCard.setOnClickListener(new View.OnClickListener() {
+            hpCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.getLvu().hpUp(game.getPlayer());
-                hpLv.setText("Level "+(game.getPlayer().getMaxHplv()));
+                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv() + 1)) {
+                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv() + 1)));
+                    game.getLvu().hpUp(game.getPlayer());
+                    hpLv.setText("Level " + (game.getPlayer().getMaxHplv()));
+                    powerCost.setText(game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv() + 1) + " $");
+                }
             }
         });
 

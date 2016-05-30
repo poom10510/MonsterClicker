@@ -16,7 +16,7 @@ public class Allycalculator extends Calculator {
 
     @Override
     public int getHeal(int level) {
-        return level*10;
+        return level*20;
     }
 
     @Override

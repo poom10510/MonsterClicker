@@ -58,27 +58,48 @@ public class WarriorUpgrade extends Fragment {
         speedCost = (TextView) view.findViewById(R.id.warriorspeed_cost);
         defendCost = (TextView) view.findViewById(R.id.warriordefend_cost);
 
+        powerLv.setText("Level " + (game.getWarrior().getPowerLv()));
+        speedLv.setText("Level " + (game.getWarrior().getSpeedLv()));
+        defendLv.setText("Level " + (game.getWarrior().getDefendLv()));
+
+        powerCost.setText(game.getMoney().getoutcome(game.getWarrior().getPowerLv()+1)+" $");
+        speedCost.setText(game.getMoney().getoutcome(game.getWarrior().getSpeedLv()+1)+" $");
+        defendCost.setText(game.getMoney().getoutcome(game.getWarrior().getDefendLv()+1)+" $");
+
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.getLvu().powerUp(game.getWarrior());
-                powerLv.setText("Level " + (game.getWarrior().getPowerLv()));
+
+                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getWarrior().getPowerLv() + 1)) {
+                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getWarrior().getPowerLv() + 1)));
+                    game.getLvu().powerUp(game.getWarrior());
+                    powerLv.setText("Level " + (game.getWarrior().getPowerLv()));
+                    powerCost.setText(game.getMoney().getoutcome(game.getWarrior().getPowerLv() + 1) + " $");
+                }
             }
         });
 
         speedCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.getLvu().speedUp(game.getWarrior());
-                speedLv.setText("Level " + (game.getWarrior().getSpeedLv()));
+                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getWarrior().getSpeedLv() + 1)) {
+                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getWarrior().getSpeedLv() + 1)));
+                    game.getLvu().speedUp(game.getWarrior());
+                    speedLv.setText("Level " + (game.getWarrior().getSpeedLv()));
+                    speedCost.setText(game.getMoney().getoutcome(game.getWarrior().getSpeedLv() + 1) + " $");
+                }
             }
         });
 
-        defendCard.setOnClickListener(new View.OnClickListener() {
+            defendCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.getLvu().defendUp(game.getWarrior());
-                defendLv.setText("Level " + (game.getWarrior().getDefendLv()));
+                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getWarrior().getDefendLv() + 1)) {
+                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getWarrior().getDefendLv() + 1)));
+                    game.getLvu().defendUp(game.getWarrior());
+                    defendLv.setText("Level " + (game.getWarrior().getDefendLv()));
+                    defendCost.setText(game.getMoney().getoutcome(game.getWarrior().getDefendLv() + 1) + " $");
+                }
             }
         });
     }
