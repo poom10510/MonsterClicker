@@ -32,7 +32,7 @@ private boolean stun = false;
 
     private Game() {
         lvu = new Levelup();
-        money=Money.getInstance();
+        money = Money.getInstance();
     }
 
     public static Game getInstance(){

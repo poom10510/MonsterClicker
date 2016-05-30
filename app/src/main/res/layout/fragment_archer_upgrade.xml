@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context="kitipoom.clickinggame.UpgradeFragment.ArcherUpgrade">
 
     <!-- TODO: Update blank fragment layout -->
@@ -19,8 +20,7 @@
             android:id="@+id/archerpower_card"
             android:layout_marginLeft="28dp"
             android:layout_marginTop="8dp"
-            app:cardElevation="5dp"
-            app:cardCornerRadius="10dp"
+            card_view:cardBackgroundColor="@android:color/transparent"
             >
 
             <RelativeLayout
@@ -35,7 +35,6 @@
                     android:layout_height="wrap_content"
                     android:maxLines="3"
                     android:padding="7dp"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="15dp"
                     android:text="POWER"
@@ -48,7 +47,6 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Level 1"
                     android:id="@+id/archerpower_lv"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="12dp"
                     android:layout_below="@+id/archerpower_title"
@@ -59,10 +57,9 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="100 $"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="12dp"
-                    android:padding="1dp"
+                    android:padding="15dp"
                     android:id="@+id/archerpower_cost"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true" />
@@ -78,9 +75,8 @@
             android:layout_width="150dp"
             android:layout_height="90dp"
             android:id="@+id/archerspeed_card"
-            app:cardElevation="5dp"
-            app:cardCornerRadius="10dp"
             android:layout_alignTop="@+id/archerpower_card"
+            card_view:cardBackgroundColor="@android:color/transparent"
             android:layout_centerHorizontal="true">
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -94,7 +90,6 @@
                     android:layout_height="wrap_content"
                     android:maxLines="3"
                     android:padding="7dp"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="15dp"
                     android:text="SPEED"
@@ -107,7 +102,6 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Level 1"
                     android:id="@+id/archerspeed_lv"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="12dp"
                     android:layout_below="@+id/archerspeed_title"
@@ -118,10 +112,9 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="100 $"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="12dp"
-                    android:padding="1dp"
+                    android:padding="15dp"
                     android:id="@+id/archerspeed_cost"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true" />
@@ -137,11 +130,10 @@
             android:layout_width="150dp"
             android:layout_height="90dp"
             android:id="@+id/archerstun_card"
-            app:cardElevation="5dp"
-            app:cardCornerRadius="10dp"
             android:layout_alignTop="@+id/archerspeed_card"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            card_view:cardBackgroundColor="@android:color/transparent"
             android:layout_marginRight="29dp"
             android:layout_marginEnd="29dp">
             <RelativeLayout
@@ -156,7 +148,6 @@
                     android:layout_height="wrap_content"
                     android:maxLines="3"
                     android:padding="7dp"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="15dp"
                     android:text="STUN"
@@ -169,7 +160,6 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Level 1"
                     android:id="@+id/archerstun_lv"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="12dp"
                     android:layout_below="@+id/archerstun_title"
@@ -180,10 +170,9 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="100 $"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="12dp"
-                    android:padding="1dp"
+                    android:padding="15dp"
                     android:id="@+id/archerstun_cost"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true" />

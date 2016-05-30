@@ -1,14 +1,11 @@
 package kitipoom.clickinggame.UpgradeFragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import kitipoom.clickinggame.Game;
@@ -46,8 +43,8 @@ public class WarriorUpgrade extends Fragment {
 
         game = Game.getInstance();
 
-        powerCard = (CardView) view.findViewById(R.id.warriorpower_card);
-        speedCard = (CardView) view.findViewById(R.id.warriorspeed_card);
+        powerCard = (CardView) view.findViewById(R.id.item1_card);
+        speedCard = (CardView) view.findViewById(R.id.item2_card);
         defendCard = (CardView) view.findViewById(R.id.warriordefend_card);
 
         powerLv = (TextView) view.findViewById(R.id.warriorpower_lv);

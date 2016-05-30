@@ -2,9 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context="kitipoom.clickinggame.UpgradeFragment.HeroUpgrade">
+    tools:context="kitipoom.clickinggame.Item.ItemFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -17,40 +16,28 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="150dp"
             android:layout_height="90dp"
-            android:id="@+id/heropower_card"
+            android:id="@+id/item1_card"
             android:layout_marginLeft="28dp"
             android:layout_marginTop="8dp"
             card_view:cardBackgroundColor="@android:color/transparent"
-           >
+            >
 
             <RelativeLayout
-                android:id="@+id/heropower_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/bgbutton"
-                >
+                android:id="@+id/item1">
 
                 <TextView
-                    android:id="@+id/heropower_title"
+                    android:id="@+id/item1_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="3"
                     android:padding="7dp"
                     android:textStyle="bold"
                     android:textSize="15dp"
-                    android:text="POWER"
+                    android:text="M150"
                     android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Level 1"
-                    android:id="@+id/heropower_lv"
-                    android:textStyle="bold"
-                    android:textSize="12dp"
-                    android:layout_below="@+id/heropower_title"
                     android:layout_centerHorizontal="true" />
 
                 <TextView
@@ -60,9 +47,17 @@
                     android:text="100 $"
                     android:textStyle="bold"
                     android:textSize="12dp"
-                    android:padding="15dp"
-                    android:id="@+id/heropower_cost"
+                    android:padding="10dp"
+                    android:id="@+id/item1_cost"
                     android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/item1_image"
+                    android:src="@drawable/item1"
+                    android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
 
 
@@ -75,95 +70,26 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="150dp"
             android:layout_height="90dp"
-            android:id="@+id/heroheal_card"
-            android:layout_alignTop="@+id/heropower_card"
+            android:id="@+id/item2_card"
             card_view:cardBackgroundColor="@android:color/transparent"
+            android:layout_alignTop="@+id/item1_card"
             android:layout_centerHorizontal="true">
-        <RelativeLayout
-            android:id="@+id/heroheal_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bgbutton">
-
-            <TextView
-                android:id="@+id/heroheal_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="3"
-                android:padding="7dp"
-                android:textStyle="bold"
-                android:textSize="15dp"
-                android:text="HEAL"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Level 1"
-                android:id="@+id/heroheal_lv"
-                android:textStyle="bold"
-                android:textSize="12dp"
-                android:layout_below="@+id/heroheal_title"
-                android:layout_centerHorizontal="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="100 $"
-                android:textStyle="bold"
-                android:textSize="12dp"
-                android:padding="15dp"
-                android:id="@+id/heroheal_cost"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true" />
-
-
-        </RelativeLayout>
-        />
-    </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="150dp"
-            android:layout_height="90dp"
-            android:id="@+id/herohp_card"
-            android:layout_alignTop="@+id/heroheal_card"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            card_view:cardBackgroundColor="@android:color/transparent"
-            android:layout_marginRight="29dp"
-            android:layout_marginEnd="29dp">
             <RelativeLayout
-                android:id="@+id/herohp_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bgbutton">
+                android:background="@drawable/bgbutton"
+                android:id="@+id/item2">
 
                 <TextView
-                    android:id="@+id/herohp_title"
+                    android:id="@+id/item2_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="3"
                     android:padding="7dp"
                     android:textStyle="bold"
                     android:textSize="15dp"
-                    android:text="MAXHP"
+                    android:text="Potion"
                     android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Level 1"
-                    android:id="@+id/herohp_lv"
-                    android:textStyle="bold"
-                    android:textSize="12dp"
-                    android:layout_below="@+id/herohp_title"
                     android:layout_centerHorizontal="true" />
 
                 <TextView
@@ -173,9 +99,73 @@
                     android:text="100 $"
                     android:textStyle="bold"
                     android:textSize="12dp"
-                    android:padding="15dp"
-                    android:id="@+id/herohp_cost"
+                    android:padding="10dp"
+                    android:id="@+id/item2_cost"
                     android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/item2"
+                    android:id="@+id/item2_image"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
+
+
+            </RelativeLayout>
+            />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="150dp"
+            android:layout_height="90dp"
+            android:id="@+id/item3_card"
+            android:layout_alignTop="@+id/item2_card"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            card_view:cardBackgroundColor="@android:color/transparent"
+            android:layout_marginRight="29dp"
+            android:layout_marginEnd="29dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bgbutton"
+                android:id="@+id/item3">
+
+                <TextView
+                    android:id="@+id/item3_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    android:padding="7dp"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:text="Death"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="100 $"
+                    android:textStyle="bold"
+                    android:textSize="12dp"
+                    android:padding="10dp"
+                    android:id="@+id/item3_cost"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/item3_image"
+                    android:src="@drawable/item3"
+
+                    android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
 
 
@@ -185,5 +175,4 @@
 
 
     </RelativeLayout>
-
 </FrameLayout>

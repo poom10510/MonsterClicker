@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/dungeon"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="kitipoom.clickinggame.MainActivity">
 
@@ -28,8 +28,8 @@
             android:id="@+id/moneytab"
             android:textSize="20dp"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_toRightOf="@+id/coin_image"
+            android:layout_toEndOf="@+id/coin_image" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -55,8 +55,8 @@
             android:maxHeight="112dp"
             android:scaleType="fitCenter"
             android:layout_alignTop="@+id/Hero2image"
-            android:layout_toRightOf="@+id/moneytab"
-            android:layout_toEndOf="@+id/moneytab" />
+            android:layout_toLeftOf="@+id/Hero2image"
+            android:layout_toStartOf="@+id/Hero2image" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -68,8 +68,18 @@
             android:maxHeight="112dp"
             android:scaleType="fitCenter"
             android:layout_alignTop="@+id/Hero1image"
-            android:layout_toRightOf="@+id/Hero3image"
-            android:layout_toEndOf="@+id/Hero3image" />
+            android:layout_toLeftOf="@+id/Hero1image"
+            android:layout_toStartOf="@+id/Hero1image" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/coin_image"
+            android:src="@drawable/coin"
+
+            android:layout_alignBottom="@+id/moneytab"
+            android:layout_toLeftOf="@+id/Hero3image"
+            android:layout_toStartOf="@+id/Hero3image" />
 
     </RelativeLayout>
 
@@ -106,9 +116,11 @@
             android:minWidth="200dp"
             android:layout_x="66dp"
             android:layout_y="1dp"
-            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@+id/enermylevel"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="24dp"
+            android:layout_marginEnd="24dp" />
 
         <TextView
             android:layout_width="57dp"
@@ -136,6 +148,16 @@
             android:layout_toStartOf="@+id/enemyHP_bar"
             android:layout_toLeftOf="@+id/enemyHP_bar" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/enemy_icon"
+            android:src="@drawable/enemy"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/enermylevel"
+            android:layout_alignBottom="@+id/enermylevel"
+            android:layout_toLeftOf="@+id/enermylevel" />
+
     </RelativeLayout>
 
 
@@ -145,7 +167,6 @@
         android:layout_width="match_parent"
         android:layout_height="24dp"
         android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary"
         android:id="@+id/playerHpLayout"
         >
 
@@ -157,6 +178,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:minWidth="350dp"
+
             />
 
         <TextView
@@ -169,14 +191,22 @@
             android:layout_alignLeft="@id/playerHP_bar"
             android:layout_alignTop="@id/playerHP_bar"
             android:layout_alignRight="@id/playerHP_bar"
-            android:layout_alignBottom="@id/playerHP_bar"
             android:background="@android:color/transparent"
-            android:layout_centerInParent="true"
             android:layout_alignParentTop="false"
             android:layout_alignParentLeft="false"
-            android:layout_alignParentBottom="false"
             android:layout_alignParentRight="false"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/heart_image"
+            android:src="@drawable/heart"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/playerHP_bar"
+            android:layout_toStartOf="@+id/playerHP_bar" />
 
     </RelativeLayout>
 
@@ -191,7 +221,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/upgradeTab"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/bgtabbar"
             />
 
         <android.support.v4.view.ViewPager

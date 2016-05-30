@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context="kitipoom.clickinggame.UpgradeFragment.WarriorUpgrade">
 
     <!-- TODO: Update blank fragment layout -->
@@ -16,11 +17,10 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="150dp"
             android:layout_height="90dp"
-            android:id="@+id/warriorpower_card"
+            android:id="@+id/item1_card"
             android:layout_marginLeft="28dp"
             android:layout_marginTop="8dp"
-            app:cardElevation="5dp"
-            app:cardCornerRadius="10dp"
+            card_view:cardBackgroundColor="@android:color/transparent"
             >
 
             <RelativeLayout
@@ -30,12 +30,11 @@
                 >
 
                 <TextView
-                    android:id="@+id/warriorpower_title"
+                    android:id="@+id/item1_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="3"
                     android:padding="7dp"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="15dp"
                     android:text="POWER"
@@ -48,10 +47,9 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Level 1"
                     android:id="@+id/warriorpower_lv"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="12dp"
-                    android:layout_below="@+id/warriorpower_title"
+                    android:layout_below="@+id/item1_title"
                     android:layout_centerHorizontal="true" />
 
                 <TextView
@@ -59,10 +57,9 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="100 $"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="12dp"
-                    android:padding="1dp"
+                    android:padding="15dp"
                     android:id="@+id/warriorpower_cost"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true" />
@@ -77,10 +74,9 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="150dp"
             android:layout_height="90dp"
-            android:id="@+id/warriorspeed_card"
-            app:cardElevation="5dp"
-            app:cardCornerRadius="10dp"
-            android:layout_alignTop="@+id/warriorpower_card"
+            android:id="@+id/item2_card"
+            card_view:cardBackgroundColor="@android:color/transparent"
+            android:layout_alignTop="@+id/item1_card"
             android:layout_centerHorizontal="true">
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -88,12 +84,11 @@
                 android:background="@drawable/bgbutton">
 
                 <TextView
-                    android:id="@+id/warriorspeed_title"
+                    android:id="@+id/item2_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="3"
                     android:padding="7dp"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="15dp"
                     android:text="SPEED"
@@ -106,10 +101,9 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Level 1"
                     android:id="@+id/warriorspeed_lv"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="12dp"
-                    android:layout_below="@+id/warriorspeed_title"
+                    android:layout_below="@+id/item2_title"
                     android:layout_centerHorizontal="true" />
 
                 <TextView
@@ -117,10 +111,9 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="100 $"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="12dp"
-                    android:padding="1dp"
+                    android:padding="15dp"
                     android:id="@+id/warriorspeed_cost"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true" />
@@ -136,11 +129,10 @@
             android:layout_width="150dp"
             android:layout_height="90dp"
             android:id="@+id/warriordefend_card"
-            app:cardElevation="5dp"
-            app:cardCornerRadius="10dp"
-            android:layout_alignTop="@+id/warriorspeed_card"
+            android:layout_alignTop="@+id/item2_card"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            card_view:cardBackgroundColor="@android:color/transparent"
             android:layout_marginRight="29dp"
             android:layout_marginEnd="29dp">
             <RelativeLayout
@@ -149,12 +141,11 @@
                 android:background="@drawable/bgbutton">
 
                 <TextView
-                    android:id="@+id/warriordefend_title"
+                    android:id="@+id/item3_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="3"
                     android:padding="7dp"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="15dp"
                     android:text="DEFEND"
@@ -167,10 +158,9 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Level 1"
                     android:id="@+id/warriordefend_lv"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="12dp"
-                    android:layout_below="@+id/warriordefend_title"
+                    android:layout_below="@+id/item3_title"
                     android:layout_centerHorizontal="true" />
 
                 <TextView
@@ -178,10 +168,9 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="100 $"
-                    android:textColor="#222"
                     android:textStyle="bold"
                     android:textSize="12dp"
-                    android:padding="1dp"
+                    android:padding="15dp"
                     android:id="@+id/warriordefend_cost"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true" />

@@ -9,6 +9,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AbsoluteLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         hero3pic =(ImageView)findViewById(R.id.Hero3image);
         hero3pic.setImageResource(R.drawable.archer1);
         moneybar = (TextView)findViewById(R.id.moneytab);
-        moneybar.setText("M: " + game.getMoney().getCash() + "");
+        moneybar.setText(game.getMoney().getCash() + "");
         enhp = (TextView)findViewById(R.id.enermyhp);
         enhp.setText(game.getEnermy().getCurrentHp() + "/"+game.getEnermy().getMaxHp() );
         plhp = (TextView)findViewById(R.id.playerhp);
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!checkenermydead) {
                     game.setEnermydamage();
-                    moneybar.setText("M: " + game.getMoney().getCash() + "");
+                    moneybar.setText(game.getMoney().getCash() + "");
                     enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
                     setHPBar();
                 }
@@ -93,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Warrior"));
         tabLayout.addTab(tabLayout.newTab().setText("Caster"));
         tabLayout.addTab(tabLayout.newTab().setText("Archer"));
+        tabLayout.addTab(tabLayout.newTab().setText("Item"));
 
         final ViewPager viewPager = (ViewPager)findViewById(R.id.upgradePager);
         final PagerAdapter pagerAdapter = new kitipoom.clickinggame.Adapter.PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
@@ -162,6 +165,8 @@ public class MainActivity extends AppCompatActivity {
         }
         if(game.EnisDead()){
             int index = game.getCount();
+            Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
+            enpic.startAnimation(animation1);
             switch (index){
                 case 1 : enpic.setImageResource(R.drawable.dragon1); break;
                 case 2 : enpic.setImageResource(R.drawable.ball1); break;
@@ -180,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         enermyLv.setText("LV "+game.getEnermy().getLevel());
         game.checkEnermydead();
         this.setHPBar();
-        moneybar.setText("M: " + game.getMoney().getCash() + "");
+        moneybar.setText(game.getMoney().getCash() + "");
         enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
         plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
     }
