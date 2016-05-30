@@ -51,7 +51,8 @@ private boolean stun = false;
         }
     }
     public void setEnermyDecrease(){
-        enermy.setLevel(floor-1);
+        floor--;
+        enermy.setLevel(floor);
         enermy.setCurrentHp(enermy.getCurrentHp());
 
         count = 1 ;

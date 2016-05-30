@@ -141,6 +141,14 @@ public class MainActivity extends AppCompatActivity {
 
         if(name=="monster") {
             game.Enermyturn();
+            if(game.playerIsDead()){
+                threadmonster.requestStop();
+                threadarcher.requestStop();
+                threadcaster.requestStop();
+                threadwarrior.requestStop();
+                game.setEnermyDecrease();
+                enpic.setImageResource(R.drawable.dragon1);
+            }
         }
         else if(name=="archer"){
             game.archerAttack();
@@ -167,14 +175,7 @@ public class MainActivity extends AppCompatActivity {
             threadmonster.requestStop();
             game.setStun(false);
         }
-        if(game.playerIsDead()){
-            threadmonster.requestStop();
-            threadarcher.requestStop();
-            threadcaster.requestStop();
-            threadwarrior.requestStop();
-            game.setEnermyDecrease();
-            enpic.setImageResource(R.drawable.dragon1);
-        }
+
         enermyLv.setText("LV "+game.getEnermy().getLevel());
         game.checkEnermydead();
         this.setHPBar();
