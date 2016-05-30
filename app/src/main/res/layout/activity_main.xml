@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@color/colorAccent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="kitipoom.clickinggame.MainActivity">
 
@@ -199,7 +199,7 @@
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:layout_below="@+id/upgradeTab"
-            android:background="@color/colorAccent"
+            android:background="@drawable/bgtab"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 

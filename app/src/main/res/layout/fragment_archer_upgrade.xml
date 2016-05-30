@@ -25,7 +25,9 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/bgbutton"
+                >
 
                 <TextView
                     android:id="@+id/archerpower_title"
@@ -82,7 +84,9 @@
             android:layout_centerHorizontal="true">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/bgbutton"
+                >
 
                 <TextView
                     android:id="@+id/archerspeed_title"
@@ -142,7 +146,9 @@
             android:layout_marginEnd="29dp">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/bgbutton"
+                >
 
                 <TextView
                     android:id="@+id/archerstun_title"

@@ -10,9 +10,6 @@ public class Levelup {
     public void levelup(Ally unit){
 
     }
-    public void levelup(Keyplay unit){
-        unit.levelUp();
-    }
     public void powerUp(Keyplay unit){
         unit.setAtkpowerlv(unit.getAtkpowerlv()+1);
     }

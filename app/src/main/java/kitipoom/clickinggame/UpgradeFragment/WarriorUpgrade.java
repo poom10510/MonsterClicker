@@ -4,14 +4,22 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import kitipoom.clickinggame.R;
 
 public class WarriorUpgrade extends Fragment {
+
+    private  View view;
+    private CardView powerCard,speedCard,defendCard;
+    private TextView powerLv,speedLv,defendLv;
+    private TextView powerCost,speedCost,defendCost;
+    private int level =1;
 
     public WarriorUpgrade() {
         // Required empty public constructor
@@ -27,8 +35,43 @@ public class WarriorUpgrade extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        return inflater.inflate(R.layout.fragment_warrior_upgrade, container, false);
+        view = inflater.inflate(R.layout.fragment_warrior_upgrade, container, false);
+        initComponents();
+        return view;
     }
 
+    public void initComponents() {
+        powerCard = (CardView) view.findViewById(R.id.warriorpower_card);
+        speedCard = (CardView) view.findViewById(R.id.warriorspeed_card);
+        defendCard = (CardView) view.findViewById(R.id.warriordefend_card);
+
+        powerLv = (TextView) view.findViewById(R.id.warriorpower_lv);
+        speedLv = (TextView) view.findViewById(R.id.warriorspeed_lv);
+        defendLv = (TextView) view.findViewById(R.id.warriordefend_lv);
+
+        powerCost = (TextView) view.findViewById(R.id.warriorpower_cost);
+        speedCost = (TextView) view.findViewById(R.id.warriorspeed_cost);
+        defendCost = (TextView) view.findViewById(R.id.warriordefend_cost);
+
+        powerCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                powerLv.setText("Level " + (++level));
+            }
+        });
+
+        speedCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                speedLv.setText("Level " + (++level));
+            }
+        });
+
+        defendCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defendLv.setText("Level " + (++level));
+            }
+        });
+    }
 }

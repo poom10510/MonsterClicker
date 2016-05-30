@@ -71,13 +71,6 @@ private boolean stun = false;
         return count;
     }
 
-    public void levelPUp() {
-        if (player.getMoney() >= 500) {
-            player.setMoney(-500);
-            lvu.levelup(player);
-        }
-    }
-
     public void startGame(int levelp, int levele) {
         player = new Player(levelp);
         enermy = new Enermy(levele);

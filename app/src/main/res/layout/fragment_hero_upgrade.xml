@@ -24,8 +24,11 @@
            >
 
             <RelativeLayout
+                android:id="@+id/heropower_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/bgbutton"
+                >
 
                 <TextView
                     android:id="@+id/heropower_title"
@@ -81,8 +84,10 @@
             android:layout_alignTop="@+id/heropower_card"
             android:layout_centerHorizontal="true">
         <RelativeLayout
+            android:id="@+id/heroheal_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/bgbutton">
 
             <TextView
                 android:id="@+id/heroheal_title"
@@ -141,8 +146,10 @@
             android:layout_marginRight="29dp"
             android:layout_marginEnd="29dp">
             <RelativeLayout
+                android:id="@+id/herohp_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/bgbutton">
 
                 <TextView
                     android:id="@+id/herohp_title"
