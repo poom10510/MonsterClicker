@@ -14,6 +14,7 @@ public abstract class Keyplay {
     private int criticalpower,criticalpowerlv;
 
     protected Calculator cal;
+
     public void levelUp(){
         level++;
         setCriticalpowerlv(level);
@@ -110,7 +111,6 @@ public abstract class Keyplay {
     public void setAtkpowerlv(int atkpowerlv) {
         this.atkpowerlv = atkpowerlv;
         atkpower=cal.getAtk(this.atkpowerlv);
-
     }
 
     public void setCriticalpower(int criticalpower) {

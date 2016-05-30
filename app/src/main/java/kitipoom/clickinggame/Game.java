@@ -21,16 +21,21 @@ public class Game {
     private Warrior warrior;
     private Caster caster;
     private Archer archer;
-    private MainActivity main;
     private Random random = new Random();
+    private static Game instance;
+
 private boolean stun = false;
     private int floor, count, index;
 
     private Levelup lvu;
 
-    public Game(MainActivity main) {
-        this.main = main;
+    public Game() {
         lvu = new Levelup();
+    }
+
+    public static Game getInstance(){
+        if(instance==null)return new Game();
+        return instance;
     }
 
     public void newGame() {

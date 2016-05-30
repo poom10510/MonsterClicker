@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import kitipoom.clickinggame.Game;
 import kitipoom.clickinggame.R;
 
 public class HeroUpgrade extends Fragment {
@@ -22,6 +23,7 @@ public class HeroUpgrade extends Fragment {
     private TextView powerLv,healLv,hpLv;
     private TextView powerCost,healCost,hpCost;
     private int level =1;
+    private Game game;
 
 
     public HeroUpgrade() {
@@ -43,6 +45,9 @@ public class HeroUpgrade extends Fragment {
     }
 
     public void initComponents(){
+
+        game = Game.getInstance();
+
         powerCard = (CardView) view.findViewById(R.id.heropower_card);
         healCard = (CardView) view.findViewById(R.id.heroheal_card);
         hpCard = (CardView) view.findViewById(R.id.herohp_card);
@@ -58,6 +63,7 @@ public class HeroUpgrade extends Fragment {
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                game.getPlayer().levelUp();
                 powerLv.setText("Level "+(++level));
             }
         });
