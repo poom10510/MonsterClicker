@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     public void init(){
         random = new Random();
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        game = new Game(this);
+        game = Game.getInstance();
         game.newGame();
         enpic =(ImageView)findViewById(R.id.Enermyimage);
         //enpic.setImageResource(R.drawable.dragon1);
