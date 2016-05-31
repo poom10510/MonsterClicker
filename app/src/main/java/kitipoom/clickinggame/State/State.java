@@ -1,5 +1,6 @@
-package kitipoom.clickinggame.Ally;
+package kitipoom.clickinggame.State;
 
+import kitipoom.clickinggame.Ally.Ally;
 import kitipoom.clickinggame.Keyplay.Enermy;
 import kitipoom.clickinggame.Keyplay.Player;
 
@@ -8,9 +9,9 @@ import kitipoom.clickinggame.Keyplay.Player;
  */
 public abstract class State  {
     public abstract void Action(Player player,Enermy enermy);
-    protected Caster caster;
+    protected Ally caster;
 
-            public State(Caster caster){
+            public State(Ally caster){
                 this.caster=caster;
             }
 }

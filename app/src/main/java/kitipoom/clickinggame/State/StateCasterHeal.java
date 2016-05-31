@@ -1,21 +1,22 @@
-package kitipoom.clickinggame.Ally;
+package kitipoom.clickinggame.State;
 
+import kitipoom.clickinggame.Ally.Ally;
 import kitipoom.clickinggame.Keyplay.Enermy;
 import kitipoom.clickinggame.Keyplay.Player;
 
 /**
  * Created by kitipoom on 29/5/2559.
  */
-public class StateHeal extends State{
+public class StateCasterHeal extends State{
     @Override
     public void Action(Player player, Enermy enermy) {
-        player.Healyourself(caster.heal);
+        player.Healyourself(caster.getHeal());
         if(player.getCurrentHp()>=player.getMaxHp()) {
-            caster.setState(new StateAttack(caster));
+            caster.setState(new StateCasterAttack(caster));
         }
     }
 
-    public StateHeal(Caster caster) {
+    public StateCasterHeal(Ally caster) {
         super(caster);
     }
 

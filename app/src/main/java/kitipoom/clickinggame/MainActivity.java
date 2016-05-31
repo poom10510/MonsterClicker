@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Game game;
     Random random ;
     boolean checkenermydead=false;
-    int i = 0;
+    int ar = 0,ca=0,wa=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,10 +130,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         /* THREAD */
-        threadmonster = new Threadruntime(this,1000,"monster");
-        threadarcher = new Threadruntime(this,1000,"archer");
-        threadcaster = new Threadruntime(this,1000,"caster");
-        threadwarrior = new Threadruntime(this,1000,"warrior");
+        threadmonster = new Threadruntime(this,game.getArcher().getStun(),"monster");
+        threadarcher = new Threadruntime(this,game.getArcher().getSpeed(),"archer");
+        threadcaster = new Threadruntime(this,game.getCaster().getSpeed(),"caster");
+        threadwarrior = new Threadruntime(this,game.getWarrior().getSpeed(),"warrior");
         threadmonster.start();
         threadwarrior.start();
         threadcaster.start();
@@ -155,12 +155,16 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else if(name=="archer"){
+            chpic(name);
             game.archerAttack();
         }
         else if(name=="caster"){
+           chpic(name);
             game.mageAttack();
+
         }
         else if(name=="warrior") {
+            chpic(name);
             game.warriorAttack();
         }
         if(game.EnisDead()){
@@ -195,5 +199,42 @@ public class MainActivity extends AppCompatActivity {
         playerHPbar.setProgress(game.getPlayer().getCurrentHp());
         enemyHPbar.setMax(game.getEnermy().getMaxHp());
         enemyHPbar.setProgress(game.getEnermy().getCurrentHp());
+    }
+    public void chpic(String name) {
+        if(name=="caster"){
+            if (ca % 2 == 0) {
+                hero2pic.setImageResource(R.drawable.caster2);
+            } else {
+                hero2pic.setImageResource(R.drawable.caster1);
+            }
+            ca++;
+        }
+        else if(name=="archer"){
+            if (ar % 2 == 0) {
+                hero3pic.setImageResource(R.drawable.archer2);
+            }
+            else if(ar%3==0){
+                hero3pic.setImageResource(R.drawable.archer3);
+                ar=0;
+            }
+            else {
+                hero3pic.setImageResource(R.drawable.archer1);
+            }
+            ar++;
+
+        }
+        else if(name=="warrior") {
+            if (wa % 2 == 0) {
+                hero1pic.setImageResource(R.drawable.warrior2);
+            }
+            else if(wa%3==0){
+                hero1pic.setImageResource(R.drawable.warrior3);
+                wa=0;
+            }
+            else {
+                hero1pic.setImageResource(R.drawable.warrior1);
+            }
+            wa++;
+        }
     }
 }

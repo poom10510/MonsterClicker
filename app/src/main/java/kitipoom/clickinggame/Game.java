@@ -128,7 +128,8 @@ private boolean stun = false;
     }
 
     public void Enermyturn() {
-        player.attacked(enermy.getAtkpower() - (int) (enermy.getAtkpower() * (warrior.getDefend() / 100.0)));
+        //player.attacked(enermy.getAtkpower() - (int) (enermy.getAtkpower() * (warrior.getDefend() / 100.0)));
+        player.attacked(enermy.getAtkpower() -warrior.getDefend());
     }
     public boolean checkStun(){
         index = random.nextInt(100)+1;

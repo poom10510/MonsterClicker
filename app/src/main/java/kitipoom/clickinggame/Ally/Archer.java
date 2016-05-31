@@ -15,7 +15,7 @@ public class Archer extends Ally {
     public Archer(){
         powerLv = 1 ;
         speedLv = 1 ;
-        defendLv = 1 ;
+        stunLv = 1 ;
         calculator = new Allycalculator();
         calculate();
     }

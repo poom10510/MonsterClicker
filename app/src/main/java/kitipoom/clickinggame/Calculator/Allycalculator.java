@@ -26,17 +26,17 @@ public class Allycalculator extends Calculator {
 
     @Override
     public int getSpeed(int level) {
-        return 0;
+        return 2000-(level-1)*10;
     }
 
     @Override
     public int getDefend(int level) {
-        return level*1;
+        return level*5;
     }
 
     @Override
     public int getStun(int level) {
-        return 0;
+        return 2000+(level-1)*10;
     }
 
     @Override

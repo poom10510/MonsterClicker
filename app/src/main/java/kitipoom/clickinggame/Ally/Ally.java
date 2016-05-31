@@ -3,6 +3,7 @@ package kitipoom.clickinggame.Ally;
 import kitipoom.clickinggame.Calculator.Calculator;
 import kitipoom.clickinggame.Keyplay.Enermy;
 import kitipoom.clickinggame.Keyplay.Player;
+import kitipoom.clickinggame.State.State;
 
 /**
  * Created by kitipoom on 11/5/2559.
@@ -14,8 +15,11 @@ public abstract class Ally {
     protected int heal,healLv;
     protected int defend,defendLv;
     protected Calculator calculator;
+    protected State state;
+
     public abstract void Action(Player player,Enermy enermy);
     public abstract void calculate();
+
 
     public int getPower() {
         return power;
@@ -109,5 +113,13 @@ public abstract class Ally {
 
     public Calculator getCalculator() {
         return calculator;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    public State getState() {
+        return state;
     }
 }

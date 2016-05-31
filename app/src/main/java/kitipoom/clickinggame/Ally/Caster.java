@@ -1,21 +1,21 @@
 package kitipoom.clickinggame.Ally;
 
 import kitipoom.clickinggame.Calculator.Allycalculator;
-import kitipoom.clickinggame.Calculator.Calculator;
 import kitipoom.clickinggame.Keyplay.Enermy;
 import kitipoom.clickinggame.Keyplay.Player;
+import kitipoom.clickinggame.State.StateCasterAttack;
 
 /**
  * Created by kitipoom on 11/5/2559.
  */
 public class Caster extends Ally {
     boolean isheal=false;
-    State state;
+
     public Caster(){
         powerLv = 1 ;
         speedLv = 1 ;
         healLv = 1 ;
-        state = new StateAttack(this);
+        state = new StateCasterAttack(this);
         calculator = new Allycalculator();
         calculate();
     }
@@ -24,13 +24,7 @@ public class Caster extends Ally {
 
     }
 
-    public void setState(State state) {
-        this.state = state;
-    }
 
-    public State getState() {
-        return state;
-    }
 
     @Override
     public void calculate() {
