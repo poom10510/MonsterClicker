@@ -6,8 +6,8 @@ import kitipoom.clickinggame.Game;
  * Created by kitipoom on 27/5/2559.
  */
 public class Death extends Item {
-    public Death(){
-        name= "Ultimate bomb";
+    public Death() {
+        name = "Ultimate bomb";
         des = "One Kill to Death";
         price = 10000;
     }

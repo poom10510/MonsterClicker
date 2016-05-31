@@ -11,18 +11,19 @@ import kitipoom.clickinggame.Keyplay.Player;
 public class Archer extends Ally {
 
 
-
-    public Archer(){
-        powerLv = 1 ;
-        speedLv = 1 ;
-        stunLv = 1 ;
+    public Archer() {
+        powerLv = 1;
+        speedLv = 1;
+        stunLv = 1;
         calculator = new Allycalculator();
         calculate();
     }
+
     @Override
     public void Action(Player player, Enermy enermy) {
         enermy.attacked(power);
     }
+
     @Override
     public void calculate() {
         power = calculator.getAtk(powerLv);

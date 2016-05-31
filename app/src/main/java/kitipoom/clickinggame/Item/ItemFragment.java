@@ -15,10 +15,10 @@ import kitipoom.clickinggame.R;
 
 public class ItemFragment extends Fragment {
 
-    private  View view;
-    private CardView item1_card,item2_card,item3_card;
-    private TextView item1_cost,item2_cost,item3_cost;
-    private Item item1,item2,item3;
+    private View view;
+    private CardView item1_card, item2_card, item3_card;
+    private TextView item1_cost, item2_cost, item3_cost;
+    private Item item1, item2, item3;
     private Game game;
 
     public ItemFragment() {
@@ -40,16 +40,16 @@ public class ItemFragment extends Fragment {
         return view;
     }
 
-    private void initComponents(){
+    private void initComponents() {
         game = Game.getInstance();
 
-        item1_card = (CardView)view.findViewById(R.id.item1_card);
-        item2_card = (CardView)view.findViewById(R.id.item2_card);
-        item3_card = (CardView)view.findViewById(R.id.item3_card);
+        item1_card = (CardView) view.findViewById(R.id.item1_card);
+        item2_card = (CardView) view.findViewById(R.id.item2_card);
+        item3_card = (CardView) view.findViewById(R.id.item3_card);
 
-        item1_cost = (TextView)view.findViewById(R.id.item1_cost);
-        item2_cost = (TextView)view.findViewById(R.id.item2_cost);
-        item3_cost = (TextView)view.findViewById(R.id.item3_cost);
+        item1_cost = (TextView) view.findViewById(R.id.item1_cost);
+        item2_cost = (TextView) view.findViewById(R.id.item2_cost);
+        item3_cost = (TextView) view.findViewById(R.id.item3_cost);
 
         ListItem items = new ListItem();
 
@@ -57,9 +57,9 @@ public class ItemFragment extends Fragment {
         item2 = items.getItemList().get(1);
         item3 = items.getItemList().get(2);
 
-        item1_cost.setText(item1.getPrice()+" $");
-        item2_cost.setText(item2.getPrice()+" $");
-        item3_cost.setText(item3.getPrice()+" $");
+        item1_cost.setText(item1.getPrice() + " $");
+        item2_cost.setText(item2.getPrice() + " $");
+        item3_cost.setText(item3.getPrice() + " $");
 
 
         item1_card.setOnClickListener(new View.OnClickListener() {

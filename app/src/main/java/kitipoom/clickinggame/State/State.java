@@ -7,14 +7,15 @@ import kitipoom.clickinggame.Keyplay.Player;
 /**
  * Created by kitipoom on 29/5/2559.
  */
-public abstract class State  {
-    public abstract void Action(Player player,Enermy enermy);
+public abstract class State {
+    public abstract void Action(Player player, Enermy enermy);
+
     protected Ally caster;
     protected int st;
 
-            public State(Ally caster){
-                this.caster=caster;
-            }
+    public State(Ally caster) {
+        this.caster = caster;
+    }
 
     public int getSt() {
         return st;

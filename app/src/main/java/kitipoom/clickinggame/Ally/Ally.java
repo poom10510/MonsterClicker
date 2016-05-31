@@ -9,15 +9,16 @@ import kitipoom.clickinggame.State.State;
  * Created by kitipoom on 11/5/2559.
  */
 public abstract class Ally {
-    protected int power,powerLv;
-    protected int speed,speedLv;
-    protected int stun,stunLv;
-    protected int heal,healLv;
-    protected int defend,defendLv;
+    protected int power, powerLv;
+    protected int speed, speedLv;
+    protected int stun, stunLv;
+    protected int heal, healLv;
+    protected int defend, defendLv;
     protected Calculator calculator;
     protected State state;
 
-    public abstract void Action(Player player,Enermy enermy);
+    public abstract void Action(Player player, Enermy enermy);
+
     public abstract void calculate();
 
 
@@ -89,6 +90,7 @@ public abstract class Ally {
     public void setDefend(int defend) {
         this.defend = defend;
     }
+
     public int getStun() {
         return stun;
     }

@@ -36,8 +36,8 @@ public class Game {
         money = Money.getInstance();
     }
 
-    public static Game getInstance(){
-        if(instance==null)instance = new Game();
+    public static Game getInstance() {
+        if (instance == null) instance = new Game();
         return instance;
     }
 
@@ -49,7 +49,7 @@ public class Game {
 
     public void checkEnermydead() {
         if (EnisDead()) {
-            money.setCash(enermy.getLevel() * 5);
+            money.setCash(enermy.getLevel() * 100);
             enermy.setLevel(floor);
             if (count == 6) {
                 floor++;
@@ -58,21 +58,23 @@ public class Game {
             count++;
         }
     }
-    public void setEnermyDecrease(){
-        if(floor>1) {
+
+    public void setEnermyDecrease() {
+        if (floor > 1) {
             floor--;
         }
         player.setCurrentHp(player.getMaxHp());
         enermy.setLevel(floor);
         enermy.setCurrentHp(enermy.getCurrentHp());
 
-        count = 1 ;
+        count = 1;
     }
 
     public boolean EnisDead() {
         return enermy.getCurrentHp() <= 0;
 
     }
+
     public boolean playerIsDead() {
         return player.getCurrentHp() <= 0;
 
@@ -97,11 +99,11 @@ public class Game {
         //checkEnermydead();
     }
 
-    public void checkBoostPower(){
-        if(isPowerBoost){
+    public void checkBoostPower() {
+        if (isPowerBoost) {
             boostcount++;
         }
-        if(boostcount>100){
+        if (boostcount > 100) {
             isPowerBoost = false;
             toNormalPower();
             boostcount = 0;
@@ -142,23 +144,24 @@ public class Game {
 
     public void Enermyturn() {
         //player.attacked(enermy.getAtkpower() - (int) (enermy.getAtkpower() * (warrior.getDefend() / 100.0)));
-        player.attacked(enermy.getAtkpower() -warrior.getDefend());
-    }
-    public boolean checkStun(){
-        index = random.nextInt(100)+1;
-        return  index <= archer.getStun() ;
+        player.attacked(enermy.getAtkpower() - warrior.getDefend());
     }
 
-    public void boostPower(){
+    public boolean checkStun() {
+        index = random.nextInt(100) + 1;
+        return index <= archer.getStun();
+    }
+
+    public void boostPower() {
         isPowerBoost = true;
-        archer.setPower(archer.getPower()*2);
-        warrior.setPower(warrior.getPower()*2);
-        caster.setPower(caster.getPower()*2);
-        player.setAtkpower(player.getAtkpower()*2);
-        player.setHealpower(player.getHealpower()*2);
+        archer.setPower(archer.getPower() * 2);
+        warrior.setPower(warrior.getPower() * 2);
+        caster.setPower(caster.getPower() * 2);
+        player.setAtkpower(player.getAtkpower() * 2);
+        player.setHealpower(player.getHealpower() * 2);
     }
 
-    public void toNormalPower(){
+    public void toNormalPower() {
         archer.calculate();
         warrior.calculate();
         caster.calculate();
@@ -196,6 +199,7 @@ public class Game {
     public Money getMoney() {
         return money;
     }
-    public void updatemoney(){
+
+    public void updatemoney() {
     }
 }

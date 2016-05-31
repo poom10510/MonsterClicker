@@ -13,17 +13,17 @@ import kitipoom.clickinggame.UpgradeFragment.WarriorUpgrade;
 /**
  * Created by พศิน on 28/5/2559.
  */
-public class PagerAdapter extends FragmentStatePagerAdapter{
+public class PagerAdapter extends FragmentStatePagerAdapter {
     int numTab;
 
-    public PagerAdapter(FragmentManager fm,int numTab) {
+    public PagerAdapter(FragmentManager fm, int numTab) {
         super(fm);
         this.numTab = numTab;
     }
 
     @Override
     public Fragment getItem(int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 HeroUpgrade tabhero_upgrade = new HeroUpgrade();
                 return tabhero_upgrade;
@@ -40,7 +40,8 @@ public class PagerAdapter extends FragmentStatePagerAdapter{
                 ItemFragment itemFragment = new ItemFragment();
                 return itemFragment;
 
-            default:return null;
+            default:
+                return null;
         }
     }
 

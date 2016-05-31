@@ -7,18 +7,19 @@ import kitipoom.clickinggame.Calculator.Calculator;
  */
 public abstract class Keyplay {
     protected int level;
-    private int maxHp,maxHplv;
+    private int maxHp, maxHplv;
     protected int currentHp;
-    private int atkpower,atkpowerlv=0;
-    private int healpower,healpowerlv;
-    private int criticalpower,criticalpowerlv;
+    private int atkpower, atkpowerlv = 0;
+    private int healpower, healpowerlv;
+    private int criticalpower, criticalpowerlv;
 
     protected Calculator cal;
 
-    public Keyplay(){
+    public Keyplay() {
 
     }
-    public void levelUp(){
+
+    public void levelUp() {
         level++;
         setCriticalpowerlv(level);
         setMaxHplv(level);
@@ -27,18 +28,18 @@ public abstract class Keyplay {
         calculate();
     }
 
-    public void setValue(int level,Calculator cal) {
-        this.level=level;
+    public void setValue(int level, Calculator cal) {
+        this.level = level;
         this.cal = cal;
         calculate();
-        currentHp=getMaxHp();
+        currentHp = getMaxHp();
     }
 
-    public void calculate(){
-        maxHp=cal.getHp(maxHplv);
-        atkpower=cal.getAtk(atkpowerlv);
-        healpower=cal.getHeal(healpowerlv);
-        criticalpower=cal.getCtritcal(criticalpowerlv);
+    public void calculate() {
+        maxHp = cal.getHp(maxHplv);
+        atkpower = cal.getAtk(atkpowerlv);
+        healpower = cal.getHeal(healpowerlv);
+        criticalpower = cal.getCtritcal(criticalpowerlv);
     }
 
     public Calculator getCal() {
@@ -64,12 +65,14 @@ public abstract class Keyplay {
     public int getMaxHplv() {
         return maxHplv;
     }
-    public void Healyourself(int heal){
-        currentHp+=heal;
-        if(currentHp>maxHp){
-            currentHp=maxHp;
+
+    public void Healyourself(int heal) {
+        currentHp += heal;
+        if (currentHp > maxHp) {
+            currentHp = maxHp;
         }
     }
+
     public void setCurrentHp(int currentHp) {
         this.currentHp = currentHp;
     }
@@ -93,12 +96,13 @@ public abstract class Keyplay {
     public int getMaxHp() {
         return maxHp;
     }
-    public void attacked(int atk){
-        if(currentHp>0) {
+
+    public void attacked(int atk) {
+        if (currentHp > 0) {
             currentHp -= atk;
         }
-        if(currentHp<0){
-            currentHp=0;
+        if (currentHp < 0) {
+            currentHp = 0;
         }
     }
 
@@ -113,7 +117,7 @@ public abstract class Keyplay {
 
     public void setAtkpowerlv(int atkpowerlv) {
         this.atkpowerlv = atkpowerlv;
-        atkpower=cal.getAtk(this.atkpowerlv);
+        atkpower = cal.getAtk(this.atkpowerlv);
     }
 
     public void setCriticalpower(int criticalpower) {
@@ -122,7 +126,7 @@ public abstract class Keyplay {
 
     public void setCriticalpowerlv(int criticalpowerlv) {
         this.criticalpowerlv = criticalpowerlv;
-        criticalpower=cal.getCtritcal(this.criticalpowerlv);
+        criticalpower = cal.getCtritcal(this.criticalpowerlv);
     }
 
     public void setHealpower(int healpower) {
@@ -131,7 +135,7 @@ public abstract class Keyplay {
 
     public void setHealpowerlv(int healpowerlv) {
         this.healpowerlv = healpowerlv;
-        healpower=cal.getHeal(this.healpowerlv);
+        healpower = cal.getHeal(this.healpowerlv);
     }
 
     public void setLevel(int level) {
@@ -150,7 +154,7 @@ public abstract class Keyplay {
 
     public void setMaxHplv(int maxHplv) {
         this.maxHplv = maxHplv;
-        maxHp=cal.getHp(this.maxHplv);
+        maxHp = cal.getHp(this.maxHplv);
     }
 
     public abstract void Action();

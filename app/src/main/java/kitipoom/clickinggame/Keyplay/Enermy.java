@@ -5,16 +5,16 @@ import kitipoom.clickinggame.Calculator.Enermy1calculator;
 /**
  * Created by kitipoom on 11/5/2559.
  */
-public class Enermy extends Keyplay{
+public class Enermy extends Keyplay {
 
 
-    public Enermy(int level){
+    public Enermy(int level) {
         super();
         cal = new Enermy1calculator();
         setLevel(level);
 
         //calculate();
-        this.currentHp=getMaxHp();
+        this.currentHp = getMaxHp();
     }
 
 

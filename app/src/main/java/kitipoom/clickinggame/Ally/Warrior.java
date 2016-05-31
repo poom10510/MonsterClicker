@@ -14,10 +14,10 @@ public class Warrior extends Ally {
         enermy.attacked(power);
     }
 
-    public Warrior(){
-        powerLv = 1 ;
-        speedLv = 1 ;
-        defendLv = 1 ;
+    public Warrior() {
+        powerLv = 1;
+        speedLv = 1;
+        defendLv = 1;
         calculator = new Allycalculator();
         calculate();
     }
@@ -28,10 +28,6 @@ public class Warrior extends Ally {
         speed = calculator.getSpeed(speedLv);
         defend = calculator.getDefend(defendLv);
     }
-
-
-
-
 
 
 }
