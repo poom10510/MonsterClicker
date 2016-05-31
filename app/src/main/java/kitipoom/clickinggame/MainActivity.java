@@ -270,6 +270,59 @@ public class MainActivity extends AppCompatActivity {
                     enpic.setImageResource(R.drawable.ball3);
                 }
 
+
+            }
+            if(game.getCount()==3){
+                if (mo % 2 == 0) {
+                    enpic.setImageResource(R.drawable.electri1);
+                }
+                else if(mo%3==0){
+                    enpic.setImageResource(R.drawable.electri2);
+                    mo=0;
+                }
+                else {
+                    enpic.setImageResource(R.drawable.electri3);
+                }
+
+            }
+            if(game.getCount()==4){
+                if (mo % 2 == 0) {
+                    enpic.setImageResource(R.drawable.rabbit1);
+                }
+                else if(mo%3==0){
+                    enpic.setImageResource(R.drawable.rabbit2);
+                    mo=0;
+                }
+                else {
+                    enpic.setImageResource(R.drawable.rabbit3);
+                }
+
+            }
+            if(game.getCount()==5){
+                if (mo % 2 == 0) {
+                    enpic.setImageResource(R.drawable.fish1);
+                }
+                else if(mo%3==0){
+                    enpic.setImageResource(R.drawable.fish2);
+                    mo=0;
+                }
+                else {
+                    enpic.setImageResource(R.drawable.fish3);
+                }
+
+            }
+            if(game.getCount()==6){
+                if (mo % 2 == 0) {
+                    enpic.setImageResource(R.drawable.ice1);
+                }
+                else if(mo%3==0){
+                    enpic.setImageResource(R.drawable.ice2);
+                    mo=0;
+                }
+                else {
+                    enpic.setImageResource(R.drawable.ice3);
+                }
+
             }
             mo++;
         }
