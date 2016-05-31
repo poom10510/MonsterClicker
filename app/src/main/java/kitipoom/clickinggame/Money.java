@@ -6,15 +6,12 @@ package kitipoom.clickinggame;
 public class Money {
     private int cash;
     private static Money money;
-
-    private Money() {
-        cash = 0;
+    private Money(){
+        cash=0;
     }
 
     public static Money getInstance() {
-        if (money == null) {
-            money = new Money();
-        }
+        if(money==null){money=new Money();}
         return money;
     }
 
@@ -25,7 +22,7 @@ public class Money {
     public void setCash(int cash) {
         this.cash += cash;
     }
-//    public int getoutcome(int level){
-//        return level*30;
-//    }
+    public int getoutcome(int level){
+        return level*30;
+    }
 }

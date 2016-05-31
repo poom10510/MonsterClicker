@@ -81,6 +81,28 @@
             android:layout_toLeftOf="@+id/Hero3image"
             android:layout_toStartOf="@+id/Hero3image" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00000"
+            android:id="@+id/healdamage"
+            android:layout_below="@+id/moneytab"
+            android:layout_alignRight="@+id/Hero2image"
+            android:layout_alignEnd="@+id/Hero2image"
+            android:textColor="#4ffc15"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00000"
+            android:id="@+id/casterhealdamage"
+            android:textColor="#4ffc15"
+            android:textSize="15dp"
+            android:layout_above="@+id/Hero2image"
+            android:layout_toRightOf="@+id/Hero3image"
+            android:layout_toEndOf="@+id/Hero3image" />
+
     </RelativeLayout>
 
     <!-- ENEMIES -->
@@ -158,6 +180,54 @@
             android:layout_alignBottom="@+id/enermylevel"
             android:layout_toLeftOf="@+id/enermylevel" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0000"
+            android:id="@+id/attackdamage"
+            android:layout_marginTop="29dp"
+            android:textColor="#f00808"
+            android:textSize="15dp"
+            android:layout_below="@+id/casterdamage"
+            android:layout_toRightOf="@+id/enermylevel"
+            android:layout_toEndOf="@+id/enermylevel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0000"
+            android:id="@+id/casterdamage"
+            android:textColor="#f00808"
+            android:textSize="15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignRight="@+id/Enermyimage"
+            android:layout_alignEnd="@+id/Enermyimage"
+            android:layout_marginRight="29dp"
+            android:layout_marginEnd="29dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0000"
+            android:id="@+id/archerdamage"
+            android:textColor="#f00808"
+            android:textSize="15dp"
+            android:layout_below="@+id/casterdamage"
+            android:layout_alignLeft="@+id/casterdamage"
+            android:layout_alignStart="@+id/casterdamage"
+            android:layout_marginTop="25dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0000"
+            android:id="@+id/warriordamage"
+            android:textColor="#f00808"
+            android:textSize="15dp"
+            android:layout_below="@+id/enemyHP_bar"
+            android:layout_toRightOf="@+id/attackdamage"
+            android:layout_toEndOf="@+id/attackdamage" />
+
     </RelativeLayout>
 
 
@@ -207,6 +277,26 @@
             android:layout_toLeftOf="@+id/playerHP_bar"
             android:layout_toStartOf="@+id/playerHP_bar" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/enemynum_image"
+            android:src="@drawable/enemy"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/playerHP_bar"
+            android:layout_toEndOf="@+id/playerHP_bar"
+            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1/6"
+            android:id="@+id/enemynum"
+            android:layout_alignBottom="@+id/playerHP_bar"
+            android:layout_toRightOf="@+id/enemynum_image"
+            android:textSize="15dp" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -231,7 +321,6 @@
             android:background="@drawable/bgtab"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
-
 
 
     </RelativeLayout>

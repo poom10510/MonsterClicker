@@ -24,7 +24,8 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView moneybar, enhp, plhp, enermyLv;
+    private TextView moneybar, enhp, plhp, enermyLv, enemynum, attackdamage, healdamage;
+    private TextView warriordamge,archerdamage,casterdamage,casterhealdamage;
     private RelativeLayout attackLayout;
     private RelativeLayout healLayout;
     protected ImageView enpic, hero1pic, hero2pic, hero3pic;
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 game.playerheal();
                 plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
                 setHPBar();
+                healdamage.setText("+ "+game.getPlayer().getHealpower());
             }
         });
         attackLayout = (RelativeLayout) findViewById(R.id.AttackLayout);
@@ -89,9 +91,27 @@ public class MainActivity extends AppCompatActivity {
                     moneybar.setText(game.getMoney().getCash() + "");
                     enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
                     setHPBar();
+                    attackdamage.setText("- "+game.getPlayer().getAtkpower()+"");
                 }
             }
         });
+
+        enemynum = (TextView)findViewById(R.id.enemynum);
+        enemynum.setText(game.getCount()+"/6");
+
+        attackdamage = (TextView)findViewById(R.id.attackdamage);
+        healdamage = (TextView)findViewById(R.id.healdamage);
+        warriordamge = (TextView)findViewById(R.id.warriordamage);
+        archerdamage = (TextView)findViewById(R.id.archerdamage);
+        casterdamage = (TextView)findViewById(R.id.casterdamage);
+        casterhealdamage = (TextView)findViewById(R.id.casterhealdamage);
+
+        attackdamage.setText("");
+        healdamage.setText("");
+        archerdamage.setText("");
+        warriordamge.setText("");
+        casterdamage.setText("");
+        casterhealdamage.setText("");
 
         //Upgrade Tab
         TabLayout tabLayout = (TabLayout) findViewById(R.id.upgradeTab);
@@ -178,9 +198,9 @@ public class MainActivity extends AppCompatActivity {
         picAlly[5] = R.drawable.caster2;
         picAlly[6] = R.drawable.caster3;
 
-        picAlly[9] = R.drawable.archer1;
-        picAlly[10] = R.drawable.archer2;
-        picAlly[11] = R.drawable.caster3;
+        picAlly[7] = R.drawable.archer1;
+        picAlly[8] = R.drawable.archer2;
+        picAlly[9] = R.drawable.archer3;
 
     }
 
@@ -246,6 +266,9 @@ public class MainActivity extends AppCompatActivity {
         moneybar.setText(game.getMoney().getCash() + "");
         enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
         plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
+        enemynum.setText(game.getCount()+"/6");
+        attackdamage.setText("");
+        healdamage.setText("");
     }
 
     public void setHPBar() {
@@ -260,22 +283,29 @@ public class MainActivity extends AppCompatActivity {
             if (ca % 2 == 0) {
                 if (game.getCaster().getState().getSt() == 0) {
                     hero2pic.setImageResource(picAlly[5]);
+                    casterdamage.setText("- "+game.getCaster().getPower());
                 } else {
                     hero2pic.setImageResource(picAlly[6]);
+                    casterhealdamage.setText("+ "+game.getCaster().getHeal());
                 }
 
 
             } else {
                 hero2pic.setImageResource(picAlly[4]);
+                casterdamage.setText("");
+                casterhealdamage.setText("");
             }
             ca++;
         } else if (name == "archer") {
             if (ar % 2 == 0) {
                 hero3pic.setImageResource(picAlly[8]);
+                archerdamage.setText("");
             } else if (ar % 3 == 0) {
                 hero3pic.setImageResource(picAlly[9]);
+                archerdamage.setText("- "+game.getArcher().getPower());
                 ar = 0;
             } else {
+                archerdamage.setText("");
                 hero3pic.setImageResource(picAlly[7]);
             }
             ar++;
@@ -283,10 +313,14 @@ public class MainActivity extends AppCompatActivity {
         } else if (name == "warrior") {
             if (wa % 2 == 0) {
                 hero1pic.setImageResource(picAlly[2]);
+                warriordamge.setText("");
             } else if (wa % 3 == 0) {
                 hero1pic.setImageResource(picAlly[3]);
                 wa = 0;
+                warriordamge.setText("- "+game.getWarrior().getPower());
+
             } else {
+                warriordamge.setText("");
                 hero1pic.setImageResource(picAlly[1]);
             }
             wa++;
