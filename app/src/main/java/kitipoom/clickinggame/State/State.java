@@ -1,14 +1,14 @@
 package kitipoom.clickinggame.State;
 
 import kitipoom.clickinggame.Ally.Ally;
-import kitipoom.clickinggame.Keyplay.Enermy;
+import kitipoom.clickinggame.Keyplay.Enemy;
 import kitipoom.clickinggame.Keyplay.Player;
 
 /**
  * Created by kitipoom on 29/5/2559.
  */
 public abstract class State {
-    public abstract void Action(Player player, Enermy enermy);
+    public abstract void Action(Player player, Enemy enemy);
 
     protected Ally caster;
     protected int st;

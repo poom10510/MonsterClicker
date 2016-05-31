@@ -7,10 +7,7 @@ import kitipoom.clickinggame.Keyplay.Player;
 /**
  * Created by kitipoom on 27/5/2559.
  */
-public class Levelup {
-    public void levelup(Ally unit) {
-
-    }
+public class LevelUp {
 
     public void powerUp(Keyplay unit) {
         unit.setAtkpowerlv(unit.getAtkpowerlv() + 1);
@@ -22,10 +19,6 @@ public class Levelup {
 
     public void healUp(Keyplay unit) {
         unit.setHealpowerlv(unit.getHealpowerlv() + 1);
-    }
-
-    public void criUp(Keyplay unit) {
-        unit.setCriticalpowerlv(unit.getCriticalpowerlv() + 1);
     }
 
     public void powerUp(Ally unit) {

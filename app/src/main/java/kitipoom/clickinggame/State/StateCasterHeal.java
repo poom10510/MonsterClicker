@@ -1,7 +1,7 @@
 package kitipoom.clickinggame.State;
 
 import kitipoom.clickinggame.Ally.Ally;
-import kitipoom.clickinggame.Keyplay.Enermy;
+import kitipoom.clickinggame.Keyplay.Enemy;
 import kitipoom.clickinggame.Keyplay.Player;
 
 /**
@@ -9,7 +9,7 @@ import kitipoom.clickinggame.Keyplay.Player;
  */
 public class StateCasterHeal extends State {
     @Override
-    public void Action(Player player, Enermy enermy) {
+    public void Action(Player player, Enemy enemy) {
         player.Healyourself(caster.getHeal());
         if (player.getCurrentHp() >= player.getMaxHp()) {
             caster.setState(new StateCasterAttack(caster));

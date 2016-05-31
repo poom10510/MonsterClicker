@@ -26,6 +26,14 @@ public class Threadruntime extends Thread {
         this.speed = speed;
     }
 
+    public void sleepThread(int time){
+        try {
+            sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void run() {
         while (true) {

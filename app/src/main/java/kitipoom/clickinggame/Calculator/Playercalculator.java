@@ -20,28 +20,22 @@ public class Playercalculator extends Calculator {
     }
 
     @Override
-    public int getCostlevel(int level) {
-        return level * 100;
-    }
-
-    @Override
     public int getSpeed(int level) {
-        return level * 1;
+        return 0;
     }
 
     @Override
     public int getDefend(int level) {
-        return level * 1;
+        return 0;
     }
 
     @Override
     public int getStun(int level) {
-        return level * 1;
-    }
-
-    @Override
-    public int getCtritcal(int level) {
         return 0;
     }
 
+    @Override
+    public int getCost(int level) {
+        return 0;
+    }
 }

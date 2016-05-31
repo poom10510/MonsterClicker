@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import kitipoom.clickinggame.Calculator.Calculator;
+import kitipoom.clickinggame.Calculator.Upgradecalculator;
 import kitipoom.clickinggame.Game;
 import kitipoom.clickinggame.R;
 
@@ -17,8 +19,8 @@ public class WarriorUpgrade extends Fragment {
     private CardView powerCard,speedCard,defendCard;
     private TextView powerLv,speedLv,defendLv;
     private TextView powerCost,speedCost,defendCost;
-    private int level =1;
     private Game game;
+    private Calculator upgradeCalculator;
 
     public WarriorUpgrade() {
         // Required empty public constructor
@@ -58,20 +60,22 @@ public class WarriorUpgrade extends Fragment {
         powerLv.setText("Level " + (game.getWarrior().getPowerLv()));
         speedLv.setText("Level " + (game.getWarrior().getSpeedLv()));
         defendLv.setText("Level " + (game.getWarrior().getDefendLv()));
+        
+        upgradeCalculator = new Upgradecalculator();
 
-        powerCost.setText(game.getMoney().getoutcome(game.getWarrior().getPowerLv()+1)+" $");
-        speedCost.setText(game.getMoney().getoutcome(game.getWarrior().getSpeedLv()+1)+" $");
-        defendCost.setText(game.getMoney().getoutcome(game.getWarrior().getDefendLv()+1)+" $");
+        powerCost.setText(upgradeCalculator.getCost(game.getWarrior().getPowerLv()+1)+" $");
+        speedCost.setText(upgradeCalculator.getCost(game.getWarrior().getSpeedLv()+1)+" $");
+        defendCost.setText(upgradeCalculator.getCost(game.getWarrior().getDefendLv()+1)+" $");
 
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getWarrior().getPowerLv() + 1)) {
-                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getWarrior().getPowerLv() + 1)));
+                if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getWarrior().getPowerLv() + 1)) {
+                    game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getWarrior().getPowerLv() + 1));
                     game.getLvu().powerUp(game.getWarrior());
                     powerLv.setText("Level " + (game.getWarrior().getPowerLv()));
-                    powerCost.setText(game.getMoney().getoutcome(game.getWarrior().getPowerLv() + 1) + " $");
+                    powerCost.setText(upgradeCalculator.getCost(game.getWarrior().getPowerLv() + 1) + " $");
                 }
             }
         });
@@ -79,11 +83,11 @@ public class WarriorUpgrade extends Fragment {
         speedCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getWarrior().getSpeedLv() + 1)) {
-                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getWarrior().getSpeedLv() + 1)));
+                if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getWarrior().getSpeedLv() + 1)) {
+                    game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getWarrior().getSpeedLv() + 1));
                     game.getLvu().speedUp(game.getWarrior());
                     speedLv.setText("Level " + (game.getWarrior().getSpeedLv()));
-                    speedCost.setText(game.getMoney().getoutcome(game.getWarrior().getSpeedLv() + 1) + " $");
+                    speedCost.setText(upgradeCalculator.getCost(game.getWarrior().getSpeedLv() + 1) + " $");
                 }
             }
         });
@@ -91,11 +95,11 @@ public class WarriorUpgrade extends Fragment {
             defendCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getWarrior().getDefendLv() + 1)) {
-                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getWarrior().getDefendLv() + 1)));
+                if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getWarrior().getDefendLv() + 1)) {
+                    game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getWarrior().getDefendLv() + 1));
                     game.getLvu().defendUp(game.getWarrior());
                     defendLv.setText("Level " + (game.getWarrior().getDefendLv()));
-                    defendCost.setText(game.getMoney().getoutcome(game.getWarrior().getDefendLv() + 1) + " $");
+                    defendCost.setText(upgradeCalculator.getCost(game.getWarrior().getDefendLv() + 1) + " $");
                 }
             }
         });

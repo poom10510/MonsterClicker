@@ -9,32 +9,28 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.AbsoluteLayout;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 
-import java.util.Random;
+import kitipoom.clickinggame.Calculator.ReadFile;
+import kitipoom.clickinggame.Calculator.WriteFile;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView moneybar, enhp, plhp, enermyLv, enemynum, attackdamage, healdamage;
-    private TextView warriordamge,archerdamage,casterdamage,casterhealdamage;
+    private TextView moneybar, enhp, plhp, enemyLv, enemynum, attackdamage, healdamage;
+    private TextView warriordamge,archerdamage,casterdamage,casterhealdamage,monsterdamage;
     private RelativeLayout attackLayout;
     private RelativeLayout healLayout;
     protected ImageView enpic, hero1pic, hero2pic, hero3pic;
     private Threadruntime threadmonster, threadarcher, threadcaster, threadwarrior;
     private RoundCornerProgressBar playerHPbar, enemyHPbar;
     Game game;
-    Random random;
-    boolean checkenermydead = false;
-    int ar = 0, ca = 0, wa = 0, mo = 0;
+    boolean checkenemydead = false;
+    int archer = 0, caster = 0, warrior = 0, monster = 0;
     int[] picAlly;
     int[] picMons;
 
@@ -44,16 +40,13 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-
-
-        init();
     }
 
     public void init() {
-        random = new Random();
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         game = Game.getInstance();
         game.newGame();
+        loadGame();
         //Game.getInstance().newGame();
         enpic = (ImageView) findViewById(R.id.Enermyimage);
         //enpic.setImageResource(R.drawable.dragon1);
@@ -64,19 +57,19 @@ public class MainActivity extends AppCompatActivity {
         hero3pic = (ImageView) findViewById(R.id.Hero3image);
         hero3pic.setImageResource(R.drawable.archer1);
         moneybar = (TextView) findViewById(R.id.moneytab);
-        moneybar.setText(game.getMoney().getCash() + "");
+        moneybar.setText(game.getPlayer().getMoney()+ "");
         enhp = (TextView) findViewById(R.id.enermyhp);
-        enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+        enhp.setText(game.getEnemy().getCurrentHp() + "/" + game.getEnemy().getMaxHp());
         plhp = (TextView) findViewById(R.id.playerhp);
         plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
-        enermyLv = (TextView) findViewById(R.id.enermylevel);
-        enermyLv.setText("LV " + game.getEnermy().getLevel());
+        enemyLv = (TextView) findViewById(R.id.enermylevel);
+        enemyLv.setText("LV " + game.getEnemy().getLevel());
 
         healLayout = (RelativeLayout) findViewById(R.id.HealLayout);
         healLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.playerheal();
+                game.playerHeal();
                 plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
                 setHPBar();
                 healdamage.setText("+ "+game.getPlayer().getHealpower());
@@ -86,10 +79,10 @@ public class MainActivity extends AppCompatActivity {
         attackLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!checkenermydead) {
-                    game.setEnermydamage();
-                    moneybar.setText(game.getMoney().getCash() + "");
-                    enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+                if (!checkenemydead) {
+                    game.setEnemyDamage();
+                    moneybar.setText(game.getPlayer().getMoney() + "");
+                    enhp.setText(game.getEnemy().getCurrentHp() + "/" + game.getEnemy().getMaxHp());
                     setHPBar();
                     attackdamage.setText("- "+game.getPlayer().getAtkpower()+"");
                 }
@@ -105,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         archerdamage = (TextView)findViewById(R.id.archerdamage);
         casterdamage = (TextView)findViewById(R.id.casterdamage);
         casterhealdamage = (TextView)findViewById(R.id.casterhealdamage);
+        monsterdamage = (TextView)findViewById(R.id.monsterdamage);
 
         attackdamage.setText("");
         healdamage.setText("");
@@ -112,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         warriordamge.setText("");
         casterdamage.setText("");
         casterhealdamage.setText("");
+        monsterdamage.setText("");
 
         //Upgrade Tab
         TabLayout tabLayout = (TabLayout) findViewById(R.id.upgradeTab);
@@ -207,31 +202,30 @@ public class MainActivity extends AppCompatActivity {
     public void updatetime(String name) {
 
         if (name == "monster") {
-            chpic(name);
-            game.Enermyturn();
+            changePic(name);
+            game.enemyTurn();
             if (game.playerIsDead()) {
                 threadmonster.requestStop();
                 threadarcher.requestStop();
                 threadcaster.requestStop();
                 threadwarrior.requestStop();
-                game.setEnermyDecrease();
+                game.setEnemyDecrease();
                 enpic.setImageResource(picMons[1]);
             }
         } else if (name == "archer") {
-            chpic(name);
+            changePic(name);
             game.archerAttack();
         } else if (name == "caster") {
-            chpic(name);
-            game.mageAttack();
+            changePic(name);
+            game.casterAttack();
 
         } else if (name == "warrior") {
-            chpic(name);
+            changePic(name);
             game.warriorAttack();
         }
-        if (game.EnisDead()) {
+        if (game.enemyIsDead()) {
             int index = game.getCount();
-//            Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-//            enpic.startAnimation(animation1);
+
             switch (index) {
                 case 1:
                     enpic.setImageResource(picMons[1]);
@@ -260,11 +254,11 @@ public class MainActivity extends AppCompatActivity {
             game.setStun(false);
         }
 
-        enermyLv.setText("LV " + game.getEnermy().getLevel());
-        game.checkEnermydead();
+        enemyLv.setText("LV " + game.getEnemy().getLevel());
+        game.checkEnemyDead();
         this.setHPBar();
-        moneybar.setText(game.getMoney().getCash() + "");
-        enhp.setText(game.getEnermy().getCurrentHp() + "/" + game.getEnermy().getMaxHp());
+        moneybar.setText(game.getPlayer().getMoney() + "");
+        enhp.setText(game.getEnemy().getCurrentHp() + "/" + game.getEnemy().getMaxHp());
         plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
         enemynum.setText(game.getCount()+"/6");
         attackdamage.setText("");
@@ -274,13 +268,13 @@ public class MainActivity extends AppCompatActivity {
     public void setHPBar() {
         playerHPbar.setMax(game.getPlayer().getMaxHp());
         playerHPbar.setProgress(game.getPlayer().getCurrentHp());
-        enemyHPbar.setMax(game.getEnermy().getMaxHp());
-        enemyHPbar.setProgress(game.getEnermy().getCurrentHp());
+        enemyHPbar.setMax(game.getEnemy().getMaxHp());
+        enemyHPbar.setProgress(game.getEnemy().getCurrentHp());
     }
 
-    public void chpic(String name) {
+    public void changePic(String name) {
         if (name == "caster") {
-            if (ca % 2 == 0) {
+            if (caster % 2 == 0) {
                 if (game.getCaster().getState().getSt() == 0) {
                     hero2pic.setImageResource(picAlly[5]);
                     casterdamage.setText("- "+game.getCaster().getPower());
@@ -295,103 +289,148 @@ public class MainActivity extends AppCompatActivity {
                 casterdamage.setText("");
                 casterhealdamage.setText("");
             }
-            ca++;
+            caster++;
         } else if (name == "archer") {
-            if (ar % 2 == 0) {
+            if (archer % 2 == 0) {
                 hero3pic.setImageResource(picAlly[8]);
                 archerdamage.setText("");
-            } else if (ar % 3 == 0) {
+            } else if (archer % 3 == 0) {
                 hero3pic.setImageResource(picAlly[9]);
                 archerdamage.setText("- "+game.getArcher().getPower());
-                ar = 0;
+                caster = 0;
             } else {
                 archerdamage.setText("");
                 hero3pic.setImageResource(picAlly[7]);
             }
-            ar++;
+            archer++;
 
         } else if (name == "warrior") {
-            if (wa % 2 == 0) {
+            if (warrior % 2 == 0) {
                 hero1pic.setImageResource(picAlly[2]);
                 warriordamge.setText("");
-            } else if (wa % 3 == 0) {
+            } else if (warrior % 3 == 0) {
                 hero1pic.setImageResource(picAlly[3]);
-                wa = 0;
+                warrior = 0;
                 warriordamge.setText("- "+game.getWarrior().getPower());
 
             } else {
                 warriordamge.setText("");
                 hero1pic.setImageResource(picAlly[1]);
             }
-            wa++;
+            warrior++;
         } else if (name == "monster") {
             if (game.getCount() == 1) {
-                if (mo % 2 == 0) {
+                if (monster % 2 == 0) {
                     enpic.setImageResource(picMons[2]);
-                } else if (mo % 3 == 0) {
+                    monsterdamage.setText("");
+                } else if (monster % 3 == 0) {
                     enpic.setImageResource(picMons[3]);
-                    mo = 0;
+                    monsterdamage.setText("- "+game.getEnemy().getAtkpower());
+                    monster = 0;
                 } else {
                     enpic.setImageResource(picMons[1]);
+                    monsterdamage.setText("");
                 }
 
             } else if (game.getCount() == 2) {
-                if (mo % 2 == 0) {
+                if (monster % 2 == 0) {
                     enpic.setImageResource(picMons[5]);
-                } else if (mo % 3 == 0) {
+                    monsterdamage.setText("");
+                } else if (monster % 3 == 0) {
                     enpic.setImageResource(picMons[6]);
-                    mo = 0;
+                    monsterdamage.setText("- "+game.getEnemy().getAtkpower());
+                    monster = 0;
                 } else {
                     enpic.setImageResource(picMons[4]);
+                    monsterdamage.setText("");
                 }
 
 
             }
             if (game.getCount() == 3) {
-                if (mo % 2 == 0) {
+                if (monster % 2 == 0) {
                     enpic.setImageResource(picMons[8]);
-                } else if (mo % 3 == 0) {
+                    monsterdamage.setText("");
+                } else if (monster % 3 == 0) {
                     enpic.setImageResource(picMons[9]);
-                    mo = 0;
+                    monsterdamage.setText("- "+game.getEnemy().getAtkpower());
+                    monster = 0;
                 } else {
                     enpic.setImageResource(picMons[7]);
+                    monsterdamage.setText("");
                 }
 
             }
             if (game.getCount() == 4) {
-                if (mo % 2 == 0) {
+                if (monster % 2 == 0) {
                     enpic.setImageResource(picMons[11]);
-                } else if (mo % 3 == 0) {
+                    monsterdamage.setText("");
+                } else if (monster % 3 == 0) {
                     enpic.setImageResource(picMons[12]);
-                    mo = 0;
+                    monsterdamage.setText("- "+game.getEnemy().getAtkpower());
+                    monster = 0;
                 } else {
                     enpic.setImageResource(picMons[10]);
+                    monsterdamage.setText("");
                 }
 
             }
             if (game.getCount() == 5) {
-                if (mo % 2 == 0) {
+                if (monster % 2 == 0) {
                     enpic.setImageResource(picMons[14]);
-                } else if (mo % 3 == 0) {
+                    monsterdamage.setText("");
+                } else if (monster % 3 == 0) {
                     enpic.setImageResource(picMons[15]);
-                    mo = 0;
+                    monsterdamage.setText("- "+game.getEnemy().getAtkpower());
+                    monster = 0;
                 } else {
                     enpic.setImageResource(picMons[13]);
+                    monsterdamage.setText("");
                 }
 
             }
             if (game.getCount() == 6) {
-                if (mo % 2 == 0) {
+                if (monster % 2 == 0) {
                     enpic.setImageResource(picMons[17]);
-                } else if (mo % 3 == 0) {
+                    monsterdamage.setText("");
+                } else if (monster % 3 == 0) {
                     enpic.setImageResource(picMons[18]);
-                    mo = 0;
+                    monsterdamage.setText("- "+game.getEnemy().getAtkpower());
+                    monster = 0;
                 } else {
                     enpic.setImageResource(picMons[16]);
+                    monsterdamage.setText("");
                 }
 
             }
-            mo++;
+            monster++;
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        WriteFile.write(game.saveState(),getApplicationContext());
+        WriteFile.write(game.getPlayer().saveState(),getApplicationContext());
+        WriteFile.write(game.getEnemy().saveState(),getApplicationContext());
+        WriteFile.write(game.getArcher().saveState(),getApplicationContext());
+        WriteFile.write(game.getCaster().saveState(),getApplicationContext());
+        WriteFile.write(game.getWarrior().saveState(),getApplicationContext());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        init();
+    }
+
+    private void loadGame() {
+        game.loadState(ReadFile.read(getApplicationContext(),"Game"));
+        game.getPlayer().loadState(ReadFile.read(getApplicationContext(),"Player"));
+        game.getEnemy().loadState(ReadFile.read(getApplicationContext(),"Enemy"));
+        game.getArcher().loadState(ReadFile.read(getApplicationContext(),"Archer"));
+        game.getWarrior().loadState(ReadFile.read(getApplicationContext(),"Warrior"));
+        game.getCaster().loadState(ReadFile.read(getApplicationContext(),"Caster"));
     }
 }

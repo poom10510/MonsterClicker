@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import kitipoom.clickinggame.Calculator.Calculator;
+import kitipoom.clickinggame.Calculator.Upgradecalculator;
 import kitipoom.clickinggame.Game;
 import kitipoom.clickinggame.R;
 
@@ -23,9 +25,8 @@ public class HeroUpgrade extends Fragment {
     private CardView powerCard,healCard,hpCard;
     private TextView powerLv,healLv,hpLv;
     private TextView powerCost,healCost,hpCost;
-    private int level =1;
     private Game game;
-
+    private Calculator upgradeCalculator;
 
     public HeroUpgrade() {
         // Required empty public constructor
@@ -65,20 +66,22 @@ public class HeroUpgrade extends Fragment {
         healLv.setText("Level "+(game.getPlayer().getHealpowerlv()));
         hpLv.setText("Level "+(game.getPlayer().getMaxHplv()));
 
-        powerCost.setText(game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv()+1)+" $");
-        healCost.setText(game.getMoney().getoutcome(game.getPlayer().getHealpowerlv()+1)+" $");
-        hpCost.setText(game.getMoney().getoutcome(game.getPlayer().getMaxHplv() + 1) + " $");
+        upgradeCalculator = new Upgradecalculator();
+
+        powerCost.setText(upgradeCalculator.getCost(game.getPlayer().getAtkpowerlv()+1)+" $");
+        healCost.setText(upgradeCalculator.getCost(game.getPlayer().getHealpowerlv()+1)+" $");
+        hpCost.setText(upgradeCalculator.getCost(game.getPlayer().getMaxHplv() + 1) + " $");
 
 
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // game.getPlayer().levelUp();
-                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv() + 1)) {
-                    game.getMoney().setCash(-(game.getMoney( ).getoutcome(game.getPlayer().getAtkpowerlv() + 1)));
+                if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getPlayer().getAtkpowerlv() + 1)) {
+                    game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getPlayer().getAtkpowerlv() + 1));
                     game.getLvu().powerUp(game.getPlayer());
                     powerLv.setText("Level " + (game.getPlayer().getAtkpowerlv()));
-                    powerCost.setText(game.getMoney().getoutcome(game.getPlayer().getAtkpowerlv() + 1) + " $");
+                    powerCost.setText(upgradeCalculator.getCost(game.getPlayer().getAtkpowerlv() + 1) + " $");
                 }
             }
         });
@@ -86,11 +89,11 @@ public class HeroUpgrade extends Fragment {
         healCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getPlayer().getHealpowerlv() + 1)) {
-                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getPlayer().getHealpowerlv() + 1)));
+                if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getPlayer().getHealpowerlv() + 1)) {
+                    game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getPlayer().getHealpowerlv() + 1));
                     game.getLvu().healUp(game.getPlayer());
                     healLv.setText("Level " + (game.getPlayer().getHealpowerlv()));
-                    healCost.setText(game.getMoney().getoutcome(game.getPlayer().getHealpowerlv() + 1) + " $");
+                    healCost.setText(upgradeCalculator.getCost(game.getPlayer().getHealpowerlv() + 1) + " $");
                 }
             }
         });
@@ -98,11 +101,11 @@ public class HeroUpgrade extends Fragment {
             hpCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getPlayer().getMaxHplv() + 1)) {
-                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getPlayer().getMaxHplv() + 1)));
+                if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getPlayer().getMaxHplv() + 1)) {
+                    game.getPlayer().lossMoney(-(upgradeCalculator.getCost(game.getPlayer().getMaxHplv() + 1)));
                     game.getLvu().hpUp(game.getPlayer());
                     hpLv.setText("Level " + (game.getPlayer().getMaxHplv()));
-                    hpCost.setText(game.getMoney().getoutcome(game.getPlayer().getMaxHplv() + 1) + " $");
+                    hpCost.setText(upgradeCalculator.getCost(game.getPlayer().getMaxHplv() + 1) + " $");
                 }
             }
         });

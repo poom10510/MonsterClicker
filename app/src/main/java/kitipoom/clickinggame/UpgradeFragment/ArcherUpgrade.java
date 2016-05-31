@@ -1,7 +1,5 @@
 package kitipoom.clickinggame.UpgradeFragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -10,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import kitipoom.clickinggame.Calculator.Calculator;
+import kitipoom.clickinggame.Calculator.Upgradecalculator;
 import kitipoom.clickinggame.Game;
 import kitipoom.clickinggame.R;
 
@@ -20,7 +20,7 @@ public class ArcherUpgrade extends Fragment {
     private CardView powerCard,speedCard,stunCard;
     private TextView powerLv,speedLv,stunLv;
     private TextView powerCost,speedCost,stunCost;
-    private int level =1;
+    private Calculator upgradecalculator;
     private Game game;
 
     public ArcherUpgrade() {
@@ -61,18 +61,20 @@ public class ArcherUpgrade extends Fragment {
         speedLv.setText("Level " + (game.getArcher().getSpeedLv()));
         stunLv.setText("Level " + (game.getArcher().getStunLv()));
 
-        powerCost.setText(game.getMoney().getoutcome(game.getArcher().getPowerLv()+1)+" $");
-        speedCost.setText(game.getMoney().getoutcome(game.getArcher().getSpeedLv()+1)+" $");
-        stunCost.setText(game.getMoney().getoutcome(game.getArcher().getStunLv()+1)+" $");
+        upgradecalculator = new Upgradecalculator();
+
+        powerCost.setText(upgradecalculator.getCost(game.getArcher().getPowerLv()+1)+" $");
+        speedCost.setText(upgradecalculator.getCost(game.getArcher().getSpeedLv()+1)+" $");
+        stunCost.setText(upgradecalculator.getCost(game.getArcher().getStunLv()+1)+" $");
 
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getArcher().getPowerLv() + 1)) {
-                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getArcher().getPowerLv() + 1)));
+                if (game.getPlayer().getMoney() >= upgradecalculator.getCost(game.getArcher().getPowerLv() + 1)) {
+                    game.getPlayer().lossMoney(upgradecalculator.getCost(game.getArcher().getPowerLv() + 1));
                     game.getLvu().powerUp(game.getArcher());
                     powerLv.setText("Level " + (game.getArcher().getPowerLv()));
-                    powerCost.setText(game.getMoney().getoutcome(game.getArcher().getPowerLv() + 1) + " $");
+                    powerCost.setText(upgradecalculator.getCost(game.getArcher().getPowerLv() + 1) + " $");
                 }
             }
         });
@@ -80,11 +82,11 @@ public class ArcherUpgrade extends Fragment {
         speedCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getArcher().getSpeedLv() + 1)) {
-                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getArcher().getSpeedLv() + 1)));
+                if (game.getPlayer().getMoney() >= upgradecalculator.getCost(game.getArcher().getSpeedLv() + 1)) {
+                    game.getPlayer().lossMoney(upgradecalculator.getCost(game.getArcher().getSpeedLv() + 1));
                     game.getLvu().speedUp(game.getArcher());
                     speedLv.setText("Level " + (game.getArcher().getSpeedLv()));
-                    speedCost.setText(game.getMoney().getoutcome(game.getArcher().getSpeedLv() + 1) + " $");
+                    speedCost.setText(upgradecalculator.getCost(game.getArcher().getSpeedLv() + 1) + " $");
                 }
             }
         });
@@ -92,11 +94,11 @@ public class ArcherUpgrade extends Fragment {
         stunCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View v){
-                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getArcher().getStunLv() + 1)) {
-                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getArcher().getStunLv() + 1)));
+                if (game.getPlayer().getMoney() >= upgradecalculator.getCost(game.getArcher().getStunLv() + 1)) {
+                    game.getPlayer().lossMoney(upgradecalculator.getCost(game.getArcher().getStunLv() + 1));
                     game.getLvu().stunUp(game.getArcher());
                     stunLv.setText("Level " + (game.getArcher().getStunLv()));
-                    stunCost.setText(game.getMoney().getoutcome(game.getArcher().getStunLv() + 1) + " $");
+                    stunCost.setText(upgradecalculator.getCost(game.getArcher().getStunLv() + 1) + " $");
                 }
             }
         });

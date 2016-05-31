@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import kitipoom.clickinggame.Calculator.Calculator;
+import kitipoom.clickinggame.Calculator.Upgradecalculator;
 import kitipoom.clickinggame.Game;
 import kitipoom.clickinggame.R;
 
@@ -20,8 +22,8 @@ public class CasterUpgrade extends Fragment {
     private CardView powerCard,speedCard,healCard;
     private TextView powerLv,speedLv,healLv;
     private TextView powerCost,speedCost,healCost;
-    private int level =1;
     private Game game;
+    private Calculator upgradeCalculator;
 
     public CasterUpgrade() {
         // Required empty public constructor
@@ -60,20 +62,22 @@ public class CasterUpgrade extends Fragment {
         powerLv.setText("Level " + (game.getCaster().getPowerLv()));
         speedLv.setText("Level " + (game.getCaster().getSpeedLv()));
         healLv.setText("Level " + (game.getCaster().getHealLv()));
+        
+        upgradeCalculator = new Upgradecalculator();
 
-        powerCost.setText(game.getMoney().getoutcome(game.getCaster().getPowerLv()+1)+" $");
-        speedCost.setText(game.getMoney().getoutcome(game.getCaster().getSpeedLv()+1)+" $");
-        healCost.setText(game.getMoney().getoutcome(game.getCaster().getHealLv()+1)+" $");
+        powerCost.setText(upgradeCalculator.getCost(game.getCaster().getPowerLv()+1)+" $");
+        speedCost.setText(upgradeCalculator.getCost(game.getCaster().getSpeedLv()+1)+" $");
+        healCost.setText(upgradeCalculator.getCost(game.getCaster().getHealLv()+1)+" $");
 
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getCaster().getPowerLv() + 1))
+                if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getCaster().getPowerLv() + 1))
                 {
-                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getCaster().getPowerLv() + 1)));
+                    game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getCaster().getPowerLv() + 1));
                     game.getLvu().powerUp(game.getCaster());
                     powerLv.setText("Level " + (game.getCaster().getPowerLv()));
-                    powerCost.setText(game.getMoney().getoutcome(game.getCaster().getPowerLv() + 1) + " $");
+                    powerCost.setText(upgradeCalculator.getCost(game.getCaster().getPowerLv() + 1) + " $");
                 }
             }
         });
@@ -81,12 +85,12 @@ public class CasterUpgrade extends Fragment {
         speedCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getCaster().getSpeedLv() + 1))
+                if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getCaster().getSpeedLv() + 1))
                 {
-                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getCaster().getSpeedLv() + 1)));
+                    game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getCaster().getSpeedLv() + 1));
                     game.getLvu().speedUp(game.getCaster());
                     speedLv.setText("Level " + (game.getCaster().getSpeedLv()));
-                    speedCost.setText(game.getMoney().getoutcome(game.getCaster().getSpeedLv() + 1) + " $");
+                    speedCost.setText(upgradeCalculator.getCost(game.getCaster().getSpeedLv() + 1) + " $");
                 }
             }
         });
@@ -94,11 +98,11 @@ public class CasterUpgrade extends Fragment {
         healCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getMoney().getCash() >= game.getMoney().getoutcome(game.getCaster().getHealLv() + 1)) {
-                    game.getMoney().setCash(-(game.getMoney().getoutcome(game.getCaster().getHealLv() + 1)));
+                if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getCaster().getHealLv() + 1)) {
+                    game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getCaster().getHealLv() + 1));
                     game.getLvu().healUp(game.getCaster());
                     healLv.setText("Level " + (game.getCaster().getHealLv()));
-                    healCost.setText(game.getMoney().getoutcome(game.getCaster().getHealLv() + 1) + " $");
+                    healCost.setText(upgradeCalculator.getCost(game.getCaster().getHealLv() + 1) + " $");
                 }
             }
         });

@@ -1,8 +1,9 @@
 package kitipoom.clickinggame.Ally;
 
 import kitipoom.clickinggame.Calculator.Calculator;
-import kitipoom.clickinggame.Keyplay.Enermy;
+import kitipoom.clickinggame.Keyplay.Enemy;
 import kitipoom.clickinggame.Keyplay.Player;
+import kitipoom.clickinggame.Memento.Memento;
 import kitipoom.clickinggame.State.State;
 
 /**
@@ -17,7 +18,7 @@ public abstract class Ally {
     protected Calculator calculator;
     protected State state;
 
-    public abstract void Action(Player player, Enermy enermy);
+    public abstract void Action(Player player, Enemy enemy);
 
     public abstract void calculate();
 
@@ -124,4 +125,8 @@ public abstract class Ally {
     public State getState() {
         return state;
     }
+
+    public abstract Memento saveState();
+
+    public abstract void loadState(Memento memento);
 }

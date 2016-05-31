@@ -1,39 +1,36 @@
 package kitipoom.clickinggame;
-
-import android.app.Activity;
-import android.util.Log;
-
 import java.util.Random;
 
+import kitipoom.clickinggame.Ally.Ally;
 import kitipoom.clickinggame.Ally.Archer;
 import kitipoom.clickinggame.Ally.Caster;
 import kitipoom.clickinggame.Ally.Warrior;
-import kitipoom.clickinggame.Keyplay.Enermy;
+import kitipoom.clickinggame.Keyplay.Enemy;
 import kitipoom.clickinggame.Keyplay.Player;
+import kitipoom.clickinggame.Memento.Memento;
 
 /**
  * Created by kitipoom on 11/5/2559.
  */
 public class Game {
 
-    private Player player;
-    private Enermy enermy;
-
-    private Warrior warrior;
-    private Caster caster;
-    private Archer archer;
-    private Random random = new Random();
     private static Game instance;
-    private Money money;
+    private Player player;
+    private Enemy enemy;
+    private LevelUp levelup;
+
+    private Ally warrior,caster,archer;
+
+    private Random random = new Random();
+
     private boolean stun = false;
     private boolean isPowerBoost = false;
-    private int floor, count, index, boostcount;
-
-    private Levelup lvu;
+    private int floor, count, boost_count;
 
     private Game() {
-        lvu = new Levelup();
-        money = Money.getInstance();
+        levelup = new LevelUp();
+        floor = 1;
+        count = 1;
     }
 
     public static Game getInstance() {
@@ -42,36 +39,38 @@ public class Game {
     }
 
     public void newGame() {
-        floor = 1;
-        count = 2;
-        startGame(floor, floor);
+        startGame(floor);
     }
 
-    public void checkEnermydead() {
-        if (EnisDead()) {
-            money.setCash(enermy.getLevel() * 100);
-            enermy.setLevel(floor);
+    public void checkEnemyDead() {
+        if (enemyIsDead()) {
+            player.receiveMoney(enemy.getLevel() * 100);
             if (count == 6) {
                 floor++;
                 count = 0;
             }
             count++;
+            setEnemy();
         }
     }
 
-    public void setEnermyDecrease() {
+    private void setEnemy() {
+        enemy.setLevel(floor);
+    }
+
+    public void setEnemyDecrease() {
         if (floor > 1) {
             floor--;
         }
         player.setCurrentHp(player.getMaxHp());
-        enermy.setLevel(floor);
-        enermy.setCurrentHp(enermy.getCurrentHp());
+        enemy.setLevel(floor);
+        enemy.setCurrentHp(enemy.getCurrentHp());
 
         count = 1;
     }
 
-    public boolean EnisDead() {
-        return enermy.getCurrentHp() <= 0;
+    public boolean enemyIsDead() {
+        return enemy.getCurrentHp() <= 0;
 
     }
 
@@ -84,33 +83,31 @@ public class Game {
         return count;
     }
 
-    public void startGame(int levelp, int levele) {
-        player = new Player(levelp);
-        enermy = new Enermy(levele);
+    public void startGame(int level_enemy) {
+        player = new Player();
+        enemy = new Enemy(level_enemy);
         warrior = new Warrior();
         caster = new Caster();
         archer = new Archer();
     }
 
-    public void setEnermydamage() {
-        enermy.attacked(player.getAtkpower());
+    public void setEnemyDamage() {
+        enemy.attacked(player.getAtkpower());
         checkBoostPower();
-        //player.setMoney(player.getAtkpower());
-        //checkEnermydead();
     }
 
     public void checkBoostPower() {
         if (isPowerBoost) {
-            boostcount++;
+            boost_count++;
         }
-        if (boostcount > 100) {
+        if (boost_count > 100) {
             isPowerBoost = false;
             toNormalPower();
-            boostcount = 0;
+            boost_count = 0;
         }
     }
 
-    public void playerheal() {
+    public void playerHeal() {
         player.Healyourself(player.getHealpower());
     }
 
@@ -123,32 +120,24 @@ public class Game {
     }
 
     public void archerAttack() {
-        archer.Action(player, enermy);
+        archer.Action(player, enemy);
         stun = checkStun();
-
-        //player.setMoney(1);
-        //checkEnermydead();
     }
 
-    public void mageAttack() {
-        caster.Action(player, enermy);
-        //player.setMoney(1);
-        //checkEnermydead();
+    public void casterAttack() {
+        caster.Action(player, enemy);
     }
 
     public void warriorAttack() {
-        warrior.Action(player, enermy);
-        //player.setMoney(1);
-        //checkEnermydead();
+        warrior.Action(player, enemy);
     }
 
-    public void Enermyturn() {
-        //player.attacked(enermy.getAtkpower() - (int) (enermy.getAtkpower() * (warrior.getDefend() / 100.0)));
-        player.attacked(enermy.getAtkpower() - warrior.getDefend());
+    public void enemyTurn() {
+        player.attacked(enemy.getAtkpower() - (int) (enemy.getAtkpower() * (warrior.getDefend() / 100.0)));
     }
 
     public boolean checkStun() {
-        index = random.nextInt(100) + 1;
+        int index = random.nextInt(100) + 1;
         return index <= archer.getStun();
     }
 
@@ -168,38 +157,51 @@ public class Game {
         player.calculate();
     }
 
-    public void setPlayerdamage() {
-        player.attacked(enermy.getAtkpower());
-    }
-
-    public Enermy getEnermy() {
-        return enermy;
+    public Enemy getEnemy() {
+        return enemy;
     }
 
     public Player getPlayer() {
         return player;
     }
 
-    public Levelup getLvu() {
-        return lvu;
+    public LevelUp getLvu() {
+        return levelup;
     }
 
-    public Warrior getWarrior() {
+    public Ally getWarrior() {
         return warrior;
     }
 
-    public Archer getArcher() {
+    public Ally getArcher() {
         return archer;
     }
 
-    public Caster getCaster() {
+    public Ally getCaster() {
         return caster;
     }
 
-    public Money getMoney() {
-        return money;
+    public Memento saveState(){
+        return  new GameMemento(floor,count);
     }
 
-    public void updatemoney() {
+    public void loadState(Memento memento){
+        if(memento == null)return;
+        if(memento.getClass() != GameMemento.class)return;
+        GameMemento gameMemento = (GameMemento)memento;
+        this.floor = gameMemento.floor;
+        this.count = gameMemento.count;
+        setEnemy();
+    }
+
+    public static class GameMemento extends Memento{
+        private int floor,count;
+
+        private GameMemento(int floor,int count) {
+            super("Game");
+            this.floor = floor;
+            this.count = count;
+        }
+
     }
 }

@@ -103,6 +103,17 @@
             android:layout_toRightOf="@+id/Hero3image"
             android:layout_toEndOf="@+id/Hero3image" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00000"
+            android:id="@+id/monsterdamage"
+            android:layout_alignTop="@+id/casterhealdamage"
+            android:layout_toRightOf="@+id/Hero2image"
+            android:layout_toEndOf="@+id/Hero2image"
+            android:textSize="15dp"
+            android:textColor="#ff0000" />
+
     </RelativeLayout>
 
     <!-- ENEMIES -->

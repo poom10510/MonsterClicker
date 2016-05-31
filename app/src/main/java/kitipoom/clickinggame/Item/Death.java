@@ -15,6 +15,6 @@ public class Death extends Item {
 
     @Override
     public void Action(Game game) {
-        game.getEnermy().attacked(game.getEnermy().getCurrentHp());
+        game.getEnemy().attacked(game.getEnemy().getCurrentHp());
     }
 }
