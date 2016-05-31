@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         /* THREAD */
-        threadmonster = new Threadruntime(this,game.getArcher().getStun(),"monster");
+        threadmonster = new Threadruntime(this,1500,"monster");
         threadarcher = new Threadruntime(this,game.getArcher().getSpeed(),"archer");
         threadcaster = new Threadruntime(this,game.getCaster().getSpeed(),"caster");
         threadwarrior = new Threadruntime(this,game.getWarrior().getSpeed(),"warrior");

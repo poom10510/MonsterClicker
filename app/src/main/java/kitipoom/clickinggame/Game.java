@@ -1,6 +1,7 @@
 package kitipoom.clickinggame;
 
 import android.app.Activity;
+import android.util.Log;
 
 import java.util.Random;
 
@@ -24,9 +25,9 @@ public class Game {
     private Random random = new Random();
     private static Game instance;
     private Money money;
-
-private boolean stun = false;
-    private int floor, count, index;
+    private boolean stun = false;
+    private boolean isPowerBoost = false;
+    private int floor, count, index, boostcount;
 
     private Levelup lvu;
 
@@ -91,8 +92,20 @@ private boolean stun = false;
 
     public void setEnermydamage() {
         enermy.attacked(player.getAtkpower());
+        checkBoostPower();
         //player.setMoney(player.getAtkpower());
         //checkEnermydead();
+    }
+
+    public void checkBoostPower(){
+        if(isPowerBoost){
+            boostcount++;
+        }
+        if(boostcount>100){
+            isPowerBoost = false;
+            toNormalPower();
+            boostcount = 0;
+        }
     }
 
     public void playerheal() {
@@ -134,6 +147,22 @@ private boolean stun = false;
     public boolean checkStun(){
         index = random.nextInt(100)+1;
         return  index <= archer.getStun() ;
+    }
+
+    public void boostPower(){
+        isPowerBoost = true;
+        archer.setPower(archer.getPower()*2);
+        warrior.setPower(warrior.getPower()*2);
+        caster.setPower(caster.getPower()*2);
+        player.setAtkpower(player.getAtkpower()*2);
+        player.setHealpower(player.getHealpower()*2);
+    }
+
+    public void toNormalPower(){
+        archer.calculate();
+        warrior.calculate();
+        caster.calculate();
+        player.calculate();
     }
 
     public void setPlayerdamage() {
