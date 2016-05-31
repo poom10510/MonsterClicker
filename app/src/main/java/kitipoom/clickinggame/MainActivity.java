@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Game game;
     Random random ;
     boolean checkenermydead=false;
-    int ar = 0,ca=0,wa=0;
+    int ar = 0,ca=0,wa=0,mo=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
     public void updatetime(String name){
 
         if(name=="monster") {
+            chpic(name);
             game.Enermyturn();
             if(game.playerIsDead()){
                 threadmonster.requestStop();
@@ -169,8 +170,8 @@ public class MainActivity extends AppCompatActivity {
         }
         if(game.EnisDead()){
             int index = game.getCount();
-            Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-            enpic.startAnimation(animation1);
+            /*Animation animation1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
+            enpic.startAnimation(animation1);*/
             switch (index){
                 case 1 : enpic.setImageResource(R.drawable.dragon1); break;
                 case 2 : enpic.setImageResource(R.drawable.ball1); break;
@@ -242,6 +243,35 @@ public class MainActivity extends AppCompatActivity {
                 hero1pic.setImageResource(R.drawable.warrior1);
             }
             wa++;
+        }
+        else if(name=="monster"){
+            if(game.getCount()==1){
+                if (mo % 2 == 0) {
+                    enpic.setImageResource(R.drawable.dragon1);
+                }
+                else if(mo%3==0){
+                    enpic.setImageResource(R.drawable.dragon2);
+                    mo=0;
+                }
+                else {
+                    enpic.setImageResource(R.drawable.dragon3);
+                }
+
+            }
+            else if(game.getCount()==2){
+                if (mo % 2 == 0) {
+                    enpic.setImageResource(R.drawable.ball1);
+                }
+                else if(mo%3==0){
+                    enpic.setImageResource(R.drawable.ball2);
+                    mo=0;
+                }
+                else {
+                    enpic.setImageResource(R.drawable.ball3);
+                }
+
+            }
+            mo++;
         }
     }
 }
