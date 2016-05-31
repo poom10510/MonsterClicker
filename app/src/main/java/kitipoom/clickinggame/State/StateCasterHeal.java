@@ -18,7 +18,9 @@ public class StateCasterHeal extends State{
 
     public StateCasterHeal(Ally caster) {
         super(caster);
+        st =1;
     }
+
 
 
 }

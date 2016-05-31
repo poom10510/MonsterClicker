@@ -203,7 +203,14 @@ public class MainActivity extends AppCompatActivity {
     public void chpic(String name) {
         if(name=="caster"){
             if (ca % 2 == 0) {
-                hero2pic.setImageResource(R.drawable.caster2);
+                if(game.getCaster().getState().getSt()==0) {
+                    hero2pic.setImageResource(R.drawable.caster2);
+                }
+                else{
+                    hero2pic.setImageResource(R.drawable.caster3);
+                }
+
+
             } else {
                 hero2pic.setImageResource(R.drawable.caster1);
             }

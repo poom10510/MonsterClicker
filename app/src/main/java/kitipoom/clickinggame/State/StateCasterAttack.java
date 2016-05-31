@@ -20,6 +20,7 @@ public class StateCasterAttack extends State {
 
     public StateCasterAttack(Ally caster) {
         super(caster);
+        st =0;
     }
 
 
