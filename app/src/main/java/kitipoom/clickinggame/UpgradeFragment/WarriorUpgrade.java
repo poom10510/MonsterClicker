@@ -39,7 +39,7 @@ public class WarriorUpgrade extends Fragment {
         return view;
     }
 
-    public void initComponents() {
+    private void initComponents() {
 
         game = Game.getInstance();
 
