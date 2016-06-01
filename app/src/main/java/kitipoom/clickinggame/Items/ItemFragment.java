@@ -61,8 +61,8 @@ public class ItemFragment extends Fragment {
         item1_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getPlayer().getMoney() >= item1.getPrice()) {
-                    game.getPlayer().lossMoney(item1.getPrice());
+                if (game.getPlayerMoney() >= item1.getPrice()) {
+                    game.playerLossMoney(item1.getPrice());
                     item1.Action(game);
                 }
             }
@@ -71,8 +71,8 @@ public class ItemFragment extends Fragment {
         item2_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getPlayer().getMoney() >= item2.getPrice()) {
-                    game.getPlayer().lossMoney(item2.getPrice());
+                if (game.getPlayerMoney() >= item2.getPrice()) {
+                    game.playerLossMoney(item2.getPrice());
                     item2.Action(game);
                 }
             }
@@ -81,8 +81,8 @@ public class ItemFragment extends Fragment {
         item3_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getPlayer().getMoney() >= item3.getPrice()) {
-                    game.getPlayer().lossMoney(item3.getPrice());
+                if (game.getPlayerMoney() >= item3.getPrice()) {
+                    game.playerLossMoney(item3.getPrice());
                     item3.Action(game);
                 }
             }

@@ -54,6 +54,8 @@ public class Game extends Observable {
                 count = 0;
             }
             count++;
+            setChanged();
+            notifyObservers("monsterDead");
             setEnemy();
         }
     }
@@ -90,6 +92,16 @@ public class Game extends Observable {
         warrior = new Warrior();
         caster = new Caster();
         archer = new Archer();
+    }
+
+    public void playerLossMoney(int money){
+        this.player.lossMoney(money);
+        setChanged();
+        notifyObservers("lossMoney");
+    }
+
+    public int getPlayerMoney(){
+        return this.player.getMoney();
     }
 
     public void setEnemyDamage() {

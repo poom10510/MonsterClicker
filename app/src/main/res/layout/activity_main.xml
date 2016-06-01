@@ -86,33 +86,11 @@
             android:layout_height="wrap_content"
             android:text="00000"
             android:id="@+id/healdamage"
+            android:textColor="#4ffc15"
+            android:textSize="20dp"
             android:layout_below="@+id/moneytab"
-            android:layout_alignRight="@+id/Hero2image"
-            android:layout_alignEnd="@+id/Hero2image"
-            android:textColor="#4ffc15"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00000"
-            android:id="@+id/casterhealdamage"
-            android:textColor="#4ffc15"
-            android:textSize="15dp"
-            android:layout_above="@+id/Hero2image"
-            android:layout_toRightOf="@+id/Hero3image"
-            android:layout_toEndOf="@+id/Hero3image" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00000"
-            android:id="@+id/monsterdamage"
-            android:layout_alignTop="@+id/casterhealdamage"
-            android:layout_toRightOf="@+id/Hero2image"
-            android:layout_toEndOf="@+id/Hero2image"
-            android:textSize="15dp"
-            android:textColor="#ff0000" />
+            android:layout_toLeftOf="@+id/Hero1image"
+            android:layout_toStartOf="@+id/Hero1image" />
 
     </RelativeLayout>
 
@@ -198,45 +176,11 @@
             android:id="@+id/attackdamage"
             android:textColor="#f00808"
             android:textSize="20dp"
-            android:layout_below="@+id/archerdamage"
-            android:layout_toRightOf="@+id/archerdamage"
-            android:layout_toEndOf="@+id/archerdamage" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0000"
-            android:id="@+id/casterdamage"
-            android:textColor="#f00808"
-            android:textSize="15dp"
-            android:layout_centerVertical="true"
+            android:layout_below="@+id/enemyHP_bar"
             android:layout_alignRight="@+id/Enermyimage"
             android:layout_alignEnd="@+id/Enermyimage"
-            android:layout_marginRight="29dp"
-            android:layout_marginEnd="29dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0000"
-            android:id="@+id/archerdamage"
-            android:textColor="#f00808"
-            android:textSize="15dp"
-            android:layout_below="@+id/casterdamage"
-            android:layout_alignLeft="@+id/casterdamage"
-            android:layout_alignStart="@+id/casterdamage"
-            android:layout_marginTop="25dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0000"
-            android:id="@+id/warriordamage"
-            android:textColor="#f00808"
-            android:textSize="15dp"
-            android:layout_alignBottom="@+id/attackdamage"
-            android:layout_alignLeft="@+id/Enermyimage"
-            android:layout_alignStart="@+id/Enermyimage" />
+            android:layout_marginRight="45dp"
+            android:layout_marginEnd="45dp" />
 
     </RelativeLayout>
 

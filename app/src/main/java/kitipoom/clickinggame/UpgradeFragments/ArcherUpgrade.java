@@ -70,8 +70,8 @@ public class ArcherUpgrade extends Fragment {
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getPlayer().getMoney() >= upgradecalculator.getCost(game.getArcher().getPowerLv() + 1)) {
-                    game.getPlayer().lossMoney(upgradecalculator.getCost(game.getArcher().getPowerLv() + 1));
+                if (game.getPlayerMoney() >= upgradecalculator.getCost(game.getArcher().getPowerLv() + 1)) {
+                    game.playerLossMoney(upgradecalculator.getCost(game.getArcher().getPowerLv() + 1));
                     game.getLvu().powerUp(game.getArcher());
                     powerLv.setText("Level " + (game.getArcher().getPowerLv()));
                     powerCost.setText(upgradecalculator.getCost(game.getArcher().getPowerLv() + 1) + " $");
@@ -82,8 +82,8 @@ public class ArcherUpgrade extends Fragment {
         speedCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getPlayer().getMoney() >= upgradecalculator.getCost(game.getArcher().getSpeedLv() + 1)) {
-                    game.getPlayer().lossMoney(upgradecalculator.getCost(game.getArcher().getSpeedLv() + 1));
+                if (game.getPlayerMoney() >= upgradecalculator.getCost(game.getArcher().getSpeedLv() + 1)) {
+                    game.playerLossMoney(upgradecalculator.getCost(game.getArcher().getSpeedLv() + 1));
                     game.getLvu().speedUp(game.getArcher());
                     speedLv.setText("Level " + (game.getArcher().getSpeedLv()));
                     speedCost.setText(upgradecalculator.getCost(game.getArcher().getSpeedLv() + 1) + " $");
@@ -94,8 +94,8 @@ public class ArcherUpgrade extends Fragment {
         stunCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View v){
-                if (game.getPlayer().getMoney() >= upgradecalculator.getCost(game.getArcher().getStunLv() + 1)) {
-                    game.getPlayer().lossMoney(upgradecalculator.getCost(game.getArcher().getStunLv() + 1));
+                if (game.getPlayerMoney() >= upgradecalculator.getCost(game.getArcher().getStunLv() + 1)) {
+                    game.playerLossMoney(upgradecalculator.getCost(game.getArcher().getStunLv() + 1));
                     game.getLvu().stunUp(game.getArcher());
                     stunLv.setText("Level " + (game.getArcher().getStunLv()));
                     stunCost.setText(upgradecalculator.getCost(game.getArcher().getStunLv() + 1) + " $");

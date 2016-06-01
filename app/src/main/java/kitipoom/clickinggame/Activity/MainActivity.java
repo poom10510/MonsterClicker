@@ -30,7 +30,6 @@ import kitipoom.clickinggame.Thread.Threadruntime;
 public class MainActivity extends AppCompatActivity implements Observer {
 
     private TextView moneybar, enhp, plhp, enemyLv, enemynum, attackdamage, healdamage;
-    private TextView warriordamge, archerdamage, casterdamage, casterhealdamage, monsterdamage;
     private RelativeLayout attackLayout;
     private RelativeLayout healLayout;
     protected ImageView enpic, hero1pic, hero2pic, hero3pic;
@@ -108,19 +107,9 @@ public class MainActivity extends AppCompatActivity implements Observer {
 
         attackdamage = (TextView) findViewById(R.id.attackdamage);
         healdamage = (TextView) findViewById(R.id.healdamage);
-        warriordamge = (TextView) findViewById(R.id.warriordamage);
-        archerdamage = (TextView) findViewById(R.id.archerdamage);
-        casterdamage = (TextView) findViewById(R.id.casterdamage);
-        casterhealdamage = (TextView) findViewById(R.id.casterhealdamage);
-        monsterdamage = (TextView) findViewById(R.id.monsterdamage);
 
         attackdamage.setText("");
         healdamage.setText("");
-        archerdamage.setText("");
-        warriordamge.setText("");
-        casterdamage.setText("");
-        casterhealdamage.setText("");
-        monsterdamage.setText("");
 
         //Upgrade Tab
         TabLayout tabLayout = (TabLayout) findViewById(R.id.upgradeTab);
@@ -172,16 +161,16 @@ public class MainActivity extends AppCompatActivity implements Observer {
         threadcaster.start();
         threadarcher.start();
 
+        /*Create picture*/
         picAlly = new int[12];
         picMons = new int[29];
-        /*Create picture*/
         int[] arrWarrior = new int[3];
         int[] arrCasterAttack = new int[2];
         int[] arrCasterHeal = new int[2];
         int[] arrArcher = new int[3];
         int[] arrDragon = new int[3];
         int[] arrBall = new int[3];
-        int[] arrElectri = new int[3];
+        int[] arrElectric = new int[3];
         int[] arrRabbit = new int[3];
         int[] arrFish = new int[3];
         int[] arrIce = new int[3];
@@ -208,9 +197,9 @@ public class MainActivity extends AppCompatActivity implements Observer {
         arrBall[1] = R.drawable.ball2;
         arrBall[2] = R.drawable.ball3;
 
-        arrElectri[0] = R.drawable.electri1;
-        arrElectri[1] = R.drawable.electri2;
-        arrElectri[2] = R.drawable.electri3;
+        arrElectric[0] = R.drawable.electri1;
+        arrElectric[1] = R.drawable.electri2;
+        arrElectric[2] = R.drawable.electri3;
 
         arrRabbit[0] = R.drawable.rabbit1;
         arrRabbit[1] = R.drawable.rabbit2;
@@ -231,7 +220,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
         iteratorArcher = new AnimationIterator(arrArcher);
         iteratorDragon = new AnimationIterator(arrDragon);
         iteratorBall = new AnimationIterator(arrBall);
-        iteratorElectri = new AnimationIterator(arrElectri);
+        iteratorElectri = new AnimationIterator(arrElectric);
         iteratorRabbit = new AnimationIterator(arrRabbit);
         iteratorFish = new AnimationIterator(arrFish);
         iteratorIce = new AnimationIterator(arrIce);
@@ -274,11 +263,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
             threadmonster.requestStop();
             game.setStun(false);
         }
-
-        enemyLv.setText("LV " + game.getEnemy().getLevel());
         game.checkEnemyDead();
-        moneybar.setText(game.getPlayer().getMoney() + "");
-        enemynum.setText(game.getCount() + "/6");
         attackdamage.setText("");
         healdamage.setText("");
     }
@@ -350,6 +335,17 @@ public class MainActivity extends AppCompatActivity implements Observer {
 
     @Override
     public void update(Observable observable, Object data) {
-        this.setHPBar();
+        if(data == "monsterDead"){
+            enemyLv.setText("LV " + game.getEnemy().getLevel());
+            moneybar.setText(game.getPlayer().getMoney() + "");
+            enemynum.setText(game.getCount() + "/6");
+        }
+        else if(data == "lossMoney"){
+            moneybar.setText(game.getPlayer().getMoney() + "");
+        }
+        else{
+            this.setHPBar();
+        }
+
     }
 }

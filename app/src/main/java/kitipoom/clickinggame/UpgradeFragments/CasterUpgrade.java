@@ -70,9 +70,9 @@ public class CasterUpgrade extends Fragment {
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getCaster().getPowerLv() + 1))
+                if (game.getPlayerMoney() >= upgradeCalculator.getCost(game.getCaster().getPowerLv() + 1))
                 {
-                    game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getCaster().getPowerLv() + 1));
+                    game.playerLossMoney(upgradeCalculator.getCost(game.getCaster().getPowerLv() + 1));
                     game.getLvu().powerUp(game.getCaster());
                     powerLv.setText("Level " + (game.getCaster().getPowerLv()));
                     powerCost.setText(upgradeCalculator.getCost(game.getCaster().getPowerLv() + 1) + " $");
@@ -83,9 +83,9 @@ public class CasterUpgrade extends Fragment {
         speedCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getCaster().getSpeedLv() + 1))
+                if (game.getPlayerMoney() >= upgradeCalculator.getCost(game.getCaster().getSpeedLv() + 1))
                 {
-                    game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getCaster().getSpeedLv() + 1));
+                    game.playerLossMoney(upgradeCalculator.getCost(game.getCaster().getSpeedLv() + 1));
                     game.getLvu().speedUp(game.getCaster());
                     speedLv.setText("Level " + (game.getCaster().getSpeedLv()));
                     speedCost.setText(upgradeCalculator.getCost(game.getCaster().getSpeedLv() + 1) + " $");
@@ -96,8 +96,8 @@ public class CasterUpgrade extends Fragment {
         healCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getCaster().getHealLv() + 1)) {
-                    game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getCaster().getHealLv() + 1));
+                if (game.getPlayerMoney() >= upgradeCalculator.getCost(game.getCaster().getHealLv() + 1)) {
+                    game.playerLossMoney(upgradeCalculator.getCost(game.getCaster().getHealLv() + 1));
                     game.getLvu().healUp(game.getCaster());
                     healLv.setText("Level " + (game.getCaster().getHealLv()));
                     healCost.setText(upgradeCalculator.getCost(game.getCaster().getHealLv() + 1) + " $");

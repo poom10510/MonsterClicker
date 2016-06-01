@@ -71,8 +71,8 @@ public class WarriorUpgrade extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getWarrior().getPowerLv() + 1)) {
-                    game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getWarrior().getPowerLv() + 1));
+                if (game.getPlayerMoney() >= upgradeCalculator.getCost(game.getWarrior().getPowerLv() + 1)) {
+                    game.playerLossMoney(upgradeCalculator.getCost(game.getWarrior().getPowerLv() + 1));
                     game.getLvu().powerUp(game.getWarrior());
                     powerLv.setText("Level " + (game.getWarrior().getPowerLv()));
                     powerCost.setText(upgradeCalculator.getCost(game.getWarrior().getPowerLv() + 1) + " $");
@@ -83,8 +83,8 @@ public class WarriorUpgrade extends Fragment {
         speedCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getWarrior().getSpeedLv() + 1)) {
-                    game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getWarrior().getSpeedLv() + 1));
+                if (game.getPlayerMoney() >= upgradeCalculator.getCost(game.getWarrior().getSpeedLv() + 1)) {
+                    game.playerLossMoney(upgradeCalculator.getCost(game.getWarrior().getSpeedLv() + 1));
                     game.getLvu().speedUp(game.getWarrior());
                     speedLv.setText("Level " + (game.getWarrior().getSpeedLv()));
                     speedCost.setText(upgradeCalculator.getCost(game.getWarrior().getSpeedLv() + 1) + " $");
@@ -95,8 +95,8 @@ public class WarriorUpgrade extends Fragment {
             defendCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getWarrior().getDefendLv() + 1)) {
-                    game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getWarrior().getDefendLv() + 1));
+                if (game.getPlayerMoney() >= upgradeCalculator.getCost(game.getWarrior().getDefendLv() + 1)) {
+                    game.playerLossMoney(upgradeCalculator.getCost(game.getWarrior().getDefendLv() + 1));
                     game.getLvu().defendUp(game.getWarrior());
                     defendLv.setText("Level " + (game.getWarrior().getDefendLv()));
                     defendCost.setText(upgradeCalculator.getCost(game.getWarrior().getDefendLv() + 1) + " $");
