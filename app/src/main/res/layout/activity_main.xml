@@ -90,7 +90,7 @@
             android:layout_alignRight="@+id/Hero2image"
             android:layout_alignEnd="@+id/Hero2image"
             android:textColor="#4ffc15"
-            android:textSize="15dp" />
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -196,12 +196,10 @@
             android:layout_height="wrap_content"
             android:text="0000"
             android:id="@+id/attackdamage"
-            android:layout_marginTop="29dp"
             android:textColor="#f00808"
-            android:textSize="15dp"
-            android:layout_below="@+id/casterdamage"
-            android:layout_toRightOf="@+id/enermylevel"
-            android:layout_toEndOf="@+id/enermylevel" />
+            android:textSize="20dp"
+            android:layout_below="@+id/archerdamage"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -235,9 +233,9 @@
             android:id="@+id/warriordamage"
             android:textColor="#f00808"
             android:textSize="15dp"
-            android:layout_below="@+id/enemyHP_bar"
-            android:layout_toRightOf="@+id/attackdamage"
-            android:layout_toEndOf="@+id/attackdamage" />
+            android:layout_above="@+id/attackdamage"
+            android:layout_toLeftOf="@+id/attackdamage"
+            android:layout_toStartOf="@+id/attackdamage" />
 
     </RelativeLayout>
 
