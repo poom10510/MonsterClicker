@@ -1,9 +1,9 @@
-package kitipoom.clickinggame.Calculator;
+package kitipoom.clickinggame.Calculators;
 
-public class Enemycalculator extends Calculator {
+public class Allycalculator extends Calculator {
     @Override
     public int getHp(int level) {
-        return level * 200;
+        return level * 10;
     }
 
     @Override
@@ -13,26 +13,27 @@ public class Enemycalculator extends Calculator {
 
     @Override
     public int getHeal(int level) {
-        return 0;
+        return level * 10;
     }
 
     @Override
     public int getSpeed(int level) {
-        return 0;
+        return 2000 - (level - 1) * 10;
     }
 
     @Override
     public int getDefend(int level) {
-        return 0;
+        return level;
     }
 
     @Override
     public int getStun(int level) {
-        return 0;
+        return level;
     }
 
     @Override
     public int getCost(int level) {
-        return level * 50;
+        return 0;
     }
+
 }

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context="kitipoom.clickinggame.UpgradeFragment.WarriorUpgrade">
+    tools:context="kitipoom.clickinggame.UpgradeFragments.WarriorUpgrade">
 
     <!-- TODO: Update blank fragment layout -->
 

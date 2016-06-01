@@ -1,14 +1,14 @@
-package kitipoom.clickinggame;
+package kitipoom.clickinggame.Models;
 
 import java.util.Observable;
 import java.util.Random;
 
-import kitipoom.clickinggame.Ally.Ally;
-import kitipoom.clickinggame.Ally.Archer;
-import kitipoom.clickinggame.Ally.Caster;
-import kitipoom.clickinggame.Ally.Warrior;
-import kitipoom.clickinggame.Calculator.Calculator;
-import kitipoom.clickinggame.Calculator.Enemycalculator;
+import kitipoom.clickinggame.Allies.Ally;
+import kitipoom.clickinggame.Allies.Archer;
+import kitipoom.clickinggame.Allies.Caster;
+import kitipoom.clickinggame.Allies.Warrior;
+import kitipoom.clickinggame.Calculators.Calculator;
+import kitipoom.clickinggame.Calculators.Enemycalculator;
 import kitipoom.clickinggame.Keyplay.Enemy;
 import kitipoom.clickinggame.Keyplay.Player;
 import kitipoom.clickinggame.Memento.Memento;

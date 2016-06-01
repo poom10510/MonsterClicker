@@ -1,6 +1,6 @@
-package kitipoom.clickinggame;
+package kitipoom.clickinggame.Models;
 
-import kitipoom.clickinggame.Ally.Ally;
+import kitipoom.clickinggame.Allies.Ally;
 import kitipoom.clickinggame.Keyplay.Keyplay;
 
 public class UpLevel {

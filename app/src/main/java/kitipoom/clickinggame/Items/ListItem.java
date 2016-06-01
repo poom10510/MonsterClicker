@@ -1,4 +1,4 @@
-package kitipoom.clickinggame.Item;
+package kitipoom.clickinggame.Items;
 
 import java.util.ArrayList;
 import java.util.List;

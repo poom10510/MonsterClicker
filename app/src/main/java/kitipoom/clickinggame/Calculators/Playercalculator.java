@@ -1,4 +1,4 @@
-package kitipoom.clickinggame.Calculator;
+package kitipoom.clickinggame.Calculators;
 
 public class Playercalculator extends Calculator {
     @Override

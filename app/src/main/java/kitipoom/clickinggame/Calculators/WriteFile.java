@@ -1,4 +1,4 @@
-package kitipoom.clickinggame.Calculator;
+package kitipoom.clickinggame.Calculators;
 
 import android.content.Context;
 

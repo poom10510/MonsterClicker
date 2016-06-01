@@ -1,7 +1,5 @@
-package kitipoom.clickinggame.UpgradeFragment;
+package kitipoom.clickinggame.UpgradeFragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -10,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import kitipoom.clickinggame.Calculator.Calculator;
-import kitipoom.clickinggame.Calculator.Upgradecalculator;
-import kitipoom.clickinggame.Game;
+import kitipoom.clickinggame.Calculators.Calculator;
+import kitipoom.clickinggame.Calculators.Upgradecalculator;
+import kitipoom.clickinggame.Models.Game;
 import kitipoom.clickinggame.R;
 
 

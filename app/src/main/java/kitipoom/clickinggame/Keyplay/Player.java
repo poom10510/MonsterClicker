@@ -1,6 +1,6 @@
 package kitipoom.clickinggame.Keyplay;
 
-import kitipoom.clickinggame.Calculator.Playercalculator;
+import kitipoom.clickinggame.Calculators.Playercalculator;
 import kitipoom.clickinggame.Memento.Memento;
 
 public class Player extends Keyplay {

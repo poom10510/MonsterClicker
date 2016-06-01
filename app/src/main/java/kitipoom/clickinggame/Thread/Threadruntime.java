@@ -1,4 +1,6 @@
-package kitipoom.clickinggame;
+package kitipoom.clickinggame.Thread;
+
+import kitipoom.clickinggame.Activity.MainActivity;
 
 public class Threadruntime extends Thread {
 

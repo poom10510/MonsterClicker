@@ -4,11 +4,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import kitipoom.clickinggame.Item.ItemFragment;
-import kitipoom.clickinggame.UpgradeFragment.ArcherUpgrade;
-import kitipoom.clickinggame.UpgradeFragment.CasterUpgrade;
-import kitipoom.clickinggame.UpgradeFragment.HeroUpgrade;
-import kitipoom.clickinggame.UpgradeFragment.WarriorUpgrade;
+import kitipoom.clickinggame.Items.ItemFragment;
+import kitipoom.clickinggame.UpgradeFragments.ArcherUpgrade;
+import kitipoom.clickinggame.UpgradeFragments.CasterUpgrade;
+import kitipoom.clickinggame.UpgradeFragments.HeroUpgrade;
+import kitipoom.clickinggame.UpgradeFragments.WarriorUpgrade;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int numTab;

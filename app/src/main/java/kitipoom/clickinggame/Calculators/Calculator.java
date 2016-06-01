@@ -1,4 +1,4 @@
-package kitipoom.clickinggame.Calculator;
+package kitipoom.clickinggame.Calculators;
 
 public abstract class Calculator {
     public abstract int getHp(int level);

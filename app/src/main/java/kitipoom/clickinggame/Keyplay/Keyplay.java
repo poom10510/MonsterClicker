@@ -1,6 +1,6 @@
 package kitipoom.clickinggame.Keyplay;
 
-import kitipoom.clickinggame.Calculator.Calculator;
+import kitipoom.clickinggame.Calculators.Calculator;
 
 public abstract class Keyplay {
     protected int level;

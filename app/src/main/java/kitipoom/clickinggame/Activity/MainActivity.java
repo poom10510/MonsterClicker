@@ -1,9 +1,6 @@
-package kitipoom.clickinggame;
+package kitipoom.clickinggame.Activity;
 
-import android.content.Context;
 import android.content.pm.ActivityInfo;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -19,13 +16,15 @@ import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
 import kitipoom.clickinggame.Animation.AnimationIterator;
-import kitipoom.clickinggame.Calculator.ReadFile;
-import kitipoom.clickinggame.Calculator.WriteFile;
+import kitipoom.clickinggame.Calculators.ReadFile;
+import kitipoom.clickinggame.Calculators.WriteFile;
+import kitipoom.clickinggame.Models.Game;
+import kitipoom.clickinggame.R;
+import kitipoom.clickinggame.Thread.Threadruntime;
 
 
 public class MainActivity extends AppCompatActivity implements Observer {

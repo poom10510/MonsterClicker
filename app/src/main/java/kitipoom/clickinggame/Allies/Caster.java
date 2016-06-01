@@ -1,6 +1,6 @@
-package kitipoom.clickinggame.Ally;
+package kitipoom.clickinggame.Allies;
 
-import kitipoom.clickinggame.Calculator.Allycalculator;
+import kitipoom.clickinggame.Calculators.Allycalculator;
 import kitipoom.clickinggame.Keyplay.Enemy;
 import kitipoom.clickinggame.Keyplay.Player;
 import kitipoom.clickinggame.Memento.Memento;

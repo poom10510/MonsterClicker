@@ -1,14 +1,14 @@
-package kitipoom.clickinggame.Calculator;
+package kitipoom.clickinggame.Calculators;
 
-public class Upgradecalculator extends Calculator {
+public class Enemycalculator extends Calculator {
     @Override
     public int getHp(int level) {
-        return 0;
+        return level * 200;
     }
 
     @Override
     public int getAtk(int level) {
-        return 0;
+        return level * 10;
     }
 
     @Override
@@ -33,6 +33,6 @@ public class Upgradecalculator extends Calculator {
 
     @Override
     public int getCost(int level) {
-        return level * 30;
+        return level * 50;
     }
 }

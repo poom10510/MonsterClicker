@@ -1,6 +1,6 @@
-package kitipoom.clickinggame.Item;
+package kitipoom.clickinggame.Items;
 
-import kitipoom.clickinggame.Game;
+import kitipoom.clickinggame.Models.Game;
 
 public class M150 extends Item {
     public M150() {

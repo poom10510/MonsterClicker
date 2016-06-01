@@ -1,6 +1,6 @@
 package kitipoom.clickinggame.State;
 
-import kitipoom.clickinggame.Ally.Ally;
+import kitipoom.clickinggame.Allies.Ally;
 import kitipoom.clickinggame.Keyplay.Enemy;
 import kitipoom.clickinggame.Keyplay.Player;
 
