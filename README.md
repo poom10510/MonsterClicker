@@ -34,7 +34,7 @@ Project name: **MonsterClicker**
 	
 5) High Cohesions
 
-- LevelUp use to upgrade all Ally in game.
+- UpLevel use to upgrade all Ally in game.
 - Calculator use calculate all value in Ally,Player,and Enemy.
 
 **SRP Single Responsibility Principle**
@@ -51,7 +51,7 @@ Project name: **MonsterClicker**
 
 **LSP Liscov Substitution Principle**
 
-- Archer, Caster and Warrior are subclass of Ally class. they have Action(Player player, Enemy enemy) that difference work in each class
+- Archer, Caster and Warrior are subclass of Ally class. they have Action(Player player, Enemy enemy) that difference work in each class.
 
 **Polymorphism**
 
