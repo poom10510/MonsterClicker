@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
     int[] picMons;
     private AnimationIterator iteratorWarrior, iteratorCasterAttack, iteratorCasterHeal, iteratorArcher;
     private AnimationIterator iteratorDragon, iteratorBall, iteratorElectri, iteratorRabbit, iteratorFish, iteratorIce;
-
+    private MediaPlayer tabSound,healSound,bgSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
             @Override
             public void onClick(View v) {
                 game.playerHeal();
+                healSound.start();
                 plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
                 setHPBar();
                 healdamage.setText("+ " + game.getPlayer().getHealpower());
@@ -93,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
             public void onClick(View v) {
                 if (!checkenemydead) {
                     game.setEnemyDamage();
+                    tabSound.start();
                     moneybar.setText(game.getPlayer().getMoney() + "");
                     enhp.setText(game.getEnemy().getCurrentHp() + "/" + game.getEnemy().getMaxHp());
                     setHPBar();
@@ -234,6 +237,14 @@ public class MainActivity extends AppCompatActivity implements Observer {
         iteratorFish = new AnimationIterator(arrFish);
         iteratorIce = new AnimationIterator(arrIce);
 
+        /*Sound Effect*/
+        tabSound = MediaPlayer.create(this,R.raw.attack);
+        healSound = MediaPlayer.create(this,R.raw.heal);
+        bgSound = MediaPlayer.create(this,R.raw.gamebg);
+        bgSound.setLooping(true); // Set looping
+        bgSound.setVolume(100,100);
+        bgSound.start();
+
     }
 
     public void updatetime(String name) {
@@ -320,6 +331,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
         WriteFile.write(game.getArcher().saveState(), getApplicationContext());
         WriteFile.write(game.getCaster().saveState(), getApplicationContext());
         WriteFile.write(game.getWarrior().saveState(), getApplicationContext());
+        bgSound.stop();
     }
 
     @Override

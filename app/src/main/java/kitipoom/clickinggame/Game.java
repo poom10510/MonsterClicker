@@ -18,7 +18,7 @@ public class Game extends Observable {
     private static Game instance;
     private Player player;
     private Enemy enemy;
-    private LevelUp levelup;
+    private LevelUp levelUp;
 
     private Ally warrior, caster, archer;
 
@@ -31,7 +31,7 @@ public class Game extends Observable {
     private Calculator enemyCalculataor;
 
     private Game() {
-        levelup = new LevelUp();
+        levelUp = new LevelUp();
         floor = 1;
         count = 1;
         enemyCalculataor = new Enemycalculator();
@@ -170,7 +170,7 @@ public class Game extends Observable {
     }
 
     public LevelUp getLvu() {
-        return levelup;
+        return levelUp;
     }
 
     public Ally getWarrior() {
