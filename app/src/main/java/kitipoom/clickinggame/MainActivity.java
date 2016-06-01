@@ -16,13 +16,15 @@ import android.widget.TextView;
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 import kitipoom.clickinggame.Animation.AnimationIterator;
 import kitipoom.clickinggame.Calculator.ReadFile;
 import kitipoom.clickinggame.Calculator.WriteFile;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Observer {
 
     private TextView moneybar, enhp, plhp, enemyLv, enemynum, attackdamage, healdamage;
     private TextView warriordamge, archerdamage, casterdamage, casterhealdamage, monsterdamage;
@@ -36,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
     int archer = 0, caster = 0, warrior = 0, monster = 0;
     int[] picAlly;
     int[] picMons;
-    private AnimationIterator iteratorWarrior, iteratorCaster, iteratorArcher;
+    private AnimationIterator iteratorWarrior, iteratorCasterAttack, iteratorCasterHeal, iteratorArcher;
     private AnimationIterator iteratorDragon, iteratorBall, iteratorElectri, iteratorRabbit, iteratorFish, iteratorIce;
-    private int[] arrCaster;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +55,16 @@ public class MainActivity extends AppCompatActivity {
         game = Game.getInstance();
         game.newGame();
         loadGame();
-        //Game.getInstance().newGame();
+        game.addObserver(this);
+
         enpic = (ImageView) findViewById(R.id.Enermyimage);
-        //enpic.setImageResource(R.drawable.dragon1);
         hero1pic = (ImageView) findViewById(R.id.Hero1image);
         hero1pic.setImageResource(R.drawable.warrior1);
         hero2pic = (ImageView) findViewById(R.id.Hero2image);
         hero2pic.setImageResource(R.drawable.caster1);
         hero3pic = (ImageView) findViewById(R.id.Hero3image);
         hero3pic.setImageResource(R.drawable.archer1);
+
         moneybar = (TextView) findViewById(R.id.moneytab);
         moneybar.setText(game.getPlayer().getMoney() + "");
         enhp = (TextView) findViewById(R.id.enermyhp);
@@ -168,7 +171,8 @@ public class MainActivity extends AppCompatActivity {
         picMons = new int[29];
         /*Create picture*/
         int[] arrWarrior = new int[3];
-         arrCaster = new int[3];
+        int[] arrCasterAttack = new int[2];
+        int[] arrCasterHeal = new int[2];
         int[] arrArcher = new int[3];
         int[] arrDragon = new int[3];
         int[] arrBall = new int[3];
@@ -181,9 +185,11 @@ public class MainActivity extends AppCompatActivity {
         arrWarrior[1] = R.drawable.warrior2;
         arrWarrior[2] = R.drawable.warrior3;
 
-        arrCaster[0] = R.drawable.caster1;
-        arrCaster[1] = R.drawable.caster2;
-        arrCaster[2] = R.drawable.caster3;
+        arrCasterAttack[0] = R.drawable.caster1;
+        arrCasterAttack[1] = R.drawable.caster2;
+
+        arrCasterHeal[0] = R.drawable.caster1;
+        arrCasterHeal[1] = R.drawable.caster3;
 
         arrArcher[0] = R.drawable.archer1;
         arrArcher[1] = R.drawable.archer2;
@@ -215,7 +221,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         iteratorWarrior = new AnimationIterator(arrWarrior);
-        iteratorCaster = new AnimationIterator(arrCaster);
+        iteratorCasterAttack = new AnimationIterator(arrCasterAttack);
+        iteratorCasterHeal = new AnimationIterator(arrCasterHeal);
         iteratorArcher = new AnimationIterator(arrArcher);
         iteratorDragon = new AnimationIterator(arrDragon);
         iteratorBall = new AnimationIterator(arrBall);
@@ -223,43 +230,6 @@ public class MainActivity extends AppCompatActivity {
         iteratorRabbit = new AnimationIterator(arrRabbit);
         iteratorFish = new AnimationIterator(arrFish);
         iteratorIce = new AnimationIterator(arrIce);
-
-
-//        picMons[1] = R.drawable.dragon1;
-//        picMons[2] = R.drawable.dragon2;
-//        picMons[3] = R.drawable.dragon3;
-//
-//        picMons[4] = R.drawable.ball1;
-//        picMons[5] = R.drawable.ball2;
-//        picMons[6] = R.drawable.ball3;
-//
-//        picMons[7] = R.drawable.electri1;
-//        picMons[8] = R.drawable.electri2;
-//        picMons[9] = R.drawable.electri3;
-//
-//        picMons[10] = R.drawable.rabbit1;
-//        picMons[11] = R.drawable.rabbit2;
-//        picMons[12] = R.drawable.rabbit3;
-//
-//        picMons[13] = R.drawable.fish1;
-//        picMons[14] = R.drawable.fish2;
-//        picMons[15] = R.drawable.fish3;
-//
-//        picMons[16] = R.drawable.ice1;
-//        picMons[17] = R.drawable.ice2;
-//        picMons[18] = R.drawable.ice3;
-
-//        picAlly[1] = R.drawable.warrior1;
-//        picAlly[2] = R.drawable.warrior2;
-//        picAlly[3] = R.drawable.warrior3;
-
-//        picAlly[4] = R.drawable.caster1;
-//        picAlly[5] = R.drawable.caster2;
-//        picAlly[6] = R.drawable.caster3;
-//
-//        picAlly[7] = R.drawable.archer1;
-//        picAlly[8] = R.drawable.archer2;
-//        picAlly[9] = R.drawable.archer3;
 
     }
 
@@ -287,32 +257,7 @@ public class MainActivity extends AppCompatActivity {
             changePic(name);
             game.warriorAttack();
         }
-//        if (game.enemyIsDead()) {
-//            int index = game.getCount();
-//
-//            switch (index) {
-//                case 1:
-//                    enpic.setImageResource(picMons[1]);
-//                    break;
-//                case 2:
-//                    enpic.setImageResource(picMons[4]);
-//                    break;
-//                case 3:
-//                    enpic.setImageResource(picMons[7]);
-//                    break;
-//                case 4:
-//                    enpic.setImageResource(picMons[10]);
-//                    break;
-//                case 5:
-//                    enpic.setImageResource(picMons[13]);
-//                    break;
-//                case 6:
-//                    enpic.setImageResource(picMons[16]);
-//                    break;
-//                default:
-//                    break;
-//            }
-//        }
+
         if (game.getStun()) {
             threadmonster.requestStop();
             game.setStun(false);
@@ -320,10 +265,7 @@ public class MainActivity extends AppCompatActivity {
 
         enemyLv.setText("LV " + game.getEnemy().getLevel());
         game.checkEnemyDead();
-        this.setHPBar();
         moneybar.setText(game.getPlayer().getMoney() + "");
-        enhp.setText(game.getEnemy().getCurrentHp() + "/" + game.getEnemy().getMaxHp());
-        plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
         enemynum.setText(game.getCount() + "/6");
         attackdamage.setText("");
         healdamage.setText("");
@@ -334,142 +276,42 @@ public class MainActivity extends AppCompatActivity {
         playerHPbar.setProgress(game.getPlayer().getCurrentHp());
         enemyHPbar.setMax(game.getEnemy().getMaxHp());
         enemyHPbar.setProgress(game.getEnemy().getCurrentHp());
+        enhp.setText(game.getEnemy().getCurrentHp() + "/" + game.getEnemy().getMaxHp());
+        plhp.setText(game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp());
     }
 
     public void changePic(String name) {
         if (name == "caster") {
-            if (caster % 2 == 0) {
-                if (game.getCaster().getState().getSt() == 0) {
-                    hero2pic.setImageResource(arrCaster[1]);
-                    casterdamage.setText("- " + game.getCaster().getPower());
-                } else {
-                    hero2pic.setImageResource(arrCaster[2]);
-                    casterhealdamage.setText("+ " + game.getCaster().getHeal());
-                }
-
-
+            if (game.getCaster().getState().getSt() == 0) {
+                hero2pic.setImageResource(iteratorCasterAttack.next());
             } else {
-                hero2pic.setImageResource(arrCaster[0]);
-                casterdamage.setText("");
-                casterhealdamage.setText("");
+                hero2pic.setImageResource(iteratorCasterHeal.next());
             }
-            caster++;
+
         } else if (name == "archer") {
-//            if (archer % 2 == 0) {
-//                hero3pic.setImageResource(picAlly[8]);
-//                archerdamage.setText("");
-//            } else if (archer % 3 == 0) {
-//                hero3pic.setImageResource(picAlly[9]);
-//                archerdamage.setText("- " + game.getArcher().getPower());
-//                caster = 0;
-//            } else {
-//                archerdamage.setText("");
-//                hero3pic.setImageResource(picAlly[7]);
-//            }
-//            archer++;
             hero3pic.setImageResource(iteratorArcher.next());
 
         } else if (name == "warrior") {
-//            if (warrior % 2 == 0) {
-//                hero1pic.setImageResource(picAlly[2]);
-//                warriordamge.setText("");
-//            } else if (warrior % 3 == 0) {
-//                hero1pic.setImageResource(picAlly[3]);
-//                warrior = 0;
-//                warriordamge.setText("- "+game.getWarrior().getPower());
-//
-//            } else {
-//                warriordamge.setText("");
-//                hero1pic.setImageResource(picAlly[1]);
-//            }
-//            warrior++;
             hero1pic.setImageResource(iteratorWarrior.next());
-
 
         } else if (name == "monster") {
             if (game.getCount() == 1) {
-//                if (monster % 2 == 0) {
-//                    enpic.setImageResource(picMons[2]);
-//                    monsterdamage.setText("");
-//                } else if (monster % 3 == 0) {
-//                    enpic.setImageResource(picMons[3]);
-//                    monsterdamage.setText("- " + game.getEnemy().getAtkpower());
-//                    monster = 0;
-//                } else {
-//                    enpic.setImageResource(picMons[1]);
-//                    monsterdamage.setText("");
-//                }
                 enpic.setImageResource(iteratorDragon.next());
 
             } else if (game.getCount() == 2) {
-//                if (monster % 2 == 0) {
-//                    enpic.setImageResource(picMons[5]);
-//                    monsterdamage.setText("");
-//                } else if (monster % 3 == 0) {
-//                    enpic.setImageResource(picMons[6]);
-//                    monsterdamage.setText("- " + game.getEnemy().getAtkpower());
-//                    monster = 0;
-//                } else {
-//                    enpic.setImageResource(picMons[4]);
-//                    monsterdamage.setText("");
-//                }
                 enpic.setImageResource(iteratorBall.next());
 
             }
             if (game.getCount() == 3) {
-//                if (monster % 2 == 0) {
-//                    enpic.setImageResource(picMons[8]);
-//                    monsterdamage.setText("");
-//                } else if (monster % 3 == 0) {
-//                    enpic.setImageResource(picMons[9]);
-//                    monsterdamage.setText("- " + game.getEnemy().getAtkpower());
-//                    monster = 0;
-//                } else {
-//                    enpic.setImageResource(picMons[7]);
-//                    monsterdamage.setText("");
-//                }
                 enpic.setImageResource(iteratorElectri.next());
             }
             if (game.getCount() == 4) {
-//                if (monster % 2 == 0) {
-//                    enpic.setImageResource(picMons[11]);
-//                    monsterdamage.setText("");
-//                } else if (monster % 3 == 0) {
-//                    enpic.setImageResource(picMons[12]);
-//                    monsterdamage.setText("- " + game.getEnemy().getAtkpower());
-//                    monster = 0;
-//                } else {
-//                    enpic.setImageResource(picMons[10]);
-//                    monsterdamage.setText("");
-//                }
                 enpic.setImageResource(iteratorRabbit.next());
             }
             if (game.getCount() == 5) {
-//                if (monster % 2 == 0) {
-//                    enpic.setImageResource(picMons[14]);
-//                    monsterdamage.setText("");
-//                } else if (monster % 3 == 0) {
-//                    enpic.setImageResource(picMons[15]);
-//                    monsterdamage.setText("- " + game.getEnemy().getAtkpower());
-//                    monster = 0;
-//                } else {
-//                    enpic.setImageResource(picMons[13]);
-//                    monsterdamage.setText("");
-//                }
                 enpic.setImageResource(iteratorFish.next());
             }
             if (game.getCount() == 6) {
-//                if (monster % 2 == 0) {
-//                    enpic.setImageResource(picMons[17]);
-//                    monsterdamage.setText("");
-//                } else if (monster % 3 == 0) {
-//                    enpic.setImageResource(picMons[18]);
-//                    monsterdamage.setText("- " + game.getEnemy().getAtkpower());
-//                    monster = 0;
-//                } else {
-//                    enpic.setImageResource(picMons[16]);
-//                    monsterdamage.setText("");
-//                }
                 enpic.setImageResource(iteratorIce.next());
             }
             monster++;
@@ -501,5 +343,10 @@ public class MainActivity extends AppCompatActivity {
         game.getArcher().loadState(ReadFile.read(getApplicationContext(), "Archer"));
         game.getWarrior().loadState(ReadFile.read(getApplicationContext(), "Warrior"));
         game.getCaster().loadState(ReadFile.read(getApplicationContext(), "Caster"));
+    }
+
+    @Override
+    public void update(Observable observable, Object data) {
+        this.setHPBar();
     }
 }

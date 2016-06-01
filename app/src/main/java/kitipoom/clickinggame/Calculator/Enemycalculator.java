@@ -36,6 +36,6 @@ public class Enemycalculator extends Calculator {
 
     @Override
     public int getCost(int level) {
-        return 0;
+        return level*50;
     }
 }

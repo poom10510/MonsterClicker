@@ -1,10 +1,13 @@
 package kitipoom.clickinggame;
+import java.util.Observable;
 import java.util.Random;
 
 import kitipoom.clickinggame.Ally.Ally;
 import kitipoom.clickinggame.Ally.Archer;
 import kitipoom.clickinggame.Ally.Caster;
 import kitipoom.clickinggame.Ally.Warrior;
+import kitipoom.clickinggame.Calculator.Calculator;
+import kitipoom.clickinggame.Calculator.Enemycalculator;
 import kitipoom.clickinggame.Keyplay.Enemy;
 import kitipoom.clickinggame.Keyplay.Player;
 import kitipoom.clickinggame.Memento.Memento;
@@ -12,7 +15,7 @@ import kitipoom.clickinggame.Memento.Memento;
 /**
  * Created by kitipoom on 11/5/2559.
  */
-public class Game {
+public class Game extends Observable{
 
     private static Game instance;
     private Player player;
@@ -27,10 +30,13 @@ public class Game {
     private boolean isPowerBoost = false;
     private int floor, count, boost_count;
 
+    private Calculator enemyCalculataor;
+
     private Game() {
         levelup = new LevelUp();
         floor = 1;
         count = 1;
+        enemyCalculataor = new Enemycalculator();
     }
 
     public static Game getInstance() {
@@ -44,7 +50,7 @@ public class Game {
 
     public void checkEnemyDead() {
         if (enemyIsDead()) {
-            player.receiveMoney(enemy.getLevel() * 100);
+            player.receiveMoney(enemyCalculataor.getCost(enemy.getLevel()));
             if (count == 6) {
                 floor++;
                 count = 0;
@@ -93,6 +99,8 @@ public class Game {
 
     public void setEnemyDamage() {
         enemy.attacked(player.getAtkpower());
+        setChanged();
+        notifyObservers();
         checkBoostPower();
     }
 
@@ -134,6 +142,8 @@ public class Game {
 
     public void enemyTurn() {
         player.attacked(enemy.getAtkpower() - (int) (enemy.getAtkpower() * (warrior.getDefend() / 100.0)));
+        setChanged();
+        notifyObservers();
     }
 
     public boolean checkStun() {

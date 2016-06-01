@@ -6,17 +6,17 @@ package kitipoom.clickinggame.Calculator;
 public class Playercalculator extends Calculator {
     @Override
     public int getHp(int level) {
-        return level * 100;
+        return level * 50;
     }
 
     @Override
     public int getAtk(int level) {
-        return level * 10;
+        return level * 5;
     }
 
     @Override
     public int getHeal(int level) {
-        return level * 10;
+        return level * 5;
     }
 
     @Override

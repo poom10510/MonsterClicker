@@ -76,7 +76,6 @@ public class HeroUpgrade extends Fragment {
         powerCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // game.getPlayer().levelUp();
                 if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getPlayer().getAtkpowerlv() + 1)) {
                     game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getPlayer().getAtkpowerlv() + 1));
                     game.getLvu().powerUp(game.getPlayer());
@@ -102,7 +101,7 @@ public class HeroUpgrade extends Fragment {
             @Override
             public void onClick(View v) {
                 if (game.getPlayer().getMoney() >= upgradeCalculator.getCost(game.getPlayer().getMaxHplv() + 1)) {
-                    game.getPlayer().lossMoney(-(upgradeCalculator.getCost(game.getPlayer().getMaxHplv() + 1)));
+                    game.getPlayer().lossMoney(upgradeCalculator.getCost(game.getPlayer().getMaxHplv() + 1));
                     game.getLvu().hpUp(game.getPlayer());
                     hpLv.setText("Level " + (game.getPlayer().getMaxHplv()));
                     hpCost.setText(upgradeCalculator.getCost(game.getPlayer().getMaxHplv() + 1) + " $");
