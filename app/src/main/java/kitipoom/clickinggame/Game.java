@@ -71,18 +71,15 @@ public class Game extends Observable{
         player.setCurrentHp(player.getMaxHp());
         enemy.setLevel(floor);
         enemy.setCurrentHp(enemy.getCurrentHp());
-
         count = 1;
     }
 
     public boolean enemyIsDead() {
         return enemy.getCurrentHp() <= 0;
-
     }
 
     public boolean playerIsDead() {
         return player.getCurrentHp() <= 0;
-
     }
 
     public int getCount() {
@@ -147,8 +144,7 @@ public class Game extends Observable{
     }
 
     public boolean checkStun() {
-        int index = random.nextInt(100) + 1;
-        return index <= archer.getStun();
+        return (random.nextInt(100) + 1) <= archer.getStun();
     }
 
     public void boostPower() {

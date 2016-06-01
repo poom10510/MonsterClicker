@@ -1,6 +1,9 @@
 package kitipoom.clickinggame;
 
+import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -35,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
     private RoundCornerProgressBar playerHPbar, enemyHPbar;
     Game game;
     boolean checkenemydead = false;
-    int archer = 0, caster = 0, warrior = 0, monster = 0;
+    int monster = 0;
     int[] picAlly;
     int[] picMons;
     private AnimationIterator iteratorWarrior, iteratorCasterAttack, iteratorCasterHeal, iteratorArcher;
@@ -244,7 +247,6 @@ public class MainActivity extends AppCompatActivity implements Observer {
                 threadcaster.requestStop();
                 threadwarrior.requestStop();
                 game.setEnemyDecrease();
-                //enpic.setImageResource(picMons[1]);
             }
         } else if (name == "archer") {
             changePic(name);
@@ -287,31 +289,22 @@ public class MainActivity extends AppCompatActivity implements Observer {
             } else {
                 hero2pic.setImageResource(iteratorCasterHeal.next());
             }
-
         } else if (name == "archer") {
             hero3pic.setImageResource(iteratorArcher.next());
-
         } else if (name == "warrior") {
             hero1pic.setImageResource(iteratorWarrior.next());
-
         } else if (name == "monster") {
             if (game.getCount() == 1) {
                 enpic.setImageResource(iteratorDragon.next());
-
             } else if (game.getCount() == 2) {
                 enpic.setImageResource(iteratorBall.next());
-
-            }
-            if (game.getCount() == 3) {
+            } else if (game.getCount() == 3) {
                 enpic.setImageResource(iteratorElectri.next());
-            }
-            if (game.getCount() == 4) {
+            } else if (game.getCount() == 4) {
                 enpic.setImageResource(iteratorRabbit.next());
-            }
-            if (game.getCount() == 5) {
+            } else if (game.getCount() == 5) {
                 enpic.setImageResource(iteratorFish.next());
-            }
-            if (game.getCount() == 6) {
+            } else if (game.getCount() == 6) {
                 enpic.setImageResource(iteratorIce.next());
             }
             monster++;
@@ -332,7 +325,6 @@ public class MainActivity extends AppCompatActivity implements Observer {
     @Override
     protected void onStart() {
         super.onStart();
-
         init();
     }
 

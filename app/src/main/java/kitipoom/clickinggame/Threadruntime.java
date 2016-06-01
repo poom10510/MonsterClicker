@@ -1,10 +1,5 @@
 package kitipoom.clickinggame;
 
-import android.util.Log;
-
-/**
- * Created by kitipoom on 4/5/2559.
- */
 public class Threadruntime extends Thread {
 
     private MainActivity main;
@@ -22,26 +17,13 @@ public class Threadruntime extends Thread {
         this.stop = !this.stop;
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public void sleepThread(int time){
-        try {
-            sleep(time);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public void run() {
         while (true) {
             try {
-                //sleep((long)1000); //หยุดการทำงาน 1 วินาที
                 sleep(speed);
             } catch (InterruptedException e) {
-                Log.e("log_thread", "++++++++++++++++++++++++++++Error Thread : " + e.toString());
+               e.printStackTrace();
             }
             if (this.stop) {
                 try {
@@ -62,7 +44,4 @@ public class Threadruntime extends Thread {
         }
     }
 
-    public Boolean getStop() {
-        return stop;
-    }
 }

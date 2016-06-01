@@ -2,11 +2,7 @@ package kitipoom.clickinggame;
 
 import kitipoom.clickinggame.Ally.Ally;
 import kitipoom.clickinggame.Keyplay.Keyplay;
-import kitipoom.clickinggame.Keyplay.Player;
 
-/**
- * Created by kitipoom on 27/5/2559.
- */
 public class LevelUp {
 
     public void powerUp(Keyplay unit) {
