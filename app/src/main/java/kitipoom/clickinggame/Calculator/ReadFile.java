@@ -10,18 +10,15 @@ import java.io.StreamCorruptedException;
 
 import kitipoom.clickinggame.Memento.Memento;
 
-/**
- * Created by พศิน on 1/6/2559.
- */
 public class ReadFile {
 
-    public static Memento read(Context context,String name){
+    public static Memento read(Context context, String name) {
         Memento memento;
 
         try {
-            FileInputStream fis = context.openFileInput(name+".txt");
+            FileInputStream fis = context.openFileInput(name + ".txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            memento = (Memento)ois.readObject();
+            memento = (Memento) ois.readObject();
             return memento;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -32,7 +29,6 @@ public class ReadFile {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 }

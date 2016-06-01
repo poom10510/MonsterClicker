@@ -2,9 +2,6 @@ package kitipoom.clickinggame.Item;
 
 import kitipoom.clickinggame.Game;
 
-/**
- * Created by kitipoom on 27/5/2559.
- */
 public class M150 extends Item {
     public M150() {
         name = "PowerUp";

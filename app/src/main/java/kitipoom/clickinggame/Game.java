@@ -1,4 +1,5 @@
 package kitipoom.clickinggame;
+
 import java.util.Observable;
 import java.util.Random;
 
@@ -12,17 +13,14 @@ import kitipoom.clickinggame.Keyplay.Enemy;
 import kitipoom.clickinggame.Keyplay.Player;
 import kitipoom.clickinggame.Memento.Memento;
 
-/**
- * Created by kitipoom on 11/5/2559.
- */
-public class Game extends Observable{
+public class Game extends Observable {
 
     private static Game instance;
     private Player player;
     private Enemy enemy;
     private LevelUp levelup;
 
-    private Ally warrior,caster,archer;
+    private Ally warrior, caster, archer;
 
     private Random random = new Random();
 
@@ -187,23 +185,23 @@ public class Game extends Observable{
         return caster;
     }
 
-    public Memento saveState(){
-        return  new GameMemento(floor,count);
+    public Memento saveState() {
+        return new GameMemento(floor, count);
     }
 
-    public void loadState(Memento memento){
-        if(memento == null)return;
-        if(memento.getClass() != GameMemento.class)return;
-        GameMemento gameMemento = (GameMemento)memento;
+    public void loadState(Memento memento) {
+        if (memento == null) return;
+        if (memento.getClass() != GameMemento.class) return;
+        GameMemento gameMemento = (GameMemento) memento;
         this.floor = gameMemento.floor;
         this.count = gameMemento.count;
         setEnemy();
     }
 
-    public static class GameMemento extends Memento{
-        private int floor,count;
+    public static class GameMemento extends Memento {
+        private int floor, count;
 
-        private GameMemento(int floor,int count) {
+        private GameMemento(int floor, int count) {
             super("Game");
             this.floor = floor;
             this.count = count;

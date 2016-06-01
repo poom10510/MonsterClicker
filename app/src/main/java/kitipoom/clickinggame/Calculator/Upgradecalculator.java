@@ -1,8 +1,5 @@
 package kitipoom.clickinggame.Calculator;
 
-/**
- * Created by พศิน on 1/6/2559.
- */
 public class Upgradecalculator extends Calculator {
     @Override
     public int getHp(int level) {
@@ -36,6 +33,6 @@ public class Upgradecalculator extends Calculator {
 
     @Override
     public int getCost(int level) {
-        return  level*30;
+        return level * 30;
     }
 }

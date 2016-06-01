@@ -1,21 +1,14 @@
 package kitipoom.clickinggame.Animation;
 
-import android.widget.ImageView;
-
-import java.lang.reflect.Array;
 import java.util.Iterator;
-import java.util.List;
 
-/**
- * Created by PaiizZ on 6/1/2016 AD.
- */
-public class AnimationIterator implements Iterator<Integer>{
+public class AnimationIterator implements Iterator<Integer> {
     private int[] array = new int[3];
     private int count;
 
     public AnimationIterator(int[] array) {
         this.array = array;
-        count = 0 ;
+        count = 0;
     }
 
     @Override
@@ -26,7 +19,7 @@ public class AnimationIterator implements Iterator<Integer>{
 
     @Override
     public Integer next() {
-        return array[(count++)%array.length];
+        return array[(count++) % array.length];
     }
 
     @Override

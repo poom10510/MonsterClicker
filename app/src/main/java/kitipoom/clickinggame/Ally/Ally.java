@@ -6,9 +6,6 @@ import kitipoom.clickinggame.Keyplay.Player;
 import kitipoom.clickinggame.Memento.Memento;
 import kitipoom.clickinggame.State.State;
 
-/**
- * Created by kitipoom on 11/5/2559.
- */
 public abstract class Ally {
     protected int power, powerLv;
     protected int speed, speedLv;
@@ -44,10 +41,6 @@ public abstract class Ally {
         return speed;
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
     public int getSpeedLv() {
         return speedLv;
 
@@ -60,10 +53,6 @@ public abstract class Ally {
 
     public int getHeal() {
         return heal;
-    }
-
-    public void setHeal(int heal) {
-        this.heal = heal;
     }
 
     public int getHealLv() {
@@ -88,17 +77,8 @@ public abstract class Ally {
         return defend;
     }
 
-    public void setDefend(int defend) {
-        this.defend = defend;
-    }
-
     public int getStun() {
         return stun;
-    }
-
-    public void setStun(int stun) {
-        this.stun = stun;
-
     }
 
     public int getStunLv() {

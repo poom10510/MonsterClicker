@@ -10,9 +10,6 @@ import kitipoom.clickinggame.UpgradeFragment.CasterUpgrade;
 import kitipoom.clickinggame.UpgradeFragment.HeroUpgrade;
 import kitipoom.clickinggame.UpgradeFragment.WarriorUpgrade;
 
-/**
- * Created by พศิน on 28/5/2559.
- */
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int numTab;
 

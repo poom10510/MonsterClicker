@@ -6,18 +6,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+
 import kitipoom.clickinggame.Memento.Memento;
 
-/**
- * Created by พศิน on 1/6/2559.
- */
 public class WriteFile {
-
-
-    public static void write(Memento memento,Context context){
+    public static void write(Memento memento, Context context) {
 
         try {
-            FileOutputStream fos = context.openFileOutput(memento.getName()+".txt",context.MODE_PRIVATE);
+            FileOutputStream fos = context.openFileOutput(memento.getName() + ".txt", context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(memento);
             oos.close();

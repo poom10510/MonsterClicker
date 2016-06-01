@@ -2,9 +2,6 @@ package kitipoom.clickinggame.Keyplay;
 
 import kitipoom.clickinggame.Calculator.Calculator;
 
-/**
- * Created by kitipoom on 19/5/2559.
- */
 public abstract class Keyplay {
     protected int level;
     private int maxHp, maxHplv;
@@ -18,22 +15,10 @@ public abstract class Keyplay {
 
     }
 
-
-    public void setValue(int level, Calculator cal) {
-        this.level = level;
-        this.cal = cal;
-        calculate();
-        currentHp = getMaxHp();
-    }
-
     public void calculate() {
         maxHp = cal.getHp(maxHplv);
         atkpower = cal.getAtk(atkpowerlv);
         healpower = cal.getHeal(healpowerlv);
-    }
-
-    public Calculator getCal() {
-        return cal;
     }
 
     public int getAtkpowerlv() {
@@ -86,10 +71,6 @@ public abstract class Keyplay {
         if (currentHp < 0) {
             currentHp = 0;
         }
-    }
-
-    public void setCal(Calculator cal) {
-        this.cal = cal;
     }
 
     public void setAtkpower(int atkpower) {

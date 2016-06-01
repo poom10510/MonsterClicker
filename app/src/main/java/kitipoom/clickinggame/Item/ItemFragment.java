@@ -1,7 +1,5 @@
 package kitipoom.clickinggame.Item;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -24,7 +22,6 @@ public class ItemFragment extends Fragment {
     public ItemFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,7 +58,6 @@ public class ItemFragment extends Fragment {
         item2_cost.setText(item2.getPrice() + " $");
         item3_cost.setText(item3.getPrice() + " $");
 
-
         item1_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,8 +87,5 @@ public class ItemFragment extends Fragment {
                 }
             }
         });
-
-
     }
-
 }

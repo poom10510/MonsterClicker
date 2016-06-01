@@ -1,8 +1,5 @@
 package kitipoom.clickinggame.Calculator;
 
-/**
- * Created by kitipoom on 29/5/2559.
- */
 public class Allycalculator extends Calculator {
     @Override
     public int getHp(int level) {
@@ -26,7 +23,7 @@ public class Allycalculator extends Calculator {
 
     @Override
     public int getDefend(int level) {
-        return level ;
+        return level;
     }
 
     @Override

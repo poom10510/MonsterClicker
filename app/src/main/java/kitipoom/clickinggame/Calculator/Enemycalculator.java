@@ -1,8 +1,5 @@
 package kitipoom.clickinggame.Calculator;
 
-/**
- * Created by kitipoom on 19/5/2559.
- */
 public class Enemycalculator extends Calculator {
     @Override
     public int getHp(int level) {
@@ -36,6 +33,6 @@ public class Enemycalculator extends Calculator {
 
     @Override
     public int getCost(int level) {
-        return level*50;
+        return level * 50;
     }
 }

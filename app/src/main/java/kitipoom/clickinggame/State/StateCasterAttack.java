@@ -4,9 +4,6 @@ import kitipoom.clickinggame.Ally.Ally;
 import kitipoom.clickinggame.Keyplay.Enemy;
 import kitipoom.clickinggame.Keyplay.Player;
 
-/**
- * Created by kitipoom on 29/5/2559.
- */
 public class StateCasterAttack extends State {
 
 
@@ -22,6 +19,4 @@ public class StateCasterAttack extends State {
         super(caster);
         st = 0;
     }
-
-
 }

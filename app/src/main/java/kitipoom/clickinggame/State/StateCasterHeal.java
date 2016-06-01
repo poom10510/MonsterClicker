@@ -4,9 +4,6 @@ import kitipoom.clickinggame.Ally.Ally;
 import kitipoom.clickinggame.Keyplay.Enemy;
 import kitipoom.clickinggame.Keyplay.Player;
 
-/**
- * Created by kitipoom on 29/5/2559.
- */
 public class StateCasterHeal extends State {
     @Override
     public void Action(Player player, Enemy enemy) {
