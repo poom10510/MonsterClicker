@@ -3,7 +3,7 @@ package kitipoom.clickinggame;
 import kitipoom.clickinggame.Ally.Ally;
 import kitipoom.clickinggame.Keyplay.Keyplay;
 
-public class LevelUp {
+public class UpLevel {
 
     public void powerUp(Keyplay unit) {
         unit.setAtkpowerlv(unit.getAtkpowerlv() + 1);
