@@ -77,6 +77,8 @@ Contain 2 states : StateCasterAttack.java and StateCasterHeal.java
 Class : MainActivity(Observer), Game(Observable)
 
 - Use to update status (health bar) when have change in Game class when player attack enemy or enemy attack player.
+- Use to update money value when monster is died, player upgrades hero or allies status and buy items.
+- Use to update monster number and level.
  
 4) Iterator pattern
 
