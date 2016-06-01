@@ -3,8 +3,6 @@ Software Specification and Design : Final Project
 
 Project name: **MonsterClicker**
 
-Git link : https://github.com/poom10510/MonsterClicker
-
 **Team Member**
 
 1) Kitipoom Kongpetch 				5710546160
